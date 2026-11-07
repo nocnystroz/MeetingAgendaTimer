@@ -4,7 +4,7 @@ Lokalna aplikacja desktopowa do prowadzenia spotkań według agendy. Osobny
 licznik pokazuje bieżący punkt i pozostały czas, a panel prowadzącego pozwala
 zapisywać notatki, decyzje i zadania.
 
-**Wersja 0.1 — prototyp do testów.** Działa lokalnie na Linux X11. Kod i skrypty
+**Prototyp do testów — wersja aplikacji to skrócony hash commita.** Działa lokalnie na Linux X11. Kod i skrypty
 budowania obejmują Windows i macOS, ale tych platform nie przetestowano jeszcze
 na rzeczywistych urządzeniach. Szczegóły: [ROADMAP.md](ROADMAP.md)
 i [docs/VALIDATION.md](docs/VALIDATION.md).
@@ -70,6 +70,23 @@ Możesz też podać godziny:
 10:20–10:30 Decyzje i następne kroki
 ```
 
+Możesz wklejać także tabelki z Excela/Sheets (tabulatory), CSV z przecinkiem
+lub średnikiem oraz tabelki Markdown. Nagłówki `Temat` i `Czas (min)` pozwalają
+podać samą liczbę minut. Obsługiwane są również `15 minut — Wyniki`,
+`Wyniki 1h30min`, `Wyniki (00:15:00)` i `Wyniki [15:00]` (MM:SS).
+
+Lista samych godzin rozpoczęcia wyznacza czas punktów na podstawie następnego:
+
+```text
+10:00 Wyniki
+10:15 Decyzje
+10:25 Koniec
+```
+
+Ostatni punkt musi mieć czas trwania albo końcowy wiersz `HH:MM Koniec`.
+Nierozpoznane linie nie są pomijane. Standardowe nagłówki i separatory tabeli
+są rozpoznawane jako struktura.
+
 Czasy trwania obsługują `h`, `godz`, `min`, `m`, `sek`, `s` oraz części minuty,
 np. `1,5 min`. Nie mieszaj czasów trwania i przedziałów w jednej agendzie.
 Nierozpoznane wiersze wymagają poprawy — nie są pomijane.
@@ -95,7 +112,8 @@ zachowuje stare notatki w danych sesji i nie zatrzymuje osobnego nagrania.
 ## Licznik i notatki
 
 **Pokaż licznik** otwiera osobne okno z przełącznikami **Zawsze na wierzchu**
-i **Kompaktowy**. Przełączanie i zmiana motywu nie resetują czasu.
+i **Kompaktowy**. Widok kompaktowy ma około 260 × 138 px, pokazuje krótki tytuł,
+czas i przyciski pauzy, przypinania, panelu oraz powrotu do pełnego widoku. Przełączanie i zmiana motywu nie resetują czasu.
 Standardowy przycisk minimalizacji chowa do paska; **Schowaj** do zasobnika.
 Przy braku zasobnika aplikacja minimalizuje okno zamiast tracić do niego dostęp.
 Zamknięcie licznika przywraca panel prowadzącego.
@@ -175,3 +193,10 @@ oraz budowanie na trzech systemach, bez automatycznego publikowania wydania.
 
 Historia spotkań, integracje MS/Google i nagrywanie wideo pozostają odłożone.
 Inspiracja funkcjonalna audio: lokalny projekt `audio-rozkminka`; nie kopiowano kodu.
+
+
+## Identyfikacja wersji
+
+Tytuły okien i prawy koniec paska stanu pokazują hash commita. Wersja źródłowa
+odczytuje go z Git; `*` oznacza niezacommitowane zmiany. Paczka przenośna
+ma wersję utrwaloną przy budowaniu, także bez dostępu do Git.

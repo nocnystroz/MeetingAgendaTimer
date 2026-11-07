@@ -148,3 +148,64 @@ def test_engine_independent_of_note_editing(window):
     clock[0] = 61
     window.tick()
     assert window.counter.title.text() == "B"
+
+
+def test_theme_defaults_system_and_persists(window):
+    from PySide6.QtGui import QPalette
+    assert window.theme.currentIndex() == 0
+    window.theme.setCurrentIndex(2)
+    assert QApplication.instance().palette().color(QPalette.ColorRole.Window).lightness() < 128
+    window.theme.setCurrentIndex(1)
+    assert QApplication.instance().palette().color(QPalette.ColorRole.Window).lightness() > 128
+    assert window.save_session(clean=True)
+    window.theme.setCurrentIndex(2)
+    window.save_timer.stop()
+    window.restore()
+    assert window.theme.currentIndex() == 1
+
+
+def test_compact_view_is_substantially_smaller(window, app):
+    window.replace_items([Item("Bardzo długi tytuł punktu agendy " * 5, 900)])
+    window.counter.show()
+    app.processEvents()
+    full_area = window.counter.width() * window.counter.height()
+    window.counter.compact.setChecked(True)
+    app.processEvents()
+    assert window.counter.width() <= 280
+    assert window.counter.height() <= 160
+    assert window.counter.width() * window.counter.height() < full_area * 0.3
+    assert window.counter.mini_controls.isVisible()
+    assert not window.counter.full_controls.isVisible()
+    window.counter.mini_expand.click()
+    app.processEvents()
+    assert not window.counter.compact.isChecked()
+
+
+def test_light_combo_popup_has_explicit_contrast(window, app):
+    from collections import Counter
+
+    from PySide6.QtCore import QItemSelectionModel
+    window.theme.setCurrentIndex(1)
+    window.show()
+    window.theme.showPopup()
+    view = window.theme.view()
+    index = window.theme.model().index(1, 0)
+    view.selectionModel().select(index, QItemSelectionModel.SelectionFlag.ClearAndSelect)
+    app.processEvents()
+    image = view.viewport().grab(view.visualRect(index)).toImage()
+    colors = Counter(image.pixelColor(x, y).name() for x in range(image.width()) for y in range(image.height()))
+    background = colors.most_common(1)[0][0]
+    from PySide6.QtGui import QColor
+    rgb = QColor(background)
+    components = [value / 12.92 if value <= 0.04045 else ((value + 0.055) / 1.055) ** 2.4
+                  for value in (rgb.redF(), rgb.greenF(), rgb.blueF())]
+    luminance = sum(c * weight for c, weight in zip(components, (0.2126, 0.7152, 0.0722)))
+    assert 1.05 / (luminance + 0.05) >= 4.5
+    assert sum(count for color, count in colors.items() if QColor(color).lightnessF() > 0.8) > 2
+    window.theme.hidePopup()
+
+
+def test_commit_version_visible(window):
+    from meeting_timer.version import version
+    assert version() in window.windowTitle()
+    assert version() in window.counter.windowTitle()

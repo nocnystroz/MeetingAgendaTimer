@@ -26,7 +26,10 @@ def icon(name, color="#26b7a4"):
 
 def apply_theme(app, mode="system", system_palette=None):
     system_palette = system_palette or QPalette()
-    dark = mode == "dark" or (mode == "system" and system_palette.color(QPalette.ColorRole.Window).lightness() < 128)
+    scheme = app.styleHints().colorScheme()
+    system_dark = scheme == Qt.ColorScheme.Dark or (
+        scheme == Qt.ColorScheme.Unknown and system_palette.color(QPalette.ColorRole.Window).lightness() < 128)
+    dark = mode == "dark" or (mode == "system" and system_dark)
     bg, panel, field, text, muted, border = (
         ("#111b23", "#192630", "#13202a", "#edf4f6", "#9bafba", "#31434e") if dark else
         ("#f2f6f7", "#ffffff", "#f8fafb", "#192d39", "#5a707e", "#d4e0e5")
@@ -53,15 +56,23 @@ def apply_theme(app, mode="system", system_palette=None):
         QPushButton {{ background: {panel}; border: 1px solid {border}; border-radius: 6px; padding: 7px 10px; }}
         QPushButton:hover {{ border-color: #26b7a4; }}
         QPushButton:pressed {{ background: #168f83; color: white; }}
+        QPushButton:checked {{ background: #0f766e; border-color: #0f766e; color: white; }}
         QPushButton:disabled {{ color: {muted}; }}
         QPushButton#primary {{ background: #168f83; border-color: #168f83; color: white; font-weight: 600; }}
         QLineEdit, QPlainTextEdit, QTextEdit, QListWidget, QTableWidget, QComboBox, QSpinBox, QDateEdit {{
             background: {field}; border: 1px solid {border}; border-radius: 5px; padding: 5px;
         }}
+        QComboBox QAbstractItemView {{
+            background-color: {field}; color: {text}; border: 1px solid {border};
+            selection-background-color: #0f766e; selection-color: #ffffff; outline: 0;
+        }}
+        QComboBox QAbstractItemView::item {{ padding: 6px 10px; min-height: 22px; }}
+        QComboBox QAbstractItemView::item:selected {{ background-color: #0f766e; color: #ffffff; }}
+        QComboBox QAbstractItemView::item:hover {{ background-color: #0f766e; color: #ffffff; }}
         QListWidget::item {{ padding: 10px 8px; margin: 2px; border-radius: 5px; }}
         QListWidget::item:selected {{ background: #168f83; color: white; }}
         QTabWidget::pane {{ border: 1px solid {border}; border-radius: 5px; }}
-        QTabBar::tab {{ padding: 9px 14px; }}
+        QTabBar::tab {{ background: {panel}; border: none; padding: 9px 14px; }}
         QTabBar::tab:selected {{ color: #26b7a4; border-bottom: 2px solid #26b7a4; }}
         QProgressBar {{ border: none; background: {border}; border-radius: 3px; height: 6px; }}
         QProgressBar::chunk {{ background: #26b7a4; border-radius: 3px; }}

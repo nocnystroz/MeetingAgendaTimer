@@ -10,6 +10,7 @@ from PySide6.QtGui import QPdfWriter
 from .exporting import markdown, pdf_document
 from .parser import parse_agenda
 from .theme import icon
+from .version import version
 from .windows import MainWindow
 
 
@@ -46,7 +47,7 @@ def run(app, full=False):
         window.close()
         window.counter.close()
         app.processEvents()
-        report = {"ok": True, "full": full, "gui": True, "pdf": True, "network_requests": 0}
+        report = {"ok": True, "full": full, "gui": True, "pdf": True, "network_requests": 0, "version": version()}
         if output := os.environ.get("MEETING_TIMER_SMOKE_OUTPUT"):
             Path(output).write_text(json.dumps(report, indent=2), encoding="utf-8")
         elif sys_stdout_available():

@@ -6,7 +6,6 @@ from pathlib import Path
 
 from PySide6.QtCore import Qt, QThread, Signal
 from PySide6.QtWidgets import (
-    QComboBox,
     QDoubleSpinBox,
     QFileDialog,
     QHBoxLayout,
@@ -22,6 +21,7 @@ from PySide6.QtWidgets import (
 from .engine import format_time
 from .storage import atomic_json
 from .transcription import MODEL, Cancelled, Transcriber, inspect_audio, wav_chunks
+from .widgets import ComboBox
 from .windows import button, label
 
 
@@ -82,7 +82,7 @@ class AudioPanel(QTabWidget):
         widget = QWidget()
         layout = QVBoxLayout(widget)
         row = QHBoxLayout()
-        self.mic, self.system = QComboBox(), QComboBox()
+        self.mic, self.system = ComboBox(), ComboBox()
         self.mic.addItem("Mikrofon: nie wybrano", None)
         self.system.addItem("Dźwięk spotkania: nie wybrano", None)
         self.mic.setMinimumWidth(180)
@@ -93,7 +93,7 @@ class AudioPanel(QTabWidget):
         row.addWidget(self.detect)
         layout.addLayout(row)
         row = QHBoxLayout()
-        self.mix = QComboBox()
+        self.mix = ComboBox()
         self.mix.addItems(["Miks mono", "Rozdzielone kanały"])
         row.addWidget(self.mix)
         self.gains = []
@@ -132,7 +132,7 @@ class AudioPanel(QTabWidget):
     def make_transcript_tab(self):
         widget = QWidget()
         layout = QVBoxLayout(widget)
-        self.transcript_choice = QComboBox()
+        self.transcript_choice = ComboBox()
         self.transcript_choice.currentIndexChanged.connect(self.select_transcript)
         layout.addWidget(self.transcript_choice)
         row = QHBoxLayout()

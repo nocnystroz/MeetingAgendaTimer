@@ -76,6 +76,16 @@ def test_cancel_before_send(tmp_path):
     assert not connection.requests
 
 
+def test_invalid_key_not_echoed_or_sent(tmp_path):
+    path = tmp_path / "a.mp3"
+    path.write_bytes(b"abc")
+    connection = Connection()
+    with pytest.raises(ValueError) as error:
+        Transcriber(lambda: connection).upload(path, "secret-test\x00")
+    assert "secret-test" not in str(error.value)
+    assert not connection.requests
+
+
 def test_wav_chunk_downsample(tmp_path):
     pytest.importorskip("numpy")
     source = tmp_path / "input.wav"

@@ -183,6 +183,18 @@ Audio/API nie blokują licznika. Odzyskiwanie danych dotyczy bieżącej sesji;
 archiwum i integracje zewnętrzne pozostają poza zakresem pierwszej wersji.
 Lekkość potwierdzają pomiary, nie samo użycie natywnych kontrolek.
 
+## 12. Poprawki użyteczności i publikacja
+
+- [x] Czytelne zaznaczenie list rozwijanych w jasnym motywie; zwykły delegate
+      listy oraz test renderowanego obrazu zaznaczenia.
+- [x] Rozszerzyć parser o tabelki TSV/CSV/Markdown, godziny rozpoczęcia,
+      rozwinięte jednostki i czasy w nawiasach; testy formatów i błędów.
+- [x] Kompaktowy licznik ok. 260 × 138 px z podstawowymi akcjami i pełnym widokiem.
+- [x] Wersja z hasha commita w oknach i pasku stanu, metadane w paczce.
+- [ ] Polski, angielski, niemiecki i francuski, wybór i zapamiętanie języka.
+- [ ] Publiczne repozytorium GitHub z opisem i README.
+- [ ] Uruchomić CI i zbudować pozostałe paczki na właściwych systemach.
+
 ## Aktualny stan i ograniczenia weryfikacji
 
 - Działa prototyp z dwoma oknami; testy GUI i logiki uruchamiane lokalnie.

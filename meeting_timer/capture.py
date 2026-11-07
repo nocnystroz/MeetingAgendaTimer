@@ -6,7 +6,6 @@ from pathlib import Path
 from PySide6.QtCore import QTimer
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtWidgets import (
-    QComboBox,
     QDialog,
     QFileDialog,
     QHBoxLayout,
@@ -17,6 +16,7 @@ from PySide6.QtWidgets import (
 )
 
 from .audio_ui import Worker
+from .widgets import ComboBox
 from .windows import button, label
 
 
@@ -43,7 +43,7 @@ class ScreenshotDialog(QDialog):
         tip.setWordWrap(True)
         layout.addWidget(tip)
         row = QHBoxLayout()
-        self.source = QComboBox()
+        self.source = ComboBox()
         self.refresh_screens()
         row.addWidget(self.source, 1)
         self.refresh = button("Wykryj okna", self.refresh_windows)

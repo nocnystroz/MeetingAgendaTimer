@@ -25,7 +25,7 @@ class AgendaDialog(QDialog):
         self.resize(650, 600)
         self.items = []
         layout = QVBoxLayout(self)
-        tip = QLabel("Każdy punkt w osobnym wierszu. Tytuł — 15 min lub 10:00–10:15 Tytuł.")
+        tip = QLabel("Wklej tekst, tabelę z Excela/Sheets, CSV lub Markdown. Przykłady: Tytuł — 15 minut; 10:00–10:15 Tytuł; Tytuł (00:15:00). Godziny rozpoczęcia wymagają końcowego czasu lub wiersza HH:MM Koniec.")
         tip.setWordWrap(True)
         layout.addWidget(tip)
         if replacing:

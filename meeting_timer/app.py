@@ -4,19 +4,25 @@ import sys
 from pathlib import Path
 
 from PySide6.QtCore import QLockFile, QTimer
+from PySide6.QtGui import QPalette
 from PySide6.QtWidgets import QApplication, QMessageBox
 
 from .storage import atomic_json, data_directory
 from .theme import apply_theme, icon
+from .version import version
 from .windows import MainWindow
 
 
 def main():
     app = QApplication(sys.argv)
     app.setApplicationName("Licznik spotkaniowy")
+    app.setApplicationDisplayName(f"Licznik spotkaniowy · {version()}")
+    app.setApplicationVersion(version())
+    app.setStyle("Fusion")
     app.setOrganizationName("Licznik spotkaniowy")
     app.setQuitOnLastWindowClosed(False)
     app.setWindowIcon(icon("clock"))
+    app.system_palette = QPalette(app.palette())
     if "--smoke-test" in sys.argv or "--smoke-test-full" in sys.argv:
         from .smoke import run
         return run(app, full="--smoke-test-full" in sys.argv)

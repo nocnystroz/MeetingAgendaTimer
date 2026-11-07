@@ -10,7 +10,6 @@ from PySide6.QtGui import QAction, QFontDatabase, QKeySequence, QPdfWriter, QSho
 from PySide6.QtWidgets import (
     QApplication,
     QCheckBox,
-    QComboBox,
     QDateEdit,
     QDialog,
     QFileDialog,
@@ -27,6 +26,7 @@ from PySide6.QtWidgets import (
     QPlainTextEdit,
     QProgressBar,
     QPushButton,
+    QSizePolicy,
     QSpinBox,
     QSplitter,
     QSystemTrayIcon,
@@ -50,6 +50,8 @@ from .storage import (
     template_data,
 )
 from .theme import apply_theme, icon
+from .version import build_info, version
+from .widgets import ComboBox
 
 
 def label(text="", name=None):
@@ -75,17 +77,21 @@ class CounterWindow(QWidget):
         super().__init__()
         self.owner = owner
         self.setObjectName("counter")
-        self.setWindowTitle("Licznik · Spotkanie")
+        self.setWindowTitle(f"Licznik · {version()}")
         self.setWindowIcon(icon("clock"))
         self.resize(550, 370)
-        self.setMinimumWidth(350)
+        self.setMinimumWidth(240)
         layout = QVBoxLayout(self)
+        self.body_layout = layout
         layout.setContentsMargins(28, 22, 28, 22)
         layout.setSpacing(14)
         self.position = label("GOTOWY DO SPOTKANIA", "muted")
         self.title = label("Wklej agendę w panelu prowadzącego", "counterTitle")
         self.title.setWordWrap(True)
         self.title.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.title.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred)
+        self.full_title = self.title.text()
+        self.time_color = "#26b7a4"
         self.digits = label("00:00", "digits")
         self.digits.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.digits.setFont(QFontDatabase.systemFont(QFontDatabase.SystemFont.FixedFont))
@@ -97,23 +103,49 @@ class CounterWindow(QWidget):
         self.state = label("", "muted")
         for widget in (self.position, self.title, self.digits, self.bar, self.state, self.next_label):
             layout.addWidget(widget)
-        row = QHBoxLayout()
+        self.full_controls = QWidget()
+        row = QHBoxLayout(self.full_controls)
+        row.setContentsMargins(0, 0, 0, 0)
         self.pause = button("Start", owner.play_pause, "player-play", True)
         row.addWidget(self.pause)
         row.addWidget(button("+1 min", lambda: owner.add_time(60)))
         row.addWidget(button("Panel", owner.present))
         row.addWidget(button("Schowaj", lambda: owner.hide_to_tray(self)))
-        layout.addLayout(row)
-        options = QHBoxLayout()
+        layout.addWidget(self.full_controls)
+        self.options = QWidget()
+        options = QHBoxLayout(self.options)
+        options.setContentsMargins(0, 0, 0, 0)
         self.pin = QCheckBox("Zawsze na wierzchu")
         self.pin.toggled.connect(self.set_pin)
         self.compact = QCheckBox("Kompaktowy")
         self.compact.toggled.connect(self.set_compact)
         options.addWidget(self.pin)
         options.addWidget(self.compact)
-        layout.addLayout(options)
+        layout.addWidget(self.options)
+        self.mini_controls = QWidget()
+        mini_row = QHBoxLayout(self.mini_controls)
+        mini_row.setContentsMargins(0, 0, 0, 0)
+        mini_row.setSpacing(4)
+        self.mini_pause = button("Start", owner.play_pause)
+        self.mini_pin = QPushButton()
+        self.mini_pin.setIcon(icon("pin"))
+        self.mini_pin.setCheckable(True)
+        self.mini_pin.setToolTip("Zawsze na wierzchu")
+        self.mini_pin.setAccessibleName("Zawsze na wierzchu")
+        self.mini_pin.toggled.connect(self.pin.setChecked)
+        self.mini_panel = button("", owner.present, "notes")
+        self.mini_panel.setToolTip("Panel prowadzącego")
+        self.mini_expand = button("Pełny", lambda: self.compact.setChecked(False))
+        self.mini_expand.setToolTip("Przywróć pełny widok licznika")
+        for widget in (self.mini_pause, self.mini_pin, self.mini_panel, self.mini_expand):
+            mini_row.addWidget(widget)
+        layout.addWidget(self.mini_controls)
+        self.mini_controls.hide()
 
     def set_pin(self, value):
+        with QSignalBlocker(self.mini_pin):
+            self.mini_pin.setChecked(value)
+        self.mini_pin.setIcon(icon("pin", "#ffffff" if value else "#26b7a4"))
         visible, minimized = self.isVisible(), self.isMinimized()
         self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint, value)
         if visible:
@@ -121,25 +153,52 @@ class CounterWindow(QWidget):
         self.owner.schedule_save()
 
     def set_compact(self, value):
-        for widget in (self.position, self.bar, self.next_label):
+        for widget in (self.position, self.bar, self.next_label, self.state, self.full_controls, self.options):
             widget.setVisible(not value)
-        self.resize(430 if value else 550, 260 if value else 370)
+        self.mini_controls.setVisible(value)
+        self.title.setWordWrap(not value)
+        self.title.setStyleSheet("font-size: 14px; font-weight: 600;" if value else "")
+        self.body_layout.setContentsMargins(10, 6, 10, 6) if value else self.body_layout.setContentsMargins(28, 22, 28, 22)
+        self.body_layout.setSpacing(3 if value else 14)
+        self.update_digit_style()
+        self.setMinimumSize(240 if value else 350, 0)
+        self.resize(260 if value else 550, 138 if value else 370)
+        self.update_title()
         self.owner.schedule_save()
+
+    def update_digit_style(self):
+        size = 42 if self.compact.isChecked() else 78
+        self.digits.setStyleSheet(f"color: {self.time_color}; font-size: {size}px;")
+
+    def update_title(self):
+        self.title.setToolTip(self.full_title)
+        if self.compact.isChecked():
+            self.title.setText(self.title.fontMetrics().elidedText(self.full_title, Qt.TextElideMode.ElideRight, max(80, self.width() - 20)))
+        else:
+            self.title.setText(self.full_title)
+
+    def resizeEvent(self, event):
+        if hasattr(self, "compact"):
+            self.update_title()
+        super().resizeEvent(event)
 
     def update_snapshot(self, snap, items):
         if snap.index < 0:
             return
         self.position.setText(f"PUNKT {snap.index + 1} / {len(items)}")
-        self.title.setText(items[snap.index].title)
+        self.full_title = items[snap.index].title
+        self.update_title()
         self.digits.setText(format_time(snap.remaining))
-        color = "#e56c6c" if snap.remaining < 0 else "#d9922e" if snap.remaining <= 60 else "#26b7a4"
-        self.digits.setStyleSheet(f"color: {color};")
+        self.time_color = "#e56c6c" if snap.remaining < 0 else "#d9922e" if snap.remaining <= 60 else "#26b7a4"
+        self.update_digit_style()
         self.bar.setValue(int(snap.progress * 1000))
         states = {"ready": "Gotowy do startu", "waiting": "Do początku punktu", "running": "Do końca punktu",
                   "overtime": "Przekroczony czas", "finished": "Spotkanie zakończone"}
         self.state.setText("PAUZA · " + states.get(snap.state, "") if snap.paused else states.get(snap.state, ""))
         self.pause.setText("Start" if snap.state == "ready" else "Wznów" if snap.paused else "Pauza")
         self.pause.setEnabled(snap.state != "finished")
+        self.mini_pause.setText(self.pause.text())
+        self.mini_pause.setEnabled(self.pause.isEnabled())
         self.next_label.setText("Dalej: " + items[snap.index + 1].title if snap.index + 1 < len(items) else "Ostatni punkt agendy")
 
     def closeEvent(self, event):
@@ -155,7 +214,7 @@ class CounterWindow(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Licznik spotkaniowy · Panel prowadzącego")
+        self.setWindowTitle(f"Licznik spotkaniowy · {version()} · Panel prowadzącego")
         self.setWindowIcon(icon("clock"))
         self.resize(1120, 760)
         self.meeting = Meeting()
@@ -172,7 +231,8 @@ class MainWindow(QMainWindow):
         self.last_marker_id = None
         self.last_saved = 0
         self.error_shown = False
-        self.system_palette = QApplication.instance().palette()
+        app = QApplication.instance()
+        self.system_palette = getattr(app, "system_palette", app.palette())
         self.save_timer = QTimer(self)
         self.save_timer.setSingleShot(True)
         self.save_timer.setInterval(700)
@@ -181,6 +241,7 @@ class MainWindow(QMainWindow):
         self.counter = CounterWindow(self)
         self.build_menu()
         self.build_tray()
+        app.styleHints().colorSchemeChanged.connect(self.system_scheme_changed)
         self.tick_timer = QTimer(self)
         self.tick_timer.setInterval(250)
         self.tick_timer.timeout.connect(self.tick)
@@ -199,7 +260,7 @@ class MainWindow(QMainWindow):
         titles.addWidget(label("Agenda, czas i ustalenia — w jednym miejscu.", "subtitle"))
         header.addLayout(titles)
         header.addStretch()
-        self.theme = QComboBox()
+        self.theme = ComboBox()
         self.theme.addItems(["Motyw systemowy", "Jasny", "Ciemny"])
         self.theme.currentIndexChanged.connect(self.change_theme)
         header.addWidget(self.theme)
@@ -295,7 +356,7 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.splitter, 1)
         self.detail = detail
         plan = QHBoxLayout()
-        self.mode = QComboBox()
+        self.mode = ComboBox()
         self.mode.addItems(["Plan od teraz", "Według godzin agendy"])
         self.mode.currentIndexChanged.connect(self.schedule_save)
         plan.addWidget(self.mode)
@@ -345,6 +406,10 @@ class MainWindow(QMainWindow):
         layout.addLayout(self.audio_container)
         self.setCentralWidget(root)
         self.statusBar().showMessage("Dane są zapisywane lokalnie.")
+        version_label = label(version(), "muted")
+        version_label.setToolTip("Commit: " + build_info()["commit"] + "\n* oznacza niezacommitowane zmiany.")
+        version_label.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+        self.statusBar().addPermanentWidget(version_label)
 
     def build_menu(self):
         menu = self.menuBar().addMenu("Spotkanie")
@@ -736,6 +801,7 @@ class MainWindow(QMainWindow):
                 "version": 1, "meeting": self.meeting.to_dict(), "clean": bool(clean),
                 "engine": {"started": self.engine.started, "cursor": self.engine.cursor,
                            "current_id": self.engine.current_id, "auto": self.engine.auto,
+                           "completed": self.engine.completed,
                            "baseline_end": self.engine.baseline_end, "gaps": self.engine.gaps},
                 "preferences": {"theme": self.theme.currentIndex(), "beep": self.beep.isChecked(),
                                 "pin": self.counter.pin.isChecked(), "compact": self.counter.compact.isChecked(),
@@ -779,6 +845,7 @@ class MainWindow(QMainWindow):
             self.engine.auto = self.auto.isChecked()
             if not data.get("clean") and state.get("started"):
                 self.engine.started = self.engine.paused = True
+                self.engine.completed = bool(state.get("completed", False))
                 self.engine.seek(cursor)
                 self.engine.current_id = str(state.get("current_id", ""))
                 baseline = state.get("baseline_end")
@@ -902,6 +969,10 @@ class MainWindow(QMainWindow):
     def change_theme(self, index):
         apply_theme(QApplication.instance(), ["system", "light", "dark"][index], self.system_palette)
         self.schedule_save()
+
+    def system_scheme_changed(self, _scheme):
+        if self.theme.currentIndex() == 0:
+            apply_theme(QApplication.instance(), "system", self.system_palette)
 
     def open_data_directory(self):
         from PySide6.QtCore import QUrl

@@ -32,6 +32,10 @@ Interfejs i komunikaty domyślnie po polsku.
 - Oddzielny widok prowadzącego i widok licznika do udostępniania.
 - Zmiana agendy, ustawień i przełączanie widoków podczas spotkania.
 - Lekka aplikacja: mały narzut pamięci, CPU, zależności i rozmiaru paczek.
+- Motyw ciemny, jasny i domyślny systemowy. Wybór zapamiętywany lokalnie;
+  systemowy reaguje na zmianę schematu systemu, jeśli platforma go udostępnia.
+- Wersja aplikacji: skrócony hash commita, widoczny w tytułach okien i pasku
+  stanu; zapisany w paczce przenośnej podczas budowania.
 - Dokumentacja: `README.md`, `PRIVACY.md` i `LICENSE`; licencja MIT
   wybrana przez użytkownika.
 - Lokalne szablony agendy, odzyskiwanie po awarii, opcjonalny sygnał końca
@@ -187,3 +191,10 @@ Szczegóły i nieukończone testy: `ROADMAP.md` oraz `docs/VALIDATION.md`.
 
 Zależności zainstalowano w `.venv`. Repozytorium działa na gałęzi `main`.
 Wcześniejsze błędy sieci i zapisu Git nie są aktualną blokadą.
+
+## Rozszerzenie językowe
+
+Użytkownik zamówił polski, angielski, niemiecki i francuski. Najpierw ukończyć
+poprawki kontrastu list, formatów agendy i rozmiaru trybu kompaktowego, następnie
+dodać języki i zbudować paczki pozostałych systemów. Repozytorium GitHub ma
+być publiczne; użytkownik zezwolił na publikację i opis repozytorium.

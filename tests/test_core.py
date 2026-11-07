@@ -133,3 +133,41 @@ def test_nonfinite_storage_rejected(tmp_path, value):
 def test_long_overnight_range():
     items = parse_agenda("23:00–10:00 Noc\n10:15–11:00 Rano")
     assert items[1].scheduled == 86400 + 10 * 3600 + 15 * 60
+
+
+def test_manual_next_after_last_finishes_and_previous_reopens():
+    timer, clock = engine("Ostatni — 1 min")
+    timer.auto = False
+    timer.start()
+    clock.value = 75
+    assert timer.snapshot().state == "overtime"
+    timer.jump(1)
+    assert timer.snapshot().state == "finished"
+    timer.jump(0)
+    assert timer.snapshot().state == "running"
+
+
+@pytest.mark.parametrize("text,expected", [
+    ("15 minut — Wyniki", [("Wyniki", 900)]),
+    ("1. Wyniki — 1 godz. 15 min", [("Wyniki", 4500)]),
+    ("Wyniki 1h30min", [("Wyniki", 5400)]),
+    ("Wyniki (00:15:00)", [("Wyniki", 900)]),
+    ("Wyniki [15:00]", [("Wyniki", 900)]),
+    ("Wyniki;15 min", [("Wyniki", 900)]),
+    ('"Wyniki, ryzyka";15 min', [("Wyniki, ryzyka", 900)]),
+    ("Temat\tCzas (min)\nWyniki\t15", [("Wyniki", 900)]),
+    ("Nr\tTemat\tCzas (min)\n1\tWyniki\t15", [("Wyniki", 900)]),
+    ("| Temat | Czas |\n|---|---|\n| Wyniki | 15 min |", [("Wyniki", 900)]),
+    ("10:00\t10:15\tWyniki", [("Wyniki", 900)]),
+    ("10:00 Wyniki\n10:15 Decyzje (10 min)", [("Wyniki", 900), ("Decyzje", 600)]),
+    ("10:00 Wyniki\n10:15 Decyzje\n10:25 Koniec", [("Wyniki", 900), ("Decyzje", 600)]),
+    ("10.00–10.15 Wyniki", [("Wyniki", 900)]),
+    ("Agenda:\n1.Wyniki 15 min", [("Wyniki", 900)]),
+])
+def test_pasted_agenda_formats(text, expected):
+    assert [(i.title, i.seconds) for i in parse_agenda(text)] == expected
+
+
+def test_start_times_need_explicit_end():
+    with pytest.raises(ParseError, match="ostatni punkt"):
+        parse_agenda("10:00 Wyniki\n10:15 Decyzje")

@@ -84,13 +84,18 @@ def main():
     output = ROOT / "dist" / variant
     build = ROOT / "build" / variant
     build.mkdir(parents=True, exist_ok=True)
+    commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+    dirty = bool(subprocess.check_output(["git", "status", "--porcelain"], cwd=ROOT, text=True).strip())
+    version_file = build / "build_info.json"
+    version_file.write_text(json.dumps({"commit": commit, "dirty": dirty}), encoding="utf-8")
     command = [sys.executable, "-m", "PyInstaller", "--noconfirm", "--onedir", "--windowed",
                "--name", name, "--distpath", str(output), "--workpath", str(build / "work"),
                "--specpath", str(build), "--collect-data", "meeting_timer",
                "--add-data", f"{ROOT / 'meeting_timer/assets'}:meeting_timer/assets"]
+    command += ["--add-data", f"{version_file}:meeting_timer"]
     if sys.platform.startswith("linux") and shutil.which("strip"):
         command.append("--strip")
-    for filename in ("README.md", "PRIVACY.md", "LICENSE", "THIRD_PARTY.md"):
+    for filename in ("README.md", "PRIVACY.md", "LICENSE", "THIRD_PARTY.md", "AGENTS.md", "ROADMAP.md"):
         command += ["--add-data", f"{ROOT / filename}:."]
     exclusions = ["tkinter", "matplotlib", "pandas", "scipy", "IPython", "PySide6.QtWebEngineCore",
                   "PySide6.QtWebEngineWidgets", "PySide6.QtQml", "PySide6.QtQuick"]
@@ -135,9 +140,11 @@ def main():
             for translation in translations.glob("*.qm"):
                 if not translation.name.endswith("_pl.qm"):
                     translation.unlink()
-    for filename in ("README.md", "PRIVACY.md", "LICENSE", "THIRD_PARTY.md"):
+    for filename in ("README.md", "PRIVACY.md", "LICENSE", "THIRD_PARTY.md", "AGENTS.md", "ROADMAP.md"):
         shutil.copy2(ROOT / filename, docs / filename)
+    shutil.copytree(ROOT / "docs", docs / "docs", dirs_exist_ok=True)
     package_licenses(docs / "third-party-licenses", full=not args.core)
+    shutil.copy2(ROOT / "meeting_timer/assets/Tabler-LICENSE.txt", docs / "third-party-licenses/Tabler-LICENSE.txt")
     shutil.copytree(ROOT / "licenses", docs / "third-party-licenses/upstream", dirs_exist_ok=True)
     if sys.platform == "darwin":
         subprocess.run(["codesign", "--force", "--deep", "--sign", "-", str(bundle)], check=True)

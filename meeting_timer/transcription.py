@@ -93,7 +93,8 @@ class Transcriber:
         if self.cancelled.is_set():
             raise Cancelled()
         path = Path(path)
-        if not key.strip() or any(c in key for c in "\r\n"):
+        key = key.strip()
+        if not key or any(not 33 <= ord(c) <= 126 for c in key):
             raise ValueError("Wpisz poprawny klucz API.")
         if path.stat().st_size > MAX_UPLOAD:
             raise ValueError("Plik przekracza limit wysyłki 24 MB.")

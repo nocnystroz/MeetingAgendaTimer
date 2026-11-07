@@ -24,6 +24,7 @@ class TimerEngine:
             if previous.scheduled is not None and item.scheduled is not None:
                 self.gaps[item.id] = max(0, item.scheduled - previous.scheduled - previous.seconds)
         self.started = self.paused = False
+        self.completed = False
         self.auto = True
         self.origin = 0.0
         self.anchor = clock()
@@ -55,6 +56,7 @@ class TimerEngine:
         if not self.items:
             return
         self.started, self.paused = True, False
+        self.completed = False
         self.seek(0 if scheduled_epoch is None else self.wall() - scheduled_epoch)
         self.baseline_end = (self.wall() if scheduled_epoch is None else scheduled_epoch) + self.total
         self.current_id = self.items[0].id
@@ -70,6 +72,8 @@ class TimerEngine:
     def snapshot(self, force=False):
         if not self.items:
             return Snapshot(-1, 0, "empty", 0, self.paused)
+        if self.completed:
+            return Snapshot(len(self.items) - 1, 0, "finished", 1, self.paused)
         slots, position = self.slots(), self.cursor
         index = next((i for i, item in enumerate(self.items) if item.id == self.current_id), 0)
         if not self.started:
@@ -88,8 +92,14 @@ class TimerEngine:
                         min(1, max(0, (position - start) / (end - start))), self.paused)
 
     def jump(self, index):
+        if self.started and self.items and index == len(self.items):
+            self.completed = True
+            self.current_id = self.items[-1].id
+            self.seek(self.total)
+            return
         if not 0 <= index < len(self.items):
             return
+        self.completed = False
         self.current_id = self.items[index].id
         self.seek(self.slots()[index][0])
 
