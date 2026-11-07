@@ -134,8 +134,8 @@
 ## 9. Wydania bez instalatora
 
 - [x] Przygotować budowanie paczek z dołączonym Pythonem i Qt.
-- [ ] Windows: przenośny ZIP z programem `.exe`, bez instalatora.
-- [ ] macOS: przenośna aplikacja `.app` w archiwum.
+- [x] Windows: przenośny ZIP z programem `.exe`, bez instalatora.
+- [x] macOS: przenośna aplikacja `.app` w archiwum.
 - [ ] Linux: przenośna paczka z plikiem uruchamiającym i bibliotekami;
       jawnie określić wspierane dystrybucje/bazę systemową.
 - [ ] Określić wspierane architektury i budować każdą paczkę na właściwej platformie.
@@ -192,9 +192,8 @@ Lekkość potwierdzają pomiary, nie samo użycie natywnych kontrolek.
 - [x] Kompaktowy licznik ok. 260 × 138 px z podstawowymi akcjami i pełnym widokiem.
 - [x] Wersja z numeru commita w oknach i pasku stanu, metadane w paczce.
 - [x] Polski, angielski, niemiecki i francuski, wybór i zapamiętanie języka.
-- [x] Utworzyć publiczne repozytorium GitHub z opisem; wysyłka aktualnego kodu
-      i uruchomienie CI następuje po tym commicie.
-- [ ] Uruchomić CI i zbudować pozostałe paczki na właściwych systemach.
+- [x] Publiczne repozytorium GitHub z opisem, aktualnym kodem i uruchomionym CI.
+- [x] Uruchomić CI i zbudować pozostałe paczki na właściwych systemach.
 
 ## Aktualny stan i ograniczenia weryfikacji
 
@@ -205,8 +204,9 @@ Lekkość potwierdzają pomiary, nie samo użycie natywnych kontrolek.
 - API testowano z atrapami HTTP. Rzeczywisty test wymaga klucza użytkownika.
 - Zrzut osobnego okna testowego na Linux X11 działa. macOS/Windows nie były
   tutaj uruchamiane. Konfiguracja CI nie jest dowodem wykonania tych testów.
-- Budowanie i pomiary lokalnej paczki Linux są w trakcie; szczegóły wyników
-  trafią do `docs/VALIDATION.md`.
+- Core/full Linux zbudowane i sprawdzone; pomiary w `docs/VALIDATION.md`.
+- Windows x64, macOS ARM64 i Linux x64 przeszły testy, budowanie i diagnostykę
+  paczki w CI dla wersji 6. Testy rzeczywistych urządzeń pozostają otwarte.
 
 
 ## 13. Urządzenia, harmonogram i warunki
@@ -218,4 +218,8 @@ Lekkość potwierdzają pomiary, nie samo użycie natywnych kontrolek.
 - [x] Warunki w 4 językach, checkbox wymagany przy pierwszym uruchomieniu,
       lokalna wersjonowana akceptacja oraz ponowne pytanie po zmianie treści.
 - [x] Pomoc: warunki, MIT, prywatność i zweryfikowany link Buy me a coffee.
-- [ ] Potwierdzić ukończenie budowania Windows i macOS w Actions, podać artefakty.
+- [x] Potwierdzić ukończenie budowania Windows i macOS w Actions, podać artefakty.
+
+Gotowe artefakty i wyniki: https://github.com/nocnystroz/licznik-spotkaniowy/actions/runs/42414000793.
+Pomiar wersji 6: core 149,6 MiB na dysku, 91,8 MiB RAM, start 0,34 s;
+full 269,4 MiB na dysku, 99,7 MiB RAM, start 0,42 s (Linux, krótki pomiar).

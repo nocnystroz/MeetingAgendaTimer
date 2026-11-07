@@ -6,9 +6,10 @@ Lokalna aplikacja desktopowa do prowadzenia spotkań według agendy. Osobny
 licznik pokazuje bieżący punkt i pozostały czas, a panel prowadzącego pozwala
 zapisywać notatki, decyzje i zadania.
 
-**Prototyp do testów — wersja aplikacji to numer commita (liczba commitów w historii HEAD).** Działa lokalnie na Linux X11. Kod i skrypty
-budowania obejmują Windows i macOS, ale tych platform nie przetestowano jeszcze
-na rzeczywistych urządzeniach. Szczegóły: [ROADMAP.md](ROADMAP.md)
+**Prototyp do testów — wersja aplikacji to numer commita (liczba commitów w historii HEAD).** Testy, budowanie oraz uruchomienie paczek przeszły w CI na Windows, macOS
+i Linux. Dodatkowo sprawdzono pulpit Linux X11. Mikrofony, uprawnienia
+i przechwytywanie obrazu na fizycznych komputerach Windows/macOS wymagają
+dalszych testów. Szczegóły: [ROADMAP.md](ROADMAP.md)
 i [docs/VALIDATION.md](docs/VALIDATION.md).
 
 ## Uruchomienie bez instalatora
@@ -23,8 +24,10 @@ Paczka zawiera interpreter i biblioteki. Nie wymaga instalowania Pythona,
 pip ani venv. Nie przenoś samego pliku wykonywalnego bez towarzyszących bibliotek.
 Lokalne wyniki budowania znajdują się w `dist/` i nie są commitowane.
 Kod: https://github.com/nocnystroz/licznik-spotkaniowy
-Paczki: zakładka Actions → udane budowanie → Artifacts. Wyniki Windows/macOS
-pozostają do potwierdzenia do czasu ukończenia odpowiedniego zadania CI.
+Paczki do pobrania: [wydania testowe](https://github.com/nocnystroz/licznik-spotkaniowy/releases).
+Dodatkowo: Actions → udane budowanie → Artifacts. Dostępne cele:
+Windows x64, macOS Apple Silicon (ARM64), Linux x86_64. Intel Mac i Windows ARM
+nie mają osobnego artefaktu w obecnej macierzy.
 
 Wariant **core** zawiera licznik, notatki, eksport, transkrypcję plików
 skompresowanych oraz zrzuty całego ekranu. Wariant **full** dodaje nagrywanie,
@@ -97,6 +100,7 @@ Nierozpoznane wiersze wymagają poprawy — nie są pomijane.
 
 - **Start o wskazanej godzinie**: ustaw datę i godzinę dla całego planu; licznik
   czeka do tego momentu. To działa także z agendą zawierającą same czasy trwania.
+  Dla startu w przeszłości uwzględnia już upłynięty czas.
 - **Plan od teraz**: czas biegnie po naciśnięciu Rozpocznij.
 - **Według godzin agendy**: wybierz datę pierwszego punktu; późny start pomija
   upłynięte punkty, a przerwy i oczekiwanie są widoczne w liczniku.
@@ -223,3 +227,12 @@ Bez zaznaczenia zgody nie otworzy się panel. Zmiana warunków powoduje ponowne
 pytanie. Pomoc zawiera warunki, MIT, politykę prywatności i link wsparcia.
 
 [☕ Postaw mi kawę / Buy me a coffee](https://buymeacoffee.com/m.slawinski)
+
+
+## Podgląd
+
+![Panel prowadzącego](docs/screenshots/panel.png)
+
+Widok kompaktowy:
+
+![Kompaktowy licznik](docs/screenshots/licznik.png)

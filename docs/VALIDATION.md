@@ -17,35 +17,48 @@ platform na podstawie samego kodu lub konfiguracji CI.
 - API sprawdzono na atrapach, w tym kody błędów, anulowanie przed wysyłką,
   limit i strumieniowanie. Nie użyto rzeczywistego klucza ani płatnego żądania.
 
-## Pomiary lokalne (wcześniejszy prototyp przed ostatnimi zmianami UI)
+## Pomiary lokalne — wersja 6
 
 Linux x86_64 / XFCE / X11. Paczka uruchomiona z tymczasowego katalogu danych,
 poza źródłami i bez venv. Pomiar procesu przez /proc, 10 s spoczynku po starcie,
-z ciepłą pamięcią podręczną. Nie jest to pomiar godzinnej sesji/audio/API.
+z ciepłą pamięcią podręczną. Do katalogu testowego wpisano syntetyczną akceptację
+warunków, aby mierzyć sam start panelu; nie zmieniano zgody użytkownika.
+Nie jest to pomiar godzinnej sesji/audio/API ani szczytu pamięci podczas startu.
 
 | Wariant | Start | RAM RSS | CPU jednego rdzenia | Rozpakowana paczka |
 | --- | --- | --- | --- | --- |
-| Core | 0,42 s | 83,7 MiB | 0,6% | 148,9 MiB |
-| Full | 0,28 s | 95,3 MiB | 0,7% | 251,0 MiB |
+| Core | 0,34 s | 91,8 MiB | 0,7% | 149,6 MiB |
+| Full | 0,42 s | 99,7 MiB | 0,6% | 269,4 MiB |
 
-Paczki obu wariantów przeszły diagnostykę GUI, PDF i modułów poza źródłami.
-Po dodaniu języków, warunków i ostatnich poprawek paczki wymagają ponownego
-zbudowania. CI oraz aktualne artefakty: https://github.com/nocnystroz/licznik-spotkaniowy/actions.
+Cele rdzenia start/RAM/CPU/rozmiar spełnione na tym hoście. Full ma większą
+paczkę przez audio, NumPy i Qt Multimedia; nie przypisujemy mu wyniku core.
+Paczki obu wariantów przeszły diagnostykę GUI, PDF, języków, zasobów warunków
+oraz modułów poza katalogiem źródeł i bez venv.
 
 Na rzeczywistym pulpicie Linux potwierdzono włączanie/wyłączanie stanu ABOVE,
 minimalizację, schowanie do zasobnika i przywrócenie. Po poprawkach wykryto
 2 mikrofony i 4 źródła loopback (listy zawierają też opcję braku wyboru),
 a kompaktowy licznik miał rzeczywiste wymiary 260 × 138 px.
 
+## CI trzech systemów
+
+[Przebieg dla wersji 6](https://github.com/nocnystroz/licznik-spotkaniowy/actions/runs/42414000793)
+zakończył się sukcesem dla wszystkich trzech zadań:
+
+- Windows x64: testy, ZIP bez instalatora i uruchomienie spakowanego GUI.
+- macOS ARM64: testy, archiwum .app i uruchomienie spakowanego GUI.
+- Ubuntu 22.04 x64: testy, tar.gz i uruchomienie spakowanego GUI.
+
+Każdy wariant przeszedł 77 testów źródeł oraz diagnostykę frozen poza źródłami.
+Macierz korzysta z Pythona 3.13; wersja patch może różnić się od lokalnej.
+Nie oznacza to testu fizycznego mikrofonu, prawdziwego API, platformowych
+uprawnień ani każdego środowiska graficznego. Te elementy pozostają otwarte.
+Pierwszy przebieg wykrył problem wyrównania OpenBLAS po strip na Ubuntu;
+pełna paczka Linux zachowuje teraz oryginalne biblioteki i przeszła ponowny test.
+
 ## Otwarte
 
-Pierwszy CI dla commita e412af9: testy i budowanie Windows/macOS zakończyły się
-powodzeniem, włącznie z diagnostyką spakowanego GUI. Linux przeszedł testy
-źródeł i budowanie, lecz diagnostyka wykryła uszkodzone wyrównanie ELF biblioteki
-OpenBLAS po strip. W poprawce pełna paczka Linux zachowuje oryginalne binaria;
-ponowna weryfikacja jest uruchamiana. Wariant core nadal może stosować strip.
-
-- Rzeczywiste testy Windows/macOS, urządzeń audio, klucza i uprawnień.
+- Rzeczywiste testy urządzeń audio, klucza API i uprawnień na fizycznym Windows/macOS.
 - Wayland, wiele monitorów/DPI i zamykanie/minimalizacja przechwytywanego okna.
 - Godzinna sesja z nagrywaniem oraz długie notatki i brak miejsca na dysku.
 - Paczki na czystych systemach bez Pythona/Qt i kompletność zależności natywnych.
