@@ -11,3 +11,9 @@ dist/
 .DS_Store
 Thumbs.db
 *.log
+/session*.json
+/consent.json
+/recordings/
+/screenshots/
+/transcripts/
+/.transcription-cache/

@@ -39,6 +39,12 @@ a kompaktowy licznik miał rzeczywiste wymiary 260 × 138 px.
 
 ## Otwarte
 
+Pierwszy CI dla commita e412af9: testy i budowanie Windows/macOS zakończyły się
+powodzeniem, włącznie z diagnostyką spakowanego GUI. Linux przeszedł testy
+źródeł i budowanie, lecz diagnostyka wykryła uszkodzone wyrównanie ELF biblioteki
+OpenBLAS po strip. W poprawce pełna paczka Linux zachowuje oryginalne binaria;
+ponowna weryfikacja jest uruchamiana. Wariant core nadal może stosować strip.
+
 - Rzeczywiste testy Windows/macOS, urządzeń audio, klucza i uprawnień.
 - Wayland, wiele monitorów/DPI i zamykanie/minimalizacja przechwytywanego okna.
 - Godzinna sesja z nagrywaniem oraz długie notatki i brak miejsca na dysku.

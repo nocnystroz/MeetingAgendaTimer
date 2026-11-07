@@ -94,7 +94,9 @@ def main():
                "--specpath", str(build), "--collect-data", "meeting_timer",
                "--add-data", f"{ROOT / 'meeting_timer/assets'}:meeting_timer/assets"]
     command += ["--add-data", f"{version_file}:meeting_timer"]
-    if sys.platform.startswith("linux") and shutil.which("strip"):
+    # Older binutils can corrupt the alignment of NumPy/OpenBLAS shared libraries.
+    # The core bundle has no NumPy; keep full-build native binaries intact.
+    if args.core and sys.platform.startswith("linux") and shutil.which("strip"):
         command.append("--strip")
     for filename in ("README.md", "PRIVACY.md", "LICENSE", "TERMS.md", "THIRD_PARTY.md", "AGENTS.md", "ROADMAP.md"):
         command += ["--add-data", f"{ROOT / filename}:."]
