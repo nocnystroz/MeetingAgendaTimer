@@ -1,7 +1,7 @@
 # Kierunek UX i dobór komponentów
 
-Stan: projekt interfejsu, 2026-11-07. Nie ma jeszcze działającego GUI
-ani pomiarów. Poniższy wybór ogranicza zakres zależności, a nie dowodzi
+Stan: prototyp interfejsu, 2026-11-07. GUI działa lokalnie; wyniki testów
+i pomiarów są w `VALIDATION.md`. Poniższy wybór ogranicza zakres zależności, a nie dowodzi
 osiągnięcia budżetów wydajności.
 
 ## Układ i wygląd
@@ -102,3 +102,10 @@ Rozmiaru paczki z opcjonalnymi backendami audio nie ukrywać w wyniku rdzenia.
 Nagrywanie ekranu pozostaje poza pierwszą wersją. Jeśli wróci do zakresu,
 porównać 5–15 FPS i kodowanie sprzętowe na rzeczywistych urządzeniach;
 wyłączony moduł nie powinien uruchamiać przechwytywania ani kodera.
+
+## Automatyczne zrzuty
+
+Osobny panel: źródło, interwał, limit, lokalizacja i jawny start/stop.
+Po schowaniu panelu stan jest widoczny przy sterowaniu i w zasobniku.
+Qt Multimedia dla wybranego okna ładowane jest na żądanie; przechwytywanie
+kończy się po pojedynczej klatce. To zapis PNG, a nie nagrywanie wideo.

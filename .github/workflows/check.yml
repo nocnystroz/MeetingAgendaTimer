@@ -1,0 +1,36 @@
+name: Tests and portable builds
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test-build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      QT_QPA_PLATFORM: offscreen
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: '3.13'
+      - name: Linux desktop libraries
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libegl1 libopengl0 libpulse0 libxcb-cursor0 libxkbcommon-x11-0
+      - run: uv sync --frozen --extra dev --extra audio --extra keyring --extra capture
+      - run: uv run ruff check meeting_timer tests scripts run.py
+      - run: uv run pytest -q
+      - name: Build portable application
+        run: uv run python scripts/build_portable.py
+      - name: Verify frozen GUI outside source directory
+        run: uv run python scripts/verify_portable.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: licznik-${{ runner.os }}-${{ runner.arch }}
+          path: |
+            dist/*.zip
+            dist/*.tar.gz

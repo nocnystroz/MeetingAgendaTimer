@@ -1,33 +1,60 @@
 # Licznik spotkaniowy
 
-Lekka aplikacja desktopowa do prowadzenia spotkania: wklejasz agendę,
-a osobne okno pokazuje aktualny punkt i czas pozostały do jego końca.
-Panel prowadzącego ma łączyć notatki, decyzje, zadania i opcjonalne nagranie.
+Lokalna aplikacja desktopowa do prowadzenia spotkań według agendy. Osobny
+licznik pokazuje bieżący punkt i pozostały czas, a panel prowadzącego pozwala
+zapisywać notatki, decyzje i zadania.
 
-**Stan: planowanie, bez implementacji i gotowych paczek.** Poniższe funkcje
-opisują uzgodniony zakres; nie są jeszcze dostępne. Postęp śledzimy
-w [ROADMAP.md](ROADMAP.md), a zasady projektu w [AGENTS.md](AGENTS.md).
+**Wersja 0.1 — prototyp do testów.** Działa lokalnie na Linux X11. Kod i skrypty
+budowania obejmują Windows i macOS, ale tych platform nie przetestowano jeszcze
+na rzeczywistych urządzeniach. Szczegóły: [ROADMAP.md](ROADMAP.md)
+i [docs/VALIDATION.md](docs/VALIDATION.md).
 
-## Planowane funkcje
+## Uruchomienie bez instalatora
 
-- Windows, macOS i Linux; osobne paczki przenośne bez instalatora.
-- Wklejanie agendy z czasami trwania albo przedziałami godzinowymi i podgląd
-  interpretacji z czytelnymi błędami.
-- Osobny licznik: przypinanie, minimalizacja, schowanie do zasobnika/menu bar.
-- Pauza, poprzedni/następny punkt, +1/+5 minut, przewidywany koniec i opóźnienie.
-- Automatyczne przejścia albo licznik przekroczenia czasu; opcjonalny sygnał.
-- Zmiany agendy i przełączanie widoków/motywów w trakcie bez resetu spotkania.
-- Notatki przed spotkaniem i podczas niego, osobno do każdego punktu.
-- Decyzje i zadania z osobą odpowiedzialną oraz terminem; eksport Markdown/PDF.
-- Lokalne szablony oraz odzyskiwanie bieżącego spotkania po awarii.
-- Nagrywanie mikrofonu i dźwięku spotkania, z wyborem dostępnych źródeł.
-- Znaczniki punktów w nagraniu i opcjonalnej transkrypcji.
-- Transkrypcja przez zewnętrzne API po podłączeniu własnego klucza
-  i osobnym zatwierdzeniu wysłania wybranego nagrania.
+Gotową paczkę dla swojego systemu należy rozpakować i uruchomić:
 
-## Przykładowe agendy
+- Windows: `Licznik-Spotkaniowy.exe`.
+- macOS: `Licznik-Spotkaniowy.app`.
+- Linux: plik wykonywalny `Licznik-Spotkaniowy` w rozpakowanym katalogu.
 
-Czas od rozpoczęcia spotkania:
+Paczka zawiera interpreter i biblioteki. Nie wymaga instalowania Pythona,
+pip ani venv. Nie przenoś samego pliku wykonywalnego bez towarzyszących bibliotek.
+Lokalne wyniki budowania znajdują się w `dist/` i nie są commitowane.
+Nie publikowano jeszcze wydań ani nie uruchamiano zdalnego CI.
+
+Wariant **core** zawiera licznik, notatki, eksport, transkrypcję plików
+skompresowanych oraz zrzuty całego ekranu. Wariant **full** dodaje nagrywanie,
+przygotowanie WAV do transkrypcji, magazyn klucza i przechwytywanie wybranego
+okna. Zainstalowanie modułu nie uruchamia go w tle.
+
+Niepodpisane paczki mogą wywołać komunikat SmartScreen lub Gatekeeper.
+Nie zmieniaj globalnej polityki bezpieczeństwa systemu. Obecne paczki lokalne
+nie mają podpisu wydawcy ani notaryzacji Apple. Wsparcie Linux zależy także
+od systemowych bibliotek pulpitu i serwera dźwięku; sprawdź walidację.
+
+## Uruchomienie ze źródeł
+
+Wymagany Python 3.11+ i [uv](https://docs.astral.sh/uv/). Środowisko projektu to `.venv`.
+
+```bash
+uv sync --frozen --extra dev --extra audio --extra keyring --extra capture
+uv run python -m meeting_timer
+```
+
+Można również użyć `./uruchom.sh` na Linux/macOS lub `./uruchom.ps1`
+w PowerShell na Windows po utworzeniu środowiska. Skrypty nie instalują bibliotek
+ani nie zmieniają polityki wykonywania. Gdy PowerShell blokuje skrypty, uruchom
+bezpośrednio `.venv\Scripts\python.exe -m meeting_timer`.
+
+Alternatywa bez uv: `python -m venv .venv`, a następnie interpreterem z tego
+środowiska wykonaj `-m pip install -e ".[audio,keyring,capture,dev]"`.
+Na Linux audio wymaga działającego PulseAudio lub PipeWire z kompatybilnością
+PulseAudio i biblioteki `libpulse`. Dźwięk systemowy na macOS wymaga dostępnego
+źródła loopback/urządzenia wirtualnego; aplikacja nie instaluje sterowników.
+
+## Agenda i sterowanie
+
+Wybierz **Wklej**, wprowadź plan, sprawdź podgląd i zastosuj:
 
 ```text
 Wprowadzenie — 5 min
@@ -35,7 +62,7 @@ Omówienie wyników — 15 min
 Decyzje i następne kroki — 10 min
 ```
 
-Harmonogram godzinowy:
+Możesz też podać godziny:
 
 ```text
 10:00–10:05 Wprowadzenie
@@ -43,55 +70,108 @@ Harmonogram godzinowy:
 10:20–10:30 Decyzje i następne kroki
 ```
 
-Przed startem użytkownik sprawdzi rozpoznane punkty. Dla godzin wybierze
-realizację według zegara albo rozpoczęcie planu od teraz. Szczegóły zachowania
-pauzy i zmian godzin wymagają implementacji oraz testów.
+Czasy trwania obsługują `h`, `godz`, `min`, `m`, `sek`, `s` oraz części minuty,
+np. `1,5 min`. Nie mieszaj czasów trwania i przedziałów w jednej agendzie.
+Nierozpoznane wiersze wymagają poprawy — nie są pomijane.
 
-## Interfejs i lekkość
+- **Plan od teraz**: czas biegnie po naciśnięciu Rozpocznij.
+- **Według godzin agendy**: wybierz datę pierwszego punktu; późny start pomija
+  upłynięte punkty, a przerwy i oczekiwanie są widoczne w liczniku.
+- Pauza zatrzymuje plan. Wznowienie i ręczne przejście przesuwają pozostały
+  harmonogram także w trybie godzinowym. Restart umożliwia ponowny start.
+- **+1 / +5 min** wydłuża bieżący punkt i prognozę końca. Plan początkowy
+  pozostaje punktem odniesienia dla wyświetlanego opóźnienia/przyspieszenia.
+- Wyłączenie automatycznych przejść zatrzymuje temat z licznikiem przekroczenia.
+  Ponowne włączenie synchronizuje punkt z aktualną pozycją w zmodyfikowanym planie.
+- **Ctrl+Enter**: start/pauza; **Ctrl+N**: agenda; **Ctrl+S**: kopia JSON;
+  **Ctrl+O**: otwarcie; **Ctrl+E**: eksport; **Ctrl+Q**: zakończenie.
 
-Panel prowadzącego: agenda po lewej, notatki/decyzje/zadania po prawej,
-sterowanie w stałym miejscu. Osobny licznik do udostępniania nie wyświetla
-prywatnych notatek ani ustawień API. Kierunek wizualny i źródła bibliotek:
-[docs/UX.md](docs/UX.md).
+Wybór punktu na liście służy do podglądu i edycji. Licznik przełącza dopiero
+**Przejdź do wybranego punktu**, Poprzedni lub Następny. W trakcie można zmieniać
+nazwy, czasy i treści oraz przestawiać przyszłe punkty. Usunięte punkty pozostają
+w danych bieżącej sesji. Ponowne wklejenie agendy zatrzymuje licznik,
+zachowuje stare notatki w danych sesji i nie zatrzymuje osobnego nagrania.
 
-Planowana baza to Python i natywne Qt Widgets/PySide6, mały własny motyw,
-systemowe fonty i niewielki zestaw ikon. Bez osadzonej przeglądarki i lokalnych
-modeli AI. Nagrywanie i API będą ładowane na żądanie. Budżety zasobów
-w roadmapie są celami do pomiaru, a nie wynikami benchmarków.
+## Licznik i notatki
 
-## Uruchamianie i środowisko programistyczne
+**Pokaż licznik** otwiera osobne okno z przełącznikami **Zawsze na wierzchu**
+i **Kompaktowy**. Przełączanie i zmiana motywu nie resetują czasu.
+Standardowy przycisk minimalizacji chowa do paska; **Schowaj** do zasobnika.
+Przy braku zasobnika aplikacja minimalizuje okno zamiast tracić do niego dostęp.
+Zamknięcie licznika przywraca panel prowadzącego.
 
-**Nie ma jeszcze programu do uruchomienia ani skryptu budowania.** Utworzono
-lokalne `.venv`; zależności i konfiguracja projektu pozostają do dodania.
-Nie instaluj bibliotek globalnie. Docelowa wersja źródłowa będzie uruchamiana
-przez Python z `.venv`, z pomocniczym skryptem PowerShell na Windows.
+Notatki, decyzje i zadania przypisane są do stałych identyfikatorów punktów.
+Menu **Spotkanie** zawiera zapis kopii, lokalne szablony i eksport Markdown/PDF
+z wyborem treści. JSON przechowuje odnośniki do nagrań i PNG, nie ich zawartość.
+Po przeniesieniu plików trzeba zachować lub odtworzyć właściwe lokalizacje.
 
-Paczki dla użytkowników mają zawierać interpreter i potrzebne biblioteki,
-bez instalowania Pythona, pip lub venv. Każdy system i architektura wymagają
-własnego artefaktu oraz rzeczywistych testów. Wsparcie przechwytywania dźwięku
-systemowego zależy od platformy i uprawnień; nie zostało jeszcze zweryfikowane.
+Zapis po edycji następuje po 700 ms, a pozycja działającego licznika co 5 s.
+Po awarii program proponuje odzyskanie w pauzie, bez uruchamiania nagrywania/API.
+Niezapisane ostatnie zmiany mogą wymagać odtworzenia. Panel do udostępniania
+nie wyświetla notatek ani klucza; sam tytuł punktu nadal może być poufny.
 
-## Prywatność i transkrypcja
+## Nagrywanie i transkrypcja
 
-Plan zakłada lokalną agendę, notatki i nagrania, bez konta i telemetrii.
-Internet będzie potrzebny tylko do dobrowolnej transkrypcji. Samo wpisanie
-klucza nie uruchomi wysyłania. Dostawca API nie został jeszcze wybrany;
-usługa może naliczać opłaty na koncie użytkownika.
+Rozwiń **Nagrywanie i transkrypcja**, wykryj źródła, wybierz mikrofon i/lub
+źródło spotkania oraz przetestuj poziomy. Wybierz miks mono lub rozdzielone
+kanały i katalog. **Nagraj** wymaga potwierdzenia; nagranie jest lokalnym WAV
+PCM 16-bit / 48 kHz. Osobna pauza audio usuwa te fragmenty z zapisu.
+Pauza licznika nie zatrzymuje nagrania. Zmiana źródeł wymaga jawnego nowego segmentu.
 
-[PRIVACY.md](PRIVACY.md) opisuje projekt polityki i wymagania dla implementacji.
-Przed wydaniem dokument trzeba uzgodnić z rzeczywistym zachowaniem programu.
+Znaczniki punktów zapisują pozycję w nagraniu; znajdziesz je w zakładce
+**Nagrania** i pliku `.markers.json`. Każdy segment ma limit ok. 3,8 GB,
+po którym trzeba jawnie rozpocząć kolejny. Przy błędzie urządzenia lub dysku
+aplikacja zachowuje to, co udało się zapisać; nie gwarantuje odzyskania
+ostatniego bloku po awarii zasilania.
 
-## Poza pierwszą wersją
+Transkrypcja korzysta z OpenAI (`gpt-transcribe`) i wymaga własnego klucza API.
+Podanie klucza nie wysyła danych. Wybierz zakończony plik i potwierdź dostawcę,
+zakres oraz możliwość kosztów. WAV z aplikacji dzielony jest lokalnie na części
+do 5 minut / mono 16 kHz; inne obsługiwane pliki muszą mieścić się w limicie 24 MB.
+Nie ma automatycznych ponowień. Przy anulowaniu lub błędzie zachowywane są
+odebrane fragmenty, a już naliczonych kosztów nie można cofnąć.
 
-Nagrywanie wybranego monitora/okna pozostaje pomysłem do oceny kosztu zasobów.
-Historia spotkań, archiwum i integracje Microsoft 365/Google Workspace
-są odłożone; konta w tych usługach nie są potrzebne do obecnego zakresu.
+Wynik można poprawić, ręcznie przypisać do punktu i wyeksportować. Gdy API
+nie zwraca dokładnych znaczników, program nie przypisuje zdań automatycznie.
+Dokumentacja integracji: [OpenAI — file transcription](https://developers.openai.com/api/docs/guides/speech-to-text).
 
-## Inspiracja i licencja
+## Automatyczne zrzuty
 
-Nagrywanie inspirowane funkcjonalnie lokalnym projektem `audio-rozkminka`:
-mikrofon + dźwięk spotkania, miks lub rozdzielone kanały i widoczny czas nagrania.
-Kod projektu referencyjnego nie został skopiowany.
+**Zrzuty…** pozwala wybrać ekran albo wykryte okno, interwał 1–86400 sekund,
+limit plików i katalog. PNG zapisuje się na początku, a potem co wskazany czas.
+Interwał można zmienić podczas pracy. Limit domyślnie wynosi 200 i zatrzymuje
+cykl bez usuwania poprzednich obrazów. Zrzuty są widoczne przy punkcie agendy.
 
-Kod i dokumentacja tego projektu: [MIT](LICENSE). Zależności zachowują swoje
-własne licencje; ich noty będą dołączone do paczek przy wyborze komponentów.
+Zamknięcie okna ustawień nie zatrzymuje zrzutów — użyj **Zatrzymaj**.
+Stan pozostaje w panelu i zasobniku. Brak uprawnień/obrazu zatrzymuje cykl,
+bez zamiany wybranego okna na cały pulpit. Wybrane okno wymaga dodatku capture;
+przechwytywanie Waylanda oraz zachowanie okien zminimalizowanych zależą od
+backendu/systemu i wymagają dalszych testów. Na macOS może pojawić się prośba
+o uprawnienie do nagrywania ekranu. Chroniona treść może być niedostępna.
+
+Zrzuty nie są nagraniem wideo i nigdy nie trafiają do transkrypcji API.
+
+## Dane, testy i budowanie
+
+Katalog danych: Linux `$XDG_DATA_HOME/licznik-spotkaniowy` lub
+`~/.local/share/licznik-spotkaniowy`; Windows `%LOCALAPPDATA%/licznik-spotkaniowy`;
+macOS `~/Library/Application Support/licznik-spotkaniowy`.
+Możesz wskazać inny przez `MEETING_TIMER_DATA_DIR`. Nagrania i zrzuty domyślnie
+trafiają do podkatalogów `recordings` i `screenshots`. Otwórz katalog z menu.
+
+```bash
+uv run pytest -q
+uv run ruff check meeting_timer tests scripts run.py
+uv run python scripts/build_portable.py --core
+uv run python scripts/build_portable.py
+```
+
+Buduj na docelowym systemie i architekturze. Wersja pełna wymaga dodatków
+`audio`, `keyring`, `capture`. `.github/workflows/check.yml` przygotowuje testy
+oraz budowanie na trzech systemach, bez automatycznego publikowania wydania.
+
+[Prywatność](PRIVACY.md) · [MIT](LICENSE) · [Licencje zależności](THIRD_PARTY.md)
+· [Założenia](AGENTS.md) · [UX](docs/UX.md).
+
+Historia spotkań, integracje MS/Google i nagrywanie wideo pozostają odłożone.
+Inspiracja funkcjonalna audio: lokalny projekt `audio-rozkminka`; nie kopiowano kodu.

@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "licznik-spotkaniowy"
+version = "0.1.0"
+description = "Lokalny licznik agendy, notatki i nagrania spotkań"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "Michał Sławiński"}]
+dependencies = ["PySide6-Essentials>=6.8,<7", "certifi>=2025.1"]
+
+[project.optional-dependencies]
+audio = ["SoundCard>=0.4.5,<0.5"]
+keyring = ["keyring>=25,<26"]
+capture = ["PySide6-Addons>=6.8,<7"]
+dev = ["pytest>=8,<10", "ruff>=0.11", "pyinstaller>=6.12,<7"]
+
+[project.gui-scripts]
+licznik-spotkaniowy = "meeting_timer.app:main"
+
+[tool.setuptools.packages.find]
+include = ["meeting_timer*"]
+
+[tool.setuptools.package-data]
+meeting_timer = ["assets/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

@@ -135,9 +135,23 @@ Poniższe rozwiązania są propozycją techniczną, a nie dodatkowymi wymaganiam
 - Do paczek dołączać licencje zależności; MIT projektu nie zmienia licencji Qt,
   kodeków ani ikon.
 
+## Automatyczne zrzuty ekranu / okna
+
+- Zapis PNG co wskazaną liczbę sekund, z wyborem ekranu albo konkretnego okna.
+- Jawny start/stop, zmiana interwału w trakcie i limit liczby plików.
+- Pliki wyłącznie lokalne, z czasem wykonania i stałym identyfikatorem punktu.
+  Nie wysyłać obrazów do transkrypcji ani innej usługi bez osobnej funkcji.
+- Zrzut ekranu korzysta z QtGui. Wybrane okno korzysta z opcjonalnego
+  QtMultimedia, uruchamianego tylko na czas pobrania pojedynczej klatki.
+- Brak obrazu lub uprawnień zatrzymuje cykl. Nie przełączać automatycznie
+  wybranego okna na przechwytywanie całego pulpitu.
+- Zamykanie panelu zrzutów nie zatrzymuje cyklu; stan jest widoczny w głównym
+  oknie i zasobniku. Przy wyjściu zatrzymać cykl i dokończyć zapis obrazu.
+- Nagrywanie wideo pozostaje poza zakresem; zrzuty to osobna funkcja.
+
 ## Poza pierwszą wersją
 
-- Nagrywanie wybranego monitora/okna: pomysł do oceny, bez decyzji o wdrożeniu.
+- Nagrywanie wideo wybranego monitora/okna: pomysł do oceny, bez decyzji o wdrożeniu.
   Ewentualny osobny moduł ładowany na żądanie, pomiary CPU/GPU/dysku,
   synchronizacja z audio i osobne testy uprawnień każdego systemu.
 - Historia spotkań, wyszukiwanie w archiwum oraz integracje Microsoft 365
@@ -163,15 +177,13 @@ Poniższe rozwiązania są propozycją techniczną, a nie dodatkowymi wymaganiam
 - Commitować spójne ukończone etapy; nie publikować ani nie wysyłać zmian
   do zdalnego repozytorium bez polecenia użytkownika.
 
-## Stan początkowy
+## Stan implementacji
 
-Repozytorium nie zawiera jeszcze implementacji. Utworzono `.venv`.
-Próba pobrania PySide6 nie powiodła się z powodu niedostępności DNS/sieci
-do PyPI przy pierwszej konfiguracji. Po zmianie uprawnień nie ponawiano
-instalacji — ten błąd nie potwierdza obecnego braku dostępu do sieci.
-GTK jest dostępne lokalnie, ale nie realizuje
-przyjętego kierunku aplikacji wieloplatformowej. Nie oznaczać instalacji
-zależności ani uruchomienia interfejsu jako ukończonych.
+Działa prototyp Python/Qt: parser, silnik czasu, dwa okna, lokalne notatki,
+decyzje/zadania, eksport, szablony i odzyskiwanie. Audio i transkrypcja
+są opcjonalne i ładowane na żądanie; API testowano na atrapach. Przechwycenie
+osobnego syntetycznego okna na Linux X11 zakończyło się zapisem PNG.
+Szczegóły i nieukończone testy: `ROADMAP.md` oraz `docs/VALIDATION.md`.
 
-Po zmianie uprawnień ponowiona próba `git init` zakończyła się powodzeniem.
-Repozytorium używa gałęzi `main`; zapis metadanych Git jest już dostępny.
+Zależności zainstalowano w `.venv`. Repozytorium działa na gałęzi `main`.
+Wcześniejsze błędy sieci i zapisu Git nie są aktualną blokadą.
