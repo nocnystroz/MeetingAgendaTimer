@@ -23,6 +23,11 @@ def main():
     args = parser.parse_args()
     executable = args.executable.resolve()
     with tempfile.TemporaryDirectory(prefix="licznik-benchmark-") as temporary:
+        from meeting_timer.documents import terms_version
+        # Synthetic benchmark fixture only; never writes acceptance to the user's data folder.
+        (Path(temporary) / "consent.json").write_text(json.dumps({
+            "accepted": True, "terms_version": terms_version(), "language": "pl",
+            "accepted_at": 0, "diagnostic_fixture": True}), encoding="utf-8")
         ready = Path(temporary) / "ready.json"
         env = dict(os.environ, MEETING_TIMER_DATA_DIR=temporary, MEETING_TIMER_READY_FILE=str(ready))
         start = time.perf_counter()

@@ -7,6 +7,8 @@ from PySide6.QtCore import QLockFile, QTimer
 from PySide6.QtGui import QPalette
 from PySide6.QtWidgets import QApplication, QMessageBox
 
+from .documents import ensure_accepted
+from .i18n import set_language
 from .storage import atomic_json, data_directory
 from .theme import apply_theme, icon
 from .version import version
@@ -15,14 +17,15 @@ from .windows import MainWindow
 
 def main():
     app = QApplication(sys.argv)
+    app.system_palette = QPalette(app.palette())
     app.setApplicationName("Licznik spotkaniowy")
     app.setApplicationDisplayName(f"Licznik spotkaniowy · {version()}")
     app.setApplicationVersion(version())
     app.setStyle("Fusion")
+    set_language("pl", app)
     app.setOrganizationName("Licznik spotkaniowy")
     app.setQuitOnLastWindowClosed(False)
     app.setWindowIcon(icon("clock"))
-    app.system_palette = QPalette(app.palette())
     if "--smoke-test" in sys.argv or "--smoke-test-full" in sys.argv:
         from .smoke import run
         return run(app, full="--smoke-test-full" in sys.argv)
@@ -46,7 +49,15 @@ def main():
                     shutil.rmtree(temporary)
                 except OSError:
                     pass  # Do not block access to the meeting when temporary cleanup fails.
-    apply_theme(app, system_palette=app.palette())
+    apply_theme(app, system_palette=app.system_palette)
+    try:
+        if not ensure_accepted(directory):
+            lock.unlock()
+            return 0
+    except OSError:
+        QMessageBox.critical(None, "Nie można zapisać", "Nie można zapisać akceptacji warunków. Sprawdź prawa zapisu katalogu danych.")
+        lock.unlock()
+        return 1
     window = MainWindow()
     window.show()
     QTimer.singleShot(0, window.restore)

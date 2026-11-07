@@ -190,9 +190,10 @@ Lekkość potwierdzają pomiary, nie samo użycie natywnych kontrolek.
 - [x] Rozszerzyć parser o tabelki TSV/CSV/Markdown, godziny rozpoczęcia,
       rozwinięte jednostki i czasy w nawiasach; testy formatów i błędów.
 - [x] Kompaktowy licznik ok. 260 × 138 px z podstawowymi akcjami i pełnym widokiem.
-- [x] Wersja z hasha commita w oknach i pasku stanu, metadane w paczce.
-- [ ] Polski, angielski, niemiecki i francuski, wybór i zapamiętanie języka.
-- [ ] Publiczne repozytorium GitHub z opisem i README.
+- [x] Wersja z numeru commita w oknach i pasku stanu, metadane w paczce.
+- [x] Polski, angielski, niemiecki i francuski, wybór i zapamiętanie języka.
+- [x] Utworzyć publiczne repozytorium GitHub z opisem; wysyłka aktualnego kodu
+      i uruchomienie CI następuje po tym commicie.
 - [ ] Uruchomić CI i zbudować pozostałe paczki na właściwych systemach.
 
 ## Aktualny stan i ograniczenia weryfikacji
@@ -206,3 +207,15 @@ Lekkość potwierdzają pomiary, nie samo użycie natywnych kontrolek.
   tutaj uruchamiane. Konfiguracja CI nie jest dowodem wykonania tych testów.
 - Budowanie i pomiary lokalnej paczki Linux są w trakcie; szczegóły wyników
   trafią do `docs/VALIDATION.md`.
+
+
+## 13. Urządzenia, harmonogram i warunki
+
+- [x] Automatyczna lista urządzeń po otwarciu audio, stany ładowania/błędu.
+- [x] Domyślny komunikat zamiast pustej listy transkrypcji; widoczny dostawca OpenAI.
+- [x] Start całego planu o wybranej dacie/godzinie i odliczanie do startu.
+- [x] Numer commita w tytule i pasku, zachowany również w paczce bez Git.
+- [x] Warunki w 4 językach, checkbox wymagany przy pierwszym uruchomieniu,
+      lokalna wersjonowana akceptacja oraz ponowne pytanie po zmianie treści.
+- [x] Pomoc: warunki, MIT, prywatność i zweryfikowany link Buy me a coffee.
+- [ ] Potwierdzić ukończenie budowania Windows i macOS w Actions, podać artefakty.

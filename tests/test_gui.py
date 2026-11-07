@@ -23,6 +23,10 @@ def window(app, monkeypatch, tmp_path):
     widget.tick_timer.stop()
     monkeypatch.setattr(widget, "message", lambda *args: None)
     yield widget
+    if widget.audio_panel:
+        for worker in list(widget.audio_panel.workers):
+            worker.wait(5000)
+        app.processEvents()
     widget.tick_timer.stop()
     widget.save_timer.stop()
     widget.tray.hide()
@@ -30,6 +34,8 @@ def window(app, monkeypatch, tmp_path):
     widget.hide()
     widget.deleteLater()
     app.processEvents()
+    from meeting_timer.i18n import set_language
+    set_language("pl", app)
 
 
 def test_notes_selection_does_not_switch_timer(window):

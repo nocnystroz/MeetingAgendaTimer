@@ -7,6 +7,7 @@ from pathlib import Path
 
 from PySide6.QtGui import QPdfWriter
 
+from .documents import document_text, terms_text
 from .exporting import markdown, pdf_document
 from .parser import parse_agenda
 from .theme import icon
@@ -34,6 +35,11 @@ def run(app, full=False):
         pdf_document(window.meeting).print_(QPdfWriter(str(pdf)))
         assert pdf.read_bytes().startswith(b"%PDF")
         assert window.save_session(clean=True)
+        assert "MIT License" in document_text("LICENSE")
+        assert "Conditions" in terms_text("fr")
+        window.language_combo.setCurrentIndex(1)
+        assert window.theme.itemText(0) == "System theme"
+        window.language_combo.setCurrentIndex(0)
         window.show_screenshots()
         window.screenshots_dialog.hide()
         if full:

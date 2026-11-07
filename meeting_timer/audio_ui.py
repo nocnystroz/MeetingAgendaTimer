@@ -4,7 +4,7 @@ import tempfile
 import time
 from pathlib import Path
 
-from PySide6.QtCore import Qt, QThread, Signal
+from PySide6.QtCore import QSignalBlocker, Qt, QThread, QTimer, Signal
 from PySide6.QtWidgets import (
     QDoubleSpinBox,
     QFileDialog,
@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (
 )
 
 from .engine import format_time
+from .i18n import tr
 from .storage import atomic_json
 from .transcription import MODEL, Cancelled, Transcriber, inspect_audio, wav_chunks
 from .widgets import ComboBox
@@ -58,9 +59,17 @@ class AudioPanel(QTabWidget):
         self.transcribing = False
         self.transcript_entry = None
         self.pending_restart = False
+        self.sources_checked = False
+        self.detecting = False
         self.make_recording_tab()
         self.make_transcript_tab()
         self.setMaximumHeight(340)
+
+    def showEvent(self, event):
+        super().showEvent(event)
+        if not self.sources_checked:
+            self.sources_checked = True
+            QTimer.singleShot(0, self.detect_sources)
 
     @property
     def busy(self):
@@ -135,6 +144,10 @@ class AudioPanel(QTabWidget):
         self.transcript_choice = ComboBox()
         self.transcript_choice.currentIndexChanged.connect(self.select_transcript)
         layout.addWidget(self.transcript_choice)
+        self.provider = ComboBox()
+        self.provider.addItem(f"OpenAI · {MODEL}", "openai")
+        self.provider.setToolTip("Dostawca i model transkrypcji")
+        layout.addWidget(self.provider)
         row = QHBoxLayout()
         self.api_key = QLineEdit()
         self.api_key.setEchoMode(QLineEdit.EchoMode.Password)
@@ -173,6 +186,8 @@ class AudioPanel(QTabWidget):
             self.transcript_choice.clear()
             for index, value in enumerate(self.owner.meeting.transcripts):
                 self.transcript_choice.addItem(f"{index + 1}. {Path(str(value.get('source', 'Nagranie'))).name}")
+            if not self.owner.meeting.transcripts:
+                self.transcript_choice.addItem("Brak zapisanych transkrypcji — wybierz plik poniżej")
         self.select_transcript(self.transcript_choice.currentIndex())
 
     def select_transcript(self, index):
@@ -182,18 +197,34 @@ class AudioPanel(QTabWidget):
         self.transcript_text.setPlainText(self.transcript_entry.get("text", "") if self.transcript_entry else "")
 
     def detect_sources(self):
+        if self.detecting:
+            return
+        self.detecting = True
         self.detect.setEnabled(False)
+        for combo in (self.mic, self.system):
+            combo.clear()
+            combo.addItem("Ładowanie urządzeń…", None)
+            combo.setEnabled(False)
+        self.audio_status.setText("Wykrywanie dostępnych urządzeń audio…")
         def operation():
             from .audio import devices
             return devices()
         self.run_worker(operation, self.sources_found, self.sources_error)
 
     def sources_error(self, text):
+        self.detecting = False
         self.detect.setEnabled(True)
-        self.show_error(text + "\nWersja źródłowa: zainstaluj opcję [audio] do .venv. Na Linux potrzebna jest biblioteka libpulse i działający serwer PulseAudio/PipeWire.")
+        for combo in (self.mic, self.system):
+            combo.clear()
+            combo.addItem("Urządzenia niedostępne", None)
+            combo.setEnabled(True)
+        self.audio_status.setText(text + "\nWersja źródłowa: zainstaluj opcję [audio] do .venv. Na Linux potrzebna jest biblioteka libpulse i działający serwer PulseAudio/PipeWire.")
 
     def sources_found(self, values):
+        self.detecting = False
         self.detect.setEnabled(True)
+        self.mic.setEnabled(True)
+        self.system.setEnabled(True)
         self.mic.clear()
         self.system.clear()
         self.mic.addItem("Mikrofon: nie wybrano", None)
@@ -206,6 +237,8 @@ class AudioPanel(QTabWidget):
             if not value["loopback"]:
                 self.system.addItem("Wejście: " + value["name"], value["id"])
         self.audio_status.setText(f"Wykryto {len(values)} źródeł. Wybierz urządzenia i przetestuj poziom przed nagraniem.")
+        if not values:
+            self.audio_status.setText("Nie znaleziono urządzeń. Podłącz mikrofon, sprawdź uprawnienia i odśwież listę.")
 
     def source_selection(self):
         selected = [(self.mic.currentData(), self.gains[0].value()),
@@ -295,7 +328,7 @@ class AudioPanel(QTabWidget):
             status = "Test audio" if recorder.test else "Pauza nagrania" if recorder.pause_event.is_set() else "● NAGRYWANIE"
             text = f"{status} {format_time(recorder.seconds)}"
             self.owner.recording_label.setText(text)
-            self.owner.tray.setToolTip((text + " · " + self.owner.plan_label.text())[:120])
+            self.owner.tray.setToolTip((tr(text) + " · " + self.owner.plan_label.text())[:120])
             self.audio_status.setText(text + (" · otwieranie źródeł…" if not recorder.ready else " · plik lokalny"))
             self.pause.setText("Wznów nagranie" if recorder.pause_event.is_set() else "Pauza nagrania")
         else:
@@ -381,8 +414,11 @@ class AudioPanel(QTabWidget):
         self.transcript_entry = {"source": str(path), "model": MODEL, "text": "", "parts": [], "complete": False}
         entry = self.transcript_entry
         self.owner.meeting.transcripts.append(entry)
-        self.transcript_choice.addItem(f"{len(self.owner.meeting.transcripts)}. {path.name}")
-        self.transcript_choice.setCurrentIndex(len(self.owner.meeting.transcripts) - 1)
+        with QSignalBlocker(self.transcript_choice):
+            self.transcript_choice.clear()
+            for index, transcript in enumerate(self.owner.meeting.transcripts):
+                self.transcript_choice.addItem(f"{index + 1}. {Path(transcript['source']).name}")
+            self.transcript_choice.setCurrentIndex(len(self.owner.meeting.transcripts) - 1)
         self.transcript_choice.setEnabled(False)
         self.transcript_text.clear()
         self.api_status.setText("Przygotowanie i wysyłanie… bez automatycznych powtórzeń")

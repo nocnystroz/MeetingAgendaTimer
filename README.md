@@ -1,10 +1,12 @@
 # Licznik spotkaniowy
 
+Portable desktop meeting timer with notes, local audio, screenshots and optional API transcription. UI: PL / EN / DE / FR.
+
 Lokalna aplikacja desktopowa do prowadzenia spotkań według agendy. Osobny
 licznik pokazuje bieżący punkt i pozostały czas, a panel prowadzącego pozwala
 zapisywać notatki, decyzje i zadania.
 
-**Prototyp do testów — wersja aplikacji to skrócony hash commita.** Działa lokalnie na Linux X11. Kod i skrypty
+**Prototyp do testów — wersja aplikacji to numer commita (liczba commitów w historii HEAD).** Działa lokalnie na Linux X11. Kod i skrypty
 budowania obejmują Windows i macOS, ale tych platform nie przetestowano jeszcze
 na rzeczywistych urządzeniach. Szczegóły: [ROADMAP.md](ROADMAP.md)
 i [docs/VALIDATION.md](docs/VALIDATION.md).
@@ -20,7 +22,9 @@ Gotową paczkę dla swojego systemu należy rozpakować i uruchomić:
 Paczka zawiera interpreter i biblioteki. Nie wymaga instalowania Pythona,
 pip ani venv. Nie przenoś samego pliku wykonywalnego bez towarzyszących bibliotek.
 Lokalne wyniki budowania znajdują się w `dist/` i nie są commitowane.
-Nie publikowano jeszcze wydań ani nie uruchamiano zdalnego CI.
+Kod: https://github.com/nocnystroz/licznik-spotkaniowy
+Paczki: zakładka Actions → udane budowanie → Artifacts. Wyniki Windows/macOS
+pozostają do potwierdzenia do czasu ukończenia odpowiedniego zadania CI.
 
 Wariant **core** zawiera licznik, notatki, eksport, transkrypcję plików
 skompresowanych oraz zrzuty całego ekranu. Wariant **full** dodaje nagrywanie,
@@ -91,6 +95,8 @@ Czasy trwania obsługują `h`, `godz`, `min`, `m`, `sek`, `s` oraz części minu
 np. `1,5 min`. Nie mieszaj czasów trwania i przedziałów w jednej agendzie.
 Nierozpoznane wiersze wymagają poprawy — nie są pomijane.
 
+- **Start o wskazanej godzinie**: ustaw datę i godzinę dla całego planu; licznik
+  czeka do tego momentu. To działa także z agendą zawierającą same czasy trwania.
 - **Plan od teraz**: czas biegnie po naciśnięciu Rozpocznij.
 - **Według godzin agendy**: wybierz datę pierwszego punktu; późny start pomija
   upłynięte punkty, a przerwy i oczekiwanie są widoczne w liczniku.
@@ -130,7 +136,7 @@ nie wyświetla notatek ani klucza; sam tytuł punktu nadal może być poufny.
 
 ## Nagrywanie i transkrypcja
 
-Rozwiń **Nagrywanie i transkrypcja**, wykryj źródła, wybierz mikrofon i/lub
+Rozwiń **Nagrywanie i transkrypcja**, poczekaj na automatyczne wykrycie źródeł, wybierz mikrofon i/lub
 źródło spotkania oraz przetestuj poziomy. Wybierz miks mono lub rozdzielone
 kanały i katalog. **Nagraj** wymaga potwierdzenia; nagranie jest lokalnym WAV
 PCM 16-bit / 48 kHz. Osobna pauza audio usuwa te fragmenty z zapisu.
@@ -197,6 +203,23 @@ Inspiracja funkcjonalna audio: lokalny projekt `audio-rozkminka`; nie kopiowano 
 
 ## Identyfikacja wersji
 
-Tytuły okien i prawy koniec paska stanu pokazują hash commita. Wersja źródłowa
+Tytuły okien i prawy koniec paska stanu pokazują numer commita, np. 5.
+Numer to wynik git rev-list --count HEAD. Pełny hash jest w podpowiedzi wersji. Wersja źródłowa
 odczytuje go z Git; `*` oznacza niezacommitowane zmiany. Paczka przenośna
 ma wersję utrwaloną przy budowaniu, także bez dostępu do Git.
+
+
+## Języki i pierwsze uruchomienie
+
+W prawym górnym rogu wybierzesz Polski, English, Deutsch lub Français.
+Zmiana działa podczas spotkania i nie tłumaczy ani nie zmienia Twojej agendy,
+notatek i transkrypcji. Wybór jest zapamiętywany lokalnie. Eksport używa wybranego
+języka nagłówków, zachowując oryginalne treści. Dokumentacja projektu jest po polsku,
+warunki pierwszego uruchomienia są dostępne w czterech językach.
+
+Pierwsze uruchomienie wymaga zaakceptowania [warunków użytkowania](TERMS.md),
+w tym oświadczenia o zgodach uczestników przy nagrywaniu i zrzutach.
+Bez zaznaczenia zgody nie otworzy się panel. Zmiana warunków powoduje ponowne
+pytanie. Pomoc zawiera warunki, MIT, politykę prywatności i link wsparcia.
+
+[☕ Postaw mi kawę / Buy me a coffee](https://buymeacoffee.com/m.slawinski)

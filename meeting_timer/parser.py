@@ -11,12 +11,12 @@ RANGE = re.compile(rf"^({CLOCK})\s*[-–—]\s*({CLOCK})\s*[:|–—-]?\s*(.+)$"
 START = re.compile(rf"^({CLOCK})\s+(?:[-–—:|]\s*)?(.+)$")
 DURATION = re.compile(
     r"(?<![\w.])(?P<n>\d+(?:[.,]\d+)?)\s*"
-    r"(?P<u>godzin(?:a|y)?|godz\.?|hours?|hrs?|h|minut(?:a|y)?|minutes?|mins?\.?|m|"
-    r"sekund(?:a|y)?|sek\.?|seconds?|secs?\.?|s)(?!\w)", re.I
+    r"(?P<u>godzin(?:a|y)?|godz\.?|hours?|heures?|hrs?|stunden?|std\.?|h|minut(?:a|y|en)?|minutes?|mins?\.?|m|"
+    r"sekund(?:a|y|en)?|sek\.?|seconds?|secondes?|secs?\.?|s)(?!\w)", re.I
 )
 BRACKET_TIME = re.compile(r"[\[(](\d{1,3}):([0-5]\d)(?::([0-5]\d))?[\])]")
-HEADER_TITLE = {"temat", "tytuł", "tytul", "punkt", "agenda", "topic", "title"}
-HEADER_TIME = ("czas", "duration", "start", "koniec", "godzina", "time", "end")
+HEADER_TITLE = {"temat", "tytuł", "tytul", "punkt", "agenda", "topic", "title", "thema", "titel", "sujet", "point"}
+HEADER_TIME = ("czas", "duration", "start", "koniec", "godzina", "time", "end", "dauer", "zeit", "durée", "début", "fin")
 
 
 @dataclass
@@ -47,7 +47,7 @@ def _duration(line):
     seconds = 0
     for match in matches:
         unit = match["u"].lower().rstrip(".")
-        factor = 3600 if unit.startswith(("h", "godz")) else 60 if unit.startswith("m") else 1
+        factor = 3600 if unit.startswith(("h", "godz", "st")) else 60 if unit.startswith("m") else 1
         seconds += float(match["n"].replace(",", ".")) * factor
     title = DURATION.sub("", line)
     if not matches and (match := BRACKET_TIME.search(line)):
@@ -101,7 +101,7 @@ def parse_agenda(text: str) -> list[Item]:
             ):
                 header_unit = "min" if any("min" in c for c in lowered) else "s" if any("sek" in c for c in lowered) else None
                 header_index = next((i for i, c in enumerate(lowered) if c in ("lp", "lp.", "nr", "#")), None)
-                header_duration = next((i for i, c in enumerate(lowered) if c.startswith(("czas", "duration")) and "start" not in c and "koniec" not in c), None)
+                header_duration = next((i for i, c in enumerate(lowered) if c.startswith(("czas", "duration", "dauer", "durée")) and "start" not in c and "koniec" not in c), None)
                 continue
             if header_index is not None:
                 if header_duration is not None and header_duration > header_index:
@@ -181,7 +181,7 @@ def parse_agenda(text: str) -> list[Item]:
         last = rows[-1]
         if last.seconds is None:
             # Explicit end marker closes a list of starts, without inventing a final duration.
-            if last.title.casefold().strip(".") in ("koniec", "koniec spotkania", "end") and len(rows) > 1:
+            if last.title.casefold().strip(".") in ("koniec", "koniec spotkania", "end", "ende", "fin") and len(rows) > 1:
                 rows.pop()
             else:
                 errors.append(f"Wiersz {last.number}: ostatni punkt wymaga czasu, np. „{last.title} (15 min)”, albo kolejnego wiersza „HH:MM Koniec”.")

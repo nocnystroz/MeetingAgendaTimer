@@ -22,11 +22,13 @@ def build_info():
                                          stderr=subprocess.DEVNULL, text=True, timeout=2).strip()
         dirty = bool(subprocess.check_output(["git", "-C", str(root), "status", "--porcelain"],
                                             stderr=subprocess.DEVNULL, text=True, timeout=2).strip())
-        return {"commit": commit, "dirty": dirty}
+        number = int(subprocess.check_output(["git", "-C", str(root), "rev-list", "--count", "HEAD"],
+                                            stderr=subprocess.DEVNULL, text=True, timeout=2).strip())
+        return {"commit": commit, "number": number, "dirty": dirty}
     except (OSError, subprocess.SubprocessError):
         return {"commit": "development", "dirty": False}
 
 
 def version():
     value = build_info()
-    return value["commit"][:8] + ("*" if value.get("dirty") else "")
+    return str(value.get("number", "dev")) + ("*" if value.get("dirty") else "")

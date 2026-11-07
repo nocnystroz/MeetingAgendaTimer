@@ -5,19 +5,19 @@ import time
 from datetime import datetime, timedelta
 from pathlib import Path
 
-from PySide6.QtCore import QDate, QSignalBlocker, Qt, QTimer
+from PySide6.QtCore import QDate, QDateTime, QSignalBlocker, Qt, QTimer
 from PySide6.QtGui import QAction, QFontDatabase, QKeySequence, QPdfWriter, QShortcut
 from PySide6.QtWidgets import (
     QApplication,
     QCheckBox,
     QDateEdit,
+    QDateTimeEdit,
     QDialog,
     QFileDialog,
     QGroupBox,
     QHBoxLayout,
     QHeaderView,
     QInputDialog,
-    QLabel,
     QLineEdit,
     QListWidget,
     QMainWindow,
@@ -26,6 +26,7 @@ from PySide6.QtWidgets import (
     QPlainTextEdit,
     QProgressBar,
     QPushButton,
+    QScrollArea,
     QSizePolicy,
     QSpinBox,
     QSplitter,
@@ -40,6 +41,7 @@ from PySide6.QtWidgets import (
 from .dialogs import AgendaDialog, ExportDialog
 from .engine import TimerEngine, format_time
 from .exporting import markdown, pdf_document
+from .i18n import LANGUAGES, Button, Label, StatusBar, install, language, set_language, tr
 from .model import Item, Meeting, Task
 from .storage import (
     atomic_json,
@@ -55,7 +57,7 @@ from .widgets import ComboBox
 
 
 def label(text="", name=None):
-    widget = QLabel(text)
+    widget = Label(text, translate=name not in ("counterTitle", "digits"))
     widget.setTextFormat(Qt.TextFormat.PlainText)
     if name:
         widget.setObjectName(name)
@@ -63,7 +65,7 @@ def label(text="", name=None):
 
 
 def button(text, callback, image=None, primary=False):
-    widget = QPushButton(text)
+    widget = Button(text)
     if image:
         widget.setIcon(icon(image))
     if primary:
@@ -87,6 +89,7 @@ class CounterWindow(QWidget):
         layout.setSpacing(14)
         self.position = label("GOTOWY DO SPOTKANIA", "muted")
         self.title = label("Wklej agendę w panelu prowadzącego", "counterTitle")
+        self.title.translate_enabled = True
         self.title.setWordWrap(True)
         self.title.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.title.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred)
@@ -126,7 +129,7 @@ class CounterWindow(QWidget):
         mini_row = QHBoxLayout(self.mini_controls)
         mini_row.setContentsMargins(0, 0, 0, 0)
         mini_row.setSpacing(4)
-        self.mini_pause = button("Start", owner.play_pause)
+        self.mini_pause = button("", owner.play_pause, "player-play")
         self.mini_pin = QPushButton()
         self.mini_pin.setIcon(icon("pin"))
         self.mini_pin.setCheckable(True)
@@ -187,6 +190,7 @@ class CounterWindow(QWidget):
             return
         self.position.setText(f"PUNKT {snap.index + 1} / {len(items)}")
         self.full_title = items[snap.index].title
+        self.title.translate_enabled = False
         self.update_title()
         self.digits.setText(format_time(snap.remaining))
         self.time_color = "#e56c6c" if snap.remaining < 0 else "#d9922e" if snap.remaining <= 60 else "#26b7a4"
@@ -197,7 +201,9 @@ class CounterWindow(QWidget):
         self.state.setText("PAUZA · " + states.get(snap.state, "") if snap.paused else states.get(snap.state, ""))
         self.pause.setText("Start" if snap.state == "ready" else "Wznów" if snap.paused else "Pauza")
         self.pause.setEnabled(snap.state != "finished")
-        self.mini_pause.setText(self.pause.text())
+        self.mini_pause.setIcon(icon("player-play" if snap.paused or snap.state == "ready" else "player-pause"))
+        self.mini_pause.setToolTip(self.pause.text())
+        self.mini_pause.setAccessibleName(self.pause.text())
         self.mini_pause.setEnabled(self.pause.isEnabled())
         self.next_label.setText("Dalej: " + items[snap.index + 1].title if snap.index + 1 < len(items) else "Ostatni punkt agendy")
 
@@ -214,6 +220,7 @@ class CounterWindow(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.setStatusBar(StatusBar(self))
         self.setWindowTitle(f"Licznik spotkaniowy · {version()} · Panel prowadzącego")
         self.setWindowIcon(icon("clock"))
         self.resize(1120, 760)
@@ -232,6 +239,7 @@ class MainWindow(QMainWindow):
         self.last_saved = 0
         self.error_shown = False
         app = QApplication.instance()
+        install(app)
         self.system_palette = getattr(app, "system_palette", app.palette())
         self.save_timer = QTimer(self)
         self.save_timer.setSingleShot(True)
@@ -264,6 +272,13 @@ class MainWindow(QMainWindow):
         self.theme.addItems(["Motyw systemowy", "Jasny", "Ciemny"])
         self.theme.currentIndexChanged.connect(self.change_theme)
         header.addWidget(self.theme)
+        self.language_combo = ComboBox()
+        for code, native_name in LANGUAGES.items():
+            self.language_combo.addItem(native_name, code)
+        self.language_combo.setCurrentIndex(list(LANGUAGES).index(language()))
+        self.language_combo.setToolTip("Język interfejsu")
+        self.language_combo.currentIndexChanged.connect(self.change_language)
+        header.addWidget(self.language_combo)
         header.addWidget(button("Pokaż licznik", self.show_counter, "clock", True))
         layout.addLayout(header)
         self.splitter = QSplitter(Qt.Orientation.Horizontal)
@@ -357,13 +372,20 @@ class MainWindow(QMainWindow):
         self.detail = detail
         plan = QHBoxLayout()
         self.mode = ComboBox()
-        self.mode.addItems(["Plan od teraz", "Według godzin agendy"])
-        self.mode.currentIndexChanged.connect(self.schedule_save)
+        self.mode.addItems(["Plan od teraz", "Według godzin agendy", "Start o wskazanej godzinie"])
+        self.mode.currentIndexChanged.connect(self.update_start_mode)
         plan.addWidget(self.mode)
         self.date = QDateEdit(QDate.currentDate())
         self.date.setCalendarPopup(True)
         self.date.setToolTip("Data rozpoczęcia harmonogramu godzinowego; kolejne punkty mogą wypaść po północy.")
         plan.addWidget(self.date)
+        self.scheduled_start = QDateTimeEdit(QDateTime.currentDateTime().addSecs(300))
+        self.scheduled_start.setDisplayFormat("yyyy-MM-dd HH:mm:ss")
+        self.scheduled_start.setCalendarPopup(True)
+        self.scheduled_start.setToolTip("Data i godzina rozpoczęcia całego planu")
+        self.scheduled_start.dateTimeChanged.connect(self.schedule_save)
+        plan.addWidget(self.scheduled_start)
+        self.update_start_mode()
         self.auto = QCheckBox("Automatyczne przejścia")
         self.auto.setChecked(True)
         self.auto.toggled.connect(self.set_auto)
@@ -404,7 +426,11 @@ class MainWindow(QMainWindow):
         layout.addLayout(bottom)
         self.audio_container = QVBoxLayout()
         layout.addLayout(self.audio_container)
-        self.setCentralWidget(root)
+        self.scroll = QScrollArea()
+        self.scroll.setWidgetResizable(True)
+        self.scroll.setFrameShape(QScrollArea.Shape.NoFrame)
+        self.scroll.setWidget(root)
+        self.setCentralWidget(self.scroll)
         self.statusBar().showMessage("Dane są zapisywane lokalnie.")
         version_label = label(version(), "muted")
         version_label.setToolTip("Commit: " + build_info()["commit"] + "\n* oznacza niezacommitowane zmiany.")
@@ -431,6 +457,12 @@ class MainWindow(QMainWindow):
         help_menu = self.menuBar().addMenu("Pomoc")
         action = help_menu.addAction("Obsługa i prywatność")
         action.triggered.connect(self.show_help)
+        for title, callback in [("Warunki użytkowania", self.show_terms),
+                                ("Licencja MIT", lambda: self.show_document("LICENSE", "Licencja MIT", True)),
+                                ("Polityka prywatności (PL)", lambda: self.show_document("PRIVACY.md", "Polityka prywatności (PL)")),
+                                ("Postaw mi kawę · Buy me a coffee", self.open_support)]:
+            action = help_menu.addAction(title)
+            action.triggered.connect(callback)
         shortcut = QShortcut(QKeySequence("Ctrl+Return"), self)
         shortcut.activated.connect(self.play_pause)
 
@@ -627,6 +659,7 @@ class MainWindow(QMainWindow):
         self.engine.auto = self.auto.isChecked()
         self.mode.setEnabled(True)
         self.date.setEnabled(True)
+        self.scheduled_start.setEnabled(True)
         self.selected_id = None
         self.last_snapshot = None
         self.last_marker_id = None
@@ -710,6 +743,12 @@ class MainWindow(QMainWindow):
         self.engine.auto = value
         self.schedule_save()
 
+    def update_start_mode(self, *_):
+        if hasattr(self, "scheduled_start"):
+            self.date.setVisible(self.mode.currentIndex() == 1)
+            self.scheduled_start.setVisible(self.mode.currentIndex() == 2)
+        self.schedule_save()
+
     def play_pause(self):
         if not self.meeting.items:
             self.paste_agenda()
@@ -722,9 +761,12 @@ class MainWindow(QMainWindow):
                     return
                 day = self.date.date().toPython()
                 epoch = (datetime(day.year, day.month, day.day) + timedelta(seconds=self.meeting.items[0].scheduled)).timestamp()
+            elif self.mode.currentIndex() == 2:
+                epoch = self.scheduled_start.dateTime().toSecsSinceEpoch()
             self.engine.start(epoch)
             self.mode.setEnabled(False)
             self.date.setEnabled(False)
+            self.scheduled_start.setEnabled(False)
             self.show_counter()
         else:
             self.engine.toggle_pause()
@@ -737,6 +779,7 @@ class MainWindow(QMainWindow):
             self.engine.auto = self.auto.isChecked()
             self.mode.setEnabled(True)
             self.date.setEnabled(True)
+            self.scheduled_start.setEnabled(True)
             self.last_marker_id = None
             self.schedule_save()
             self.tick()
@@ -759,13 +802,14 @@ class MainWindow(QMainWindow):
             title = self.meeting.items[snap.index].title
             states = {"ready": "Gotowy", "waiting": "Oczekiwanie", "running": "Trwa", "overtime": "Przekroczenie", "finished": "Koniec"}
             state = "Pauza" if snap.paused else states.get(snap.state, "")
-            plan = f"{state} · {title}"
+            plan = f"{tr(state)} · {title}"
             if self.engine.started and snap.state != "finished":
                 end = datetime.fromtimestamp(self.engine.predicted_end).strftime("%H:%M")
                 delay = self.engine.predicted_end - self.engine.baseline_end if self.engine.baseline_end else 0
-                plan += f" · koniec ok. {end} · względem planu {'+' if delay >= 0 else '−'}{format_time(abs(delay))}"
+                plan += tr(" · koniec ok. {end} · względem planu {delta}", end=end,
+                           delta=('+' if delay >= 0 else '−') + format_time(abs(delay)))
             self.plan_label.setText(plan)
-            self.tray.setToolTip(f"{state} · {format_time(snap.remaining)} · {title}"[:120])
+            self.tray.setToolTip(f"{tr(state)} · {format_time(snap.remaining)} · {title}"[:120])
             if self.last_snapshot and self.beep.isChecked() and self.last_snapshot.state == "running" and (snap.index != self.last_snapshot.index or snap.state in ("overtime", "finished")):
                 QApplication.beep()
             if self.recorder and self.recorder.active and self.engine.started:
@@ -805,7 +849,8 @@ class MainWindow(QMainWindow):
                            "baseline_end": self.engine.baseline_end, "gaps": self.engine.gaps},
                 "preferences": {"theme": self.theme.currentIndex(), "beep": self.beep.isChecked(),
                                 "pin": self.counter.pin.isChecked(), "compact": self.counter.compact.isChecked(),
-                                "mode": self.mode.currentIndex()},
+                                "mode": self.mode.currentIndex(), "language": language(),
+                                "scheduled_start": self.scheduled_start.dateTime().toString(Qt.DateFormat.ISODate)},
             })
             self.last_saved = time.monotonic()
             self.error_shown = False
@@ -840,7 +885,12 @@ class MainWindow(QMainWindow):
             self.beep.setChecked(bool(prefs.get("beep", False)))
             self.counter.pin.setChecked(bool(prefs.get("pin", False)))
             self.counter.compact.setChecked(bool(prefs.get("compact", False)))
-            self.mode.setCurrentIndex(max(0, min(1, int(prefs.get("mode", 0)))))
+            self.mode.setCurrentIndex(max(0, min(2, int(prefs.get("mode", 0)))))
+            saved_start = QDateTime.fromString(prefs.get("scheduled_start", ""), Qt.DateFormat.ISODate)
+            if saved_start.isValid():
+                self.scheduled_start.setDateTime(saved_start)
+            language_code = prefs.get("language", "pl")
+            self.language_combo.setCurrentIndex(list(LANGUAGES).index(language_code) if language_code in LANGUAGES else 0)
             self.auto.setChecked(bool(state.get("auto", True)))
             self.engine.auto = self.auto.isChecked()
             if not data.get("clean") and state.get("started"):
@@ -854,6 +904,7 @@ class MainWindow(QMainWindow):
                     raise ValueError("Nieprawidłowy plan końca.")
                 self.mode.setEnabled(False)
                 self.date.setEnabled(False)
+                self.scheduled_start.setEnabled(False)
             gaps = state.get("gaps", {})
             self.engine.gaps = {str(k): max(0, int(v)) for k, v in gaps.items()}
             self.refresh_list()
@@ -865,6 +916,7 @@ class MainWindow(QMainWindow):
             self.engine.auto = self.auto.isChecked()
             self.mode.setEnabled(True)
             self.date.setEnabled(True)
+            self.scheduled_start.setEnabled(True)
             backup = self.session_path.with_name(f"session-damaged-{time.time_ns()}.json")
             try:
                 self.session_path.rename(backup)
@@ -904,6 +956,7 @@ class MainWindow(QMainWindow):
         self.engine.auto = self.auto.isChecked()
         self.mode.setEnabled(True)
         self.date.setEnabled(True)
+        self.scheduled_start.setEnabled(True)
         self.selected_id = None
         self.last_snapshot = self.last_marker_id = None
         self.refresh_list()
@@ -954,9 +1007,10 @@ class MainWindow(QMainWindow):
             from .audio_ui import AudioPanel
             self.audio_panel = AudioPanel(self)
             self.audio_container.addWidget(self.audio_panel)
+            self.audio_panel.show()
         else:
             self.audio_panel.setVisible(not self.audio_panel.isVisible())
-        self.audio_toggle.setText("Nagrywanie i transkrypcja ▾" if self.audio_panel.isVisible() else "Nagrywanie i transkrypcja ▸")
+        self.audio_toggle.setText("Nagrywanie i transkrypcja ▾" if not self.audio_panel.isHidden() else "Nagrywanie i transkrypcja ▸")
 
     def show_screenshots(self):
         if self.screenshots_dialog is None:
@@ -968,6 +1022,11 @@ class MainWindow(QMainWindow):
 
     def change_theme(self, index):
         apply_theme(QApplication.instance(), ["system", "light", "dark"][index], self.system_palette)
+        self.schedule_save()
+
+    def change_language(self, _index):
+        set_language(self.language_combo.currentData())
+        self.tick()
         self.schedule_save()
 
     def system_scheme_changed(self, _scheme):
@@ -986,6 +1045,26 @@ class MainWindow(QMainWindow):
                      "Pauza i ręczne przejście przesuwają pozostały harmonogram również w trybie godzinowym. Restart pozwala ponownie zsynchronizować start z godzinami.\n\n"
                      "Pauza licznika nie zatrzymuje nagrania. Dane są lokalne. Transkrypcja wysyła wybrane audio do OpenAI wyłącznie po zatwierdzeniu. Koszt obciąża Twoje konto API.\n\n"
                      "Pliki README.md, PRIVACY.md i LICENSE są dołączone do programu. Licencja projektu: MIT.")
+
+    def show_terms(self):
+        from .documents import DocumentDialog, terms_text
+        DocumentDialog("Warunki użytkowania", terms_text(), self).exec()
+
+    def show_document(self, name, title, plain=False):
+        from .documents import DocumentDialog, document_text
+        try:
+            text = document_text(name)
+        except OSError:
+            self.message("Błąd pliku", "Nie można odczytać dokumentu pomocy.")
+            return
+        DocumentDialog(title, text, self, plain=plain).exec()
+
+    def open_support(self):
+        from PySide6.QtCore import QUrl
+        from PySide6.QtGui import QDesktopServices
+
+        from .documents import SUPPORT_URL
+        QDesktopServices.openUrl(QUrl(SUPPORT_URL))
 
     def message(self, title, text):
         box = QMessageBox(self)

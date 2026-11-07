@@ -86,8 +86,9 @@ def main():
     build.mkdir(parents=True, exist_ok=True)
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
     dirty = bool(subprocess.check_output(["git", "status", "--porcelain"], cwd=ROOT, text=True).strip())
+    number = int(subprocess.check_output(["git", "rev-list", "--count", "HEAD"], cwd=ROOT, text=True).strip())
     version_file = build / "build_info.json"
-    version_file.write_text(json.dumps({"commit": commit, "dirty": dirty}), encoding="utf-8")
+    version_file.write_text(json.dumps({"commit": commit, "number": number, "dirty": dirty}), encoding="utf-8")
     command = [sys.executable, "-m", "PyInstaller", "--noconfirm", "--onedir", "--windowed",
                "--name", name, "--distpath", str(output), "--workpath", str(build / "work"),
                "--specpath", str(build), "--collect-data", "meeting_timer",
@@ -95,7 +96,7 @@ def main():
     command += ["--add-data", f"{version_file}:meeting_timer"]
     if sys.platform.startswith("linux") and shutil.which("strip"):
         command.append("--strip")
-    for filename in ("README.md", "PRIVACY.md", "LICENSE", "THIRD_PARTY.md", "AGENTS.md", "ROADMAP.md"):
+    for filename in ("README.md", "PRIVACY.md", "LICENSE", "TERMS.md", "THIRD_PARTY.md", "AGENTS.md", "ROADMAP.md"):
         command += ["--add-data", f"{ROOT / filename}:."]
     exclusions = ["tkinter", "matplotlib", "pandas", "scipy", "IPython", "PySide6.QtWebEngineCore",
                   "PySide6.QtWebEngineWidgets", "PySide6.QtQml", "PySide6.QtQuick"]
@@ -138,9 +139,9 @@ def main():
     for translations in bundle.rglob("translations"):
         if translations.is_dir() and "PySide6" in str(translations):
             for translation in translations.glob("*.qm"):
-                if not translation.name.endswith("_pl.qm"):
+                if translation.name not in ("qtbase_pl.qm", "qtbase_de.qm", "qtbase_fr.qm"):
                     translation.unlink()
-    for filename in ("README.md", "PRIVACY.md", "LICENSE", "THIRD_PARTY.md", "AGENTS.md", "ROADMAP.md"):
+    for filename in ("README.md", "PRIVACY.md", "LICENSE", "TERMS.md", "THIRD_PARTY.md", "AGENTS.md", "ROADMAP.md"):
         shutil.copy2(ROOT / filename, docs / filename)
     shutil.copytree(ROOT / "docs", docs / "docs", dirs_exist_ok=True)
     package_licenses(docs / "third-party-licenses", full=not args.core)

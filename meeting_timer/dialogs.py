@@ -4,7 +4,6 @@ from PySide6.QtWidgets import (
     QDialog,
     QDialogButtonBox,
     QHBoxLayout,
-    QLabel,
     QPlainTextEdit,
     QPushButton,
     QTableWidget,
@@ -13,6 +12,8 @@ from PySide6.QtWidgets import (
 )
 
 from .engine import format_time
+from .i18n import Label as QLabel
+from .i18n import tr
 from .parser import ParseError, parse_agenda
 
 EXAMPLE = "Wprowadzenie — 5 min\nOmówienie wyników — 15 min\nDecyzje i następne kroki — 10 min"
@@ -33,7 +34,7 @@ class AgendaDialog(QDialog):
             note.setWordWrap(True)
             note.setObjectName("warning")
             layout.addWidget(note)
-        self.text = QPlainTextEdit(text or EXAMPLE)
+        self.text = QPlainTextEdit(text or tr(EXAMPLE))
         self.text.setMinimumHeight(150)
         layout.addWidget(self.text)
         self.preview = QTableWidget(0, 2)

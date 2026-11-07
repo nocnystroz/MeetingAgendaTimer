@@ -34,7 +34,7 @@ Interfejs i komunikaty domyślnie po polsku.
 - Lekka aplikacja: mały narzut pamięci, CPU, zależności i rozmiaru paczek.
 - Motyw ciemny, jasny i domyślny systemowy. Wybór zapamiętywany lokalnie;
   systemowy reaguje na zmianę schematu systemu, jeśli platforma go udostępnia.
-- Wersja aplikacji: skrócony hash commita, widoczny w tytułach okien i pasku
+- Wersja aplikacji: numer commita (git rev-list --count HEAD), widoczny w tytułach okien i pasku
   stanu; zapisany w paczce przenośnej podczas budowania.
 - Dokumentacja: `README.md`, `PRIVACY.md` i `LICENSE`; licencja MIT
   wybrana przez użytkownika.
@@ -198,3 +198,16 @@ Użytkownik zamówił polski, angielski, niemiecki i francuski. Najpierw ukończ
 poprawki kontrastu list, formatów agendy i rozmiaru trybu kompaktowego, następnie
 dodać języki i zbudować paczki pozostałych systemów. Repozytorium GitHub ma
 być publiczne; użytkownik zezwolił na publikację i opis repozytorium.
+
+## Dalsze wymagania użytkownika
+
+- Wybrana data i godzina rozpoczęcia całego planu, niezależnie od godzin w agendzie.
+- Automatyczne wykrywanie źródeł po otwarciu panelu audio; widoczne stany ładowania
+  i błędu, a nie pusta lista. Informacja o braku zapisanych transkrypcji i dostawcy API.
+- Warunki użytkowania w Pomocy oraz obowiązkowa akceptacja przy pierwszym
+  uruchomieniu. Nagrywając i robiąc zrzuty użytkownik oświadcza, że ma zgodę
+  uczestników i wymagane uprawnienia. Akceptacja lokalna, wersjonowana treścią.
+- W Pomocy: MIT, polityka prywatności i https://buymeacoffee.com/m.slawinski
+  (adres zweryfikowany w README projektu referencyjnego).
+- Repozytorium publiczne: https://github.com/nocnystroz/licznik-spotkaniowy.
+  Publikacja i budowanie Windows/macOS przez GitHub Actions są autoryzowane.

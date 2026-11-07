@@ -126,3 +126,14 @@ zatrzymuje cykl bez przełączenia na cały ekran. PNG mogą zawierać treści i
 aplikacji, dane osób trzecich i tytuły okien. Użytkownik wybiera źródło i odpowiada
 za to, co utrwala. Program nie analizuje, nie redaguje i nie szyfruje tych obrazów.
 Nie są wysyłane do API. Nagrywanie wideo pozostaje poza zakresem tej wersji.
+
+## Akceptacja warunków i wsparcie
+
+Przy pierwszym uruchomieniu wymagane jest zaakceptowanie TERMS.md, w tym
+potwierdzenie wymaganych zgód uczestników na nagrywanie i zrzuty. consent.json
+przechowuje lokalnie datę, język i skrót treści zaakceptowanej wersji. Nie wysyłamy
+akceptacji autorowi. Po zmianie warunków aplikacja poprosi o nią ponownie.
+
+Pomoc zawiera dobrowolny link Buy me a coffee, otwierany dopiero po kliknięciu
+w przeglądarce. Ta zewnętrzna witryna stosuje własne zasady prywatności.
+Nie wpływa to na działanie licznika i nie uruchamia telemetrii w aplikacji.

@@ -6,7 +6,7 @@ platform na podstawie samego kodu lub konfiguracji CI.
 ## Wykonane
 
 - Linux x86_64, X11/XFCE, host z glibc 2.43; Python 3.13.14, Qt/PySide6 6.12.0.
-- 38 testów logiki/GUI/audio/API/zrzutów przeszło. GUI testowano także na
+- 77 testów logiki/GUI/audio/API/zrzutów przeszło. GUI testowano także na
   offscreen; nie zastępuje to testów integracji z menedżerem okien.
 - Rzeczywisty panel i licznik wyświetlono na pulpicie Linux.
 - Zasobnik wykryty jako dostępny na tym pulpicie.
@@ -17,9 +17,25 @@ platform na podstawie samego kodu lub konfiguracji CI.
 - API sprawdzono na atrapach, w tym kody błędów, anulowanie przed wysyłką,
   limit i strumieniowanie. Nie użyto rzeczywistego klucza ani płatnego żądania.
 
-## W trakcie
+## Pomiary lokalne (wcześniejszy prototyp przed ostatnimi zmianami UI)
 
-Budowanie core/full i pomiary zasobów. Wyniki zostaną dopisane po wykonaniu.
+Linux x86_64 / XFCE / X11. Paczka uruchomiona z tymczasowego katalogu danych,
+poza źródłami i bez venv. Pomiar procesu przez /proc, 10 s spoczynku po starcie,
+z ciepłą pamięcią podręczną. Nie jest to pomiar godzinnej sesji/audio/API.
+
+| Wariant | Start | RAM RSS | CPU jednego rdzenia | Rozpakowana paczka |
+| --- | --- | --- | --- | --- |
+| Core | 0,42 s | 83,7 MiB | 0,6% | 148,9 MiB |
+| Full | 0,28 s | 95,3 MiB | 0,7% | 251,0 MiB |
+
+Paczki obu wariantów przeszły diagnostykę GUI, PDF i modułów poza źródłami.
+Po dodaniu języków, warunków i ostatnich poprawek paczki wymagają ponownego
+zbudowania. CI oraz aktualne artefakty: https://github.com/nocnystroz/licznik-spotkaniowy/actions.
+
+Na rzeczywistym pulpicie Linux potwierdzono włączanie/wyłączanie stanu ABOVE,
+minimalizację, schowanie do zasobnika i przywrócenie. Po poprawkach wykryto
+2 mikrofony i 4 źródła loopback (listy zawierają też opcję braku wyboru),
+a kompaktowy licznik miał rzeczywiste wymiary 260 × 138 px.
 
 ## Otwarte
 

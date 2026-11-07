@@ -1,0 +1,1777 @@
+{
+  "Licznik spotkaniowy": {
+    "en": "Meeting timer",
+    "de": "Besprechungs-Timer",
+    "fr": "Minuteur de réunion"
+  },
+  "Spotkanie pod kontrolą": {
+    "en": "Stay on agenda",
+    "de": "Besprechung unter Kontrolle",
+    "fr": "Réunion sous contrôle"
+  },
+  "Agenda, czas i ustalenia — w jednym miejscu.": {
+    "en": "Agenda, time and decisions in one place.",
+    "de": "Agenda, Zeit und Ergebnisse an einem Ort.",
+    "fr": "Ordre du jour, temps et décisions au même endroit."
+  },
+  "Motyw systemowy": {
+    "en": "System theme",
+    "de": "Systemdesign",
+    "fr": "Thème système"
+  },
+  "Jasny": {
+    "en": "Light",
+    "de": "Hell",
+    "fr": "Clair"
+  },
+  "Ciemny": {
+    "en": "Dark",
+    "de": "Dunkel",
+    "fr": "Sombre"
+  },
+  "Język interfejsu": {
+    "en": "Interface language",
+    "de": "Oberflächensprache",
+    "fr": "Langue de l’interface"
+  },
+  "Pokaż licznik": {
+    "en": "Show timer",
+    "de": "Timer anzeigen",
+    "fr": "Afficher le minuteur"
+  },
+  "Pokaż panel": {
+    "en": "Show presenter panel",
+    "de": "Steuerung anzeigen",
+    "fr": "Afficher le panneau"
+  },
+  "Panel prowadzącego": {
+    "en": "Presenter panel",
+    "de": "Moderationsbereich",
+    "fr": "Panneau de l’animateur"
+  },
+  "Licznik spotkaniowy · {version} · Panel prowadzącego": {
+    "en": "Meeting timer · {version} · Presenter panel",
+    "de": "Besprechungs-Timer · {version} · Moderation",
+    "fr": "Minuteur de réunion · {version} · Animation"
+  },
+  "Licznik · {version}": {
+    "en": "Timer · {version}",
+    "de": "Timer · {version}",
+    "fr": "Minuteur · {version}"
+  },
+  "Agenda": {
+    "en": "Agenda",
+    "de": "Agenda",
+    "fr": "Ordre du jour"
+  },
+  "Wklej": {
+    "en": "Paste",
+    "de": "Einfügen",
+    "fr": "Coller"
+  },
+  "Dodaj": {
+    "en": "Add",
+    "de": "Hinzufügen",
+    "fr": "Ajouter"
+  },
+  "Usuń": {
+    "en": "Remove",
+    "de": "Entfernen",
+    "fr": "Supprimer"
+  },
+  "Przejdź do wybranego punktu": {
+    "en": "Go to selected item",
+    "de": "Zum gewählten Punkt wechseln",
+    "fr": "Passer au point sélectionné"
+  },
+  "Tytuł punktu": {
+    "en": "Item title",
+    "de": "Titel des Punkts",
+    "fr": "Titre du point"
+  },
+  "Czas punktu (sekundy):": {
+    "en": "Item duration (seconds):",
+    "de": "Dauer des Punkts (Sekunden):",
+    "fr": "Durée du point (secondes) :"
+  },
+  "Notatki": {
+    "en": "Notes",
+    "de": "Notizen",
+    "fr": "Notes"
+  },
+  "Decyzje": {
+    "en": "Decisions",
+    "de": "Entscheidungen",
+    "fr": "Décisions"
+  },
+  "Zadania": {
+    "en": "Tasks",
+    "de": "Aufgaben",
+    "fr": "Tâches"
+  },
+  "Nagrania": {
+    "en": "Recordings",
+    "de": "Aufnahmen",
+    "fr": "Enregistrements"
+  },
+  "Zrzuty": {
+    "en": "Screenshots",
+    "de": "Bildschirmfotos",
+    "fr": "Captures"
+  },
+  "Przygotuj notatki przed spotkaniem lub zapisuj je w trakcie…": {
+    "en": "Prepare notes before the meeting or write them as you go…",
+    "de": "Notizen vor der Besprechung vorbereiten oder live ergänzen…",
+    "fr": "Préparez vos notes avant la réunion ou ajoutez-les pendant…"
+  },
+  "Jakie decyzje podjęliście?": {
+    "en": "What decisions did you make?",
+    "de": "Welche Entscheidungen wurden getroffen?",
+    "fr": "Quelles décisions avez-vous prises ?"
+  },
+  "Zadanie": {
+    "en": "Task",
+    "de": "Aufgabe",
+    "fr": "Tâche"
+  },
+  "Kto": {
+    "en": "Owner",
+    "de": "Verantwortlich",
+    "fr": "Responsable"
+  },
+  "Do kiedy": {
+    "en": "Due date",
+    "de": "Fällig am",
+    "fr": "Échéance"
+  },
+  "Dodaj zadanie": {
+    "en": "Add task",
+    "de": "Aufgabe hinzufügen",
+    "fr": "Ajouter une tâche"
+  },
+  "Usuń zadanie": {
+    "en": "Remove task",
+    "de": "Aufgabe entfernen",
+    "fr": "Supprimer la tâche"
+  },
+  "Znaczniki wybranego punktu w lokalnych nagraniach. Czas oznacza pozycję w pliku.": {
+    "en": "Markers for the selected item in local recordings. Time is the position in the file.",
+    "de": "Markierungen des gewählten Punkts in lokalen Aufnahmen. Die Zeit ist die Position in der Datei.",
+    "fr": "Repères du point sélectionné dans les enregistrements locaux. Le temps indique la position dans le fichier."
+  },
+  "Pozycja": {
+    "en": "Position",
+    "de": "Position",
+    "fr": "Position"
+  },
+  "Punkt": {
+    "en": "Item",
+    "de": "Punkt",
+    "fr": "Point"
+  },
+  "Plik": {
+    "en": "File",
+    "de": "Datei",
+    "fr": "Fichier"
+  },
+  "Otwórz wybrane nagranie": {
+    "en": "Open selected recording",
+    "de": "Gewählte Aufnahme öffnen",
+    "fr": "Ouvrir l’enregistrement sélectionné"
+  },
+  "Wykonano": {
+    "en": "Captured at",
+    "de": "Aufgenommen um",
+    "fr": "Prise à"
+  },
+  "Plik zrzutu wybranego punktu": {
+    "en": "Screenshot file for selected item",
+    "de": "Bilddatei des gewählten Punkts",
+    "fr": "Fichier de capture du point sélectionné"
+  },
+  "Otwórz wybrany zrzut": {
+    "en": "Open selected screenshot",
+    "de": "Gewähltes Bildschirmfoto öffnen",
+    "fr": "Ouvrir la capture sélectionnée"
+  },
+  "Plan od teraz": {
+    "en": "Start plan now",
+    "de": "Plan ab jetzt",
+    "fr": "Démarrer maintenant"
+  },
+  "Według godzin agendy": {
+    "en": "Follow agenda times",
+    "de": "Nach Agenda-Uhrzeiten",
+    "fr": "Suivre les horaires"
+  },
+  "Data rozpoczęcia harmonogramu godzinowego; kolejne punkty mogą wypaść po północy.": {
+    "en": "Date of the first scheduled item; later items may cross midnight.",
+    "de": "Datum des ersten Punkts; spätere Punkte können nach Mitternacht liegen.",
+    "fr": "Date du premier point ; les suivants peuvent passer minuit."
+  },
+  "Automatyczne przejścia": {
+    "en": "Automatic transitions",
+    "de": "Automatisch weiter",
+    "fr": "Transitions automatiques"
+  },
+  "Sygnał końca": {
+    "en": "End-of-item sound",
+    "de": "Signal am Punktende",
+    "fr": "Signal en fin de point"
+  },
+  "Sterowanie spotkaniem": {
+    "en": "Meeting controls",
+    "de": "Besprechung steuern",
+    "fr": "Commandes de réunion"
+  },
+  "Poprzedni": {
+    "en": "Previous",
+    "de": "Zurück",
+    "fr": "Précédent"
+  },
+  "Następny": {
+    "en": "Next",
+    "de": "Weiter",
+    "fr": "Suivant"
+  },
+  "Rozpocznij": {
+    "en": "Start",
+    "de": "Starten",
+    "fr": "Démarrer"
+  },
+  "Start": {
+    "en": "Start",
+    "de": "Start",
+    "fr": "Démarrer"
+  },
+  "Pauza": {
+    "en": "Pause",
+    "de": "Pause",
+    "fr": "Pause"
+  },
+  "Wznów": {
+    "en": "Resume",
+    "de": "Fortsetzen",
+    "fr": "Reprendre"
+  },
+  "+1 min": {
+    "en": "+1 min",
+    "de": "+1 Min.",
+    "fr": "+1 min"
+  },
+  "+5 min": {
+    "en": "+5 min",
+    "de": "+5 Min.",
+    "fr": "+5 min"
+  },
+  "Panel": {
+    "en": "Panel",
+    "de": "Steuerung",
+    "fr": "Panneau"
+  },
+  "Schowaj": {
+    "en": "Hide",
+    "de": "Ausblenden",
+    "fr": "Masquer"
+  },
+  "Pełny": {
+    "en": "Full",
+    "de": "Vollansicht",
+    "fr": "Complet"
+  },
+  "Zawsze na wierzchu": {
+    "en": "Always on top",
+    "de": "Immer im Vordergrund",
+    "fr": "Toujours au premier plan"
+  },
+  "Kompaktowy": {
+    "en": "Compact",
+    "de": "Kompakt",
+    "fr": "Compact"
+  },
+  "Przywróć pełny widok licznika": {
+    "en": "Restore full timer view",
+    "de": "Vollständige Timeransicht wiederherstellen",
+    "fr": "Rétablir le minuteur complet"
+  },
+  "GOTOWY DO SPOTKANIA": {
+    "en": "READY FOR THE MEETING",
+    "de": "BEREIT FÜR DIE BESPRECHUNG",
+    "fr": "PRÊT POUR LA RÉUNION"
+  },
+  "PUNKT {number} / {total}": {
+    "en": "ITEM {number} / {total}",
+    "de": "PUNKT {number} / {total}",
+    "fr": "POINT {number} / {total}"
+  },
+  "Wklej agendę w panelu prowadzącego": {
+    "en": "Paste an agenda in the presenter panel",
+    "de": "Agenda im Moderationsbereich einfügen",
+    "fr": "Collez l’ordre du jour dans le panneau"
+  },
+  "Do końca punktu": {
+    "en": "Time left for this item",
+    "de": "Bis zum Ende des Punkts",
+    "fr": "Temps restant pour ce point"
+  },
+  "Do początku punktu": {
+    "en": "Until this item starts",
+    "de": "Bis zum Beginn des Punkts",
+    "fr": "Avant le début du point"
+  },
+  "Gotowy do startu": {
+    "en": "Ready to start",
+    "de": "Bereit zum Start",
+    "fr": "Prêt à démarrer"
+  },
+  "Przekroczony czas": {
+    "en": "Overtime",
+    "de": "Zeit überschritten",
+    "fr": "Temps dépassé"
+  },
+  "Spotkanie zakończone": {
+    "en": "Meeting finished",
+    "de": "Besprechung beendet",
+    "fr": "Réunion terminée"
+  },
+  "PAUZA · {state}": {
+    "en": "PAUSED · {state}",
+    "de": "PAUSE · {state}",
+    "fr": "PAUSE · {state}"
+  },
+  "Dalej: {title}": {
+    "en": "Next: {title}",
+    "de": "Danach: {title}",
+    "fr": "Ensuite : {title}"
+  },
+  "Ostatni punkt agendy": {
+    "en": "Last agenda item",
+    "de": "Letzter Agendapunkt",
+    "fr": "Dernier point"
+  },
+  "Gotowy": {
+    "en": "Ready",
+    "de": "Bereit",
+    "fr": "Prêt"
+  },
+  "Oczekiwanie": {
+    "en": "Waiting",
+    "de": "Warten",
+    "fr": "En attente"
+  },
+  "Trwa": {
+    "en": "In progress",
+    "de": "Läuft",
+    "fr": "En cours"
+  },
+  "Przekroczenie": {
+    "en": "Overtime",
+    "de": "Überschreitung",
+    "fr": "Dépassement"
+  },
+  "Koniec": {
+    "en": "Finished",
+    "de": "Beendet",
+    "fr": "Terminé"
+  },
+  " · koniec ok. {end} · względem planu {delta}": {
+    "en": " · ends about {end} · vs. original plan {delta}",
+    "de": " · Ende ca. {end} · gegenüber Plan {delta}",
+    "fr": " · fin vers {end} · écart au plan {delta}"
+  },
+  "Wklej agendę, aby zacząć.": {
+    "en": "Paste an agenda to begin.",
+    "de": "Zum Starten eine Agenda einfügen.",
+    "fr": "Collez un ordre du jour pour commencer."
+  },
+  "Nagrywanie i transkrypcja ▸": {
+    "en": "Recording and transcription ▸",
+    "de": "Aufnahme und Transkription ▸",
+    "fr": "Enregistrement et transcription ▸"
+  },
+  "Nagrywanie i transkrypcja ▾": {
+    "en": "Recording and transcription ▾",
+    "de": "Aufnahme und Transkription ▾",
+    "fr": "Enregistrement et transcription ▾"
+  },
+  "Zrzuty…": {
+    "en": "Screenshots…",
+    "de": "Bildschirmfotos…",
+    "fr": "Captures…"
+  },
+  "Eksport": {
+    "en": "Export",
+    "de": "Export",
+    "fr": "Exporter"
+  },
+  "Schowaj do zasobnika": {
+    "en": "Hide to tray",
+    "de": "Im Infobereich ausblenden",
+    "fr": "Masquer dans la zone de notification"
+  },
+  "Dane są zapisywane lokalnie.": {
+    "en": "Data is saved locally.",
+    "de": "Daten werden lokal gespeichert.",
+    "fr": "Les données sont enregistrées localement."
+  },
+  "Zapisywanie…": {
+    "en": "Saving…",
+    "de": "Speichern…",
+    "fr": "Enregistrement…"
+  },
+  "Zapisano lokalnie · Ctrl+Enter: start / pauza": {
+    "en": "Saved locally · Ctrl+Enter: start / pause",
+    "de": "Lokal gespeichert · Strg+Enter: Start / Pause",
+    "fr": "Enregistré localement · Ctrl+Entrée : démarrer / pause"
+  },
+  "Spotkanie": {
+    "en": "Meeting",
+    "de": "Besprechung",
+    "fr": "Réunion"
+  },
+  "Wklej agendę…": {
+    "en": "Paste agenda…",
+    "de": "Agenda einfügen…",
+    "fr": "Coller l’ordre du jour…"
+  },
+  "Otwórz plik spotkania…": {
+    "en": "Open meeting file…",
+    "de": "Besprechungsdatei öffnen…",
+    "fr": "Ouvrir un fichier de réunion…"
+  },
+  "Zapisz kopię spotkania…": {
+    "en": "Save meeting copy…",
+    "de": "Kopie der Besprechung speichern…",
+    "fr": "Enregistrer une copie…"
+  },
+  "Zapisz szablon…": {
+    "en": "Save template…",
+    "de": "Vorlage speichern…",
+    "fr": "Enregistrer un modèle…"
+  },
+  "Wczytaj szablon…": {
+    "en": "Load template…",
+    "de": "Vorlage laden…",
+    "fr": "Charger un modèle…"
+  },
+  "Eksport podsumowania…": {
+    "en": "Export summary…",
+    "de": "Zusammenfassung exportieren…",
+    "fr": "Exporter le compte rendu…"
+  },
+  "Restart odliczania…": {
+    "en": "Reset timer…",
+    "de": "Timer zurücksetzen…",
+    "fr": "Réinitialiser le minuteur…"
+  },
+  "Otwórz katalog danych": {
+    "en": "Open data folder",
+    "de": "Datenordner öffnen",
+    "fr": "Ouvrir le dossier des données"
+  },
+  "Zakończ": {
+    "en": "Quit",
+    "de": "Beenden",
+    "fr": "Quitter"
+  },
+  "Pomoc": {
+    "en": "Help",
+    "de": "Hilfe",
+    "fr": "Aide"
+  },
+  "Obsługa i prywatność": {
+    "en": "Usage and privacy",
+    "de": "Bedienung und Datenschutz",
+    "fr": "Utilisation et confidentialité"
+  },
+  "Start / pauza / wznów": {
+    "en": "Start / pause / resume",
+    "de": "Start / Pause / Fortsetzen",
+    "fr": "Démarrer / pause / reprendre"
+  },
+  "Zrzuty ekranu…": {
+    "en": "Screenshots…",
+    "de": "Bildschirmfotos…",
+    "fr": "Captures d’écran…"
+  },
+  "Wklej agendę": {
+    "en": "Paste agenda",
+    "de": "Agenda einfügen",
+    "fr": "Coller l’ordre du jour"
+  },
+  "Rozpoznany punkt": {
+    "en": "Parsed item",
+    "de": "Erkannter Punkt",
+    "fr": "Point reconnu"
+  },
+  "Czas": {
+    "en": "Duration",
+    "de": "Dauer",
+    "fr": "Durée"
+  },
+  "Sprawdź podgląd": {
+    "en": "Check preview",
+    "de": "Vorschau prüfen",
+    "fr": "Vérifier l’aperçu"
+  },
+  "Zastosuj agendę": {
+    "en": "Apply agenda",
+    "de": "Agenda übernehmen",
+    "fr": "Appliquer l’ordre du jour"
+  },
+  "Tekst zmieniony — sprawdź podgląd przed zastosowaniem.": {
+    "en": "Text changed — check the preview before applying.",
+    "de": "Text geändert — vor dem Übernehmen Vorschau prüfen.",
+    "fr": "Texte modifié : vérifiez l’aperçu avant de l’appliquer."
+  },
+  "{count} punktów · łącznie {time}": {
+    "en": "{count} items · total {time}",
+    "de": "{count} Punkte · insgesamt {time}",
+    "fr": "{count} points · total {time}"
+  },
+  "Zakres eksportu": {
+    "en": "Export contents",
+    "de": "Exportumfang",
+    "fr": "Contenu de l’export"
+  },
+  "Transkrypcje": {
+    "en": "Transcripts",
+    "de": "Transkriptionen",
+    "fr": "Transcriptions"
+  },
+  "Nowy punkt": {
+    "en": "New item",
+    "de": "Neuer Punkt",
+    "fr": "Nouveau point"
+  },
+  "Tytuł:": {
+    "en": "Title:",
+    "de": "Titel:",
+    "fr": "Titre :"
+  },
+  "Bez tytułu": {
+    "en": "Untitled",
+    "de": "Ohne Titel",
+    "fr": "Sans titre"
+  },
+  "Zmiana kolejności": {
+    "en": "Reordering",
+    "de": "Reihenfolge ändern",
+    "fr": "Réorganisation"
+  },
+  "Usuwanie punktu": {
+    "en": "Removing item",
+    "de": "Punkt entfernen",
+    "fr": "Suppression du point"
+  },
+  "Usuń bieżący punkt": {
+    "en": "Remove current item",
+    "de": "Aktuellen Punkt entfernen",
+    "fr": "Supprimer le point actuel"
+  },
+  "Usuń punkt": {
+    "en": "Remove item",
+    "de": "Punkt entfernen",
+    "fr": "Supprimer le point"
+  },
+  "Brak godzin": {
+    "en": "No scheduled times",
+    "de": "Keine Uhrzeiten",
+    "fr": "Aucun horaire"
+  },
+  "Restart odliczania": {
+    "en": "Reset timer",
+    "de": "Timer zurücksetzen",
+    "fr": "Réinitialiser le minuteur"
+  },
+  "Brak nagrania": {
+    "en": "Recording not found",
+    "de": "Aufnahme nicht gefunden",
+    "fr": "Enregistrement introuvable"
+  },
+  "Brak zrzutu": {
+    "en": "Screenshot not found",
+    "de": "Bildschirmfoto nicht gefunden",
+    "fr": "Capture introuvable"
+  },
+  "Błąd pliku": {
+    "en": "File error",
+    "de": "Dateifehler",
+    "fr": "Erreur de fichier"
+  },
+  "Błąd zapisu": {
+    "en": "Save error",
+    "de": "Speicherfehler",
+    "fr": "Erreur d’enregistrement"
+  },
+  "Błąd eksportu": {
+    "en": "Export error",
+    "de": "Exportfehler",
+    "fr": "Erreur d’export"
+  },
+  "Błąd odzyskiwania": {
+    "en": "Recovery error",
+    "de": "Wiederherstellungsfehler",
+    "fr": "Erreur de récupération"
+  },
+  "Nie można zapisać": {
+    "en": "Cannot save",
+    "de": "Speichern nicht möglich",
+    "fr": "Enregistrement impossible"
+  },
+  "Odzyskać spotkanie?": {
+    "en": "Recover meeting?",
+    "de": "Besprechung wiederherstellen ?",
+    "fr": "Récupérer la réunion ?"
+  },
+  "Otwórz spotkanie lub szablon": {
+    "en": "Open meeting or template",
+    "de": "Besprechung oder Vorlage öffnen",
+    "fr": "Ouvrir une réunion ou un modèle"
+  },
+  "Zastąpić spotkanie?": {
+    "en": "Replace meeting?",
+    "de": "Besprechung ersetzen?",
+    "fr": "Remplacer la réunion ?"
+  },
+  "Zapisz kopię spotkania": {
+    "en": "Save meeting copy",
+    "de": "Kopie der Besprechung speichern",
+    "fr": "Enregistrer une copie"
+  },
+  "Szablon": {
+    "en": "Template",
+    "de": "Vorlage",
+    "fr": "Modèle"
+  },
+  "Zapisz szablon": {
+    "en": "Save template",
+    "de": "Vorlage speichern",
+    "fr": "Enregistrer le modèle"
+  },
+  "Eksport podsumowania": {
+    "en": "Export summary",
+    "de": "Zusammenfassung exportieren",
+    "fr": "Exporter le compte rendu"
+  },
+  "Podsumowanie spotkania": {
+    "en": "Meeting summary",
+    "de": "Besprechungszusammenfassung",
+    "fr": "Compte rendu de réunion"
+  },
+  "Wyeksportowano podsumowanie.": {
+    "en": "Summary exported.",
+    "de": "Zusammenfassung exportiert.",
+    "fr": "Compte rendu exporté."
+  },
+  "Zapisz transkrypcję": {
+    "en": "Save transcript",
+    "de": "Transkription speichern",
+    "fr": "Enregistrer la transcription"
+  },
+  "Trwa zadanie": {
+    "en": "Task in progress",
+    "de": "Aufgabe läuft",
+    "fr": "Tâche en cours"
+  },
+  "Trwa zapis zrzutu": {
+    "en": "Saving screenshot",
+    "de": "Bildschirmfoto wird gespeichert",
+    "fr": "Enregistrement de la capture"
+  },
+  "Trwa zapisywanie zrzutów": {
+    "en": "Screenshots in progress",
+    "de": "Bildschirmfotos werden gespeichert",
+    "fr": "Captures en cours"
+  },
+  "Zamknąć program?": {
+    "en": "Quit application?",
+    "de": "Anwendung beenden?",
+    "fr": "Quitter l’application ?"
+  },
+  "Zasobnik niedostępny — okno zminimalizowano do paska.": {
+    "en": "System tray unavailable — minimized to taskbar.",
+    "de": "Infobereich nicht verfügbar — in die Taskleiste minimiert.",
+    "fr": "Zone de notification indisponible : fenêtre réduite dans la barre des tâches."
+  },
+  "Licznik działa w tle": {
+    "en": "Timer is running in the background",
+    "de": "Timer läuft im Hintergrund",
+    "fr": "Le minuteur continue en arrière-plan"
+  },
+  "Kliknij ikonę zegara w zasobniku, aby wrócić.": {
+    "en": "Click the clock icon in the tray to return.",
+    "de": "Zum Zurückkehren das Uhrsymbol im Infobereich anklicken.",
+    "fr": "Cliquez sur l’horloge dans la zone de notification pour revenir."
+  },
+  "Program już działa": {
+    "en": "Application already running",
+    "de": "Anwendung läuft bereits",
+    "fr": "L’application est déjà ouverte"
+  },
+  "Brak dostępu do danych": {
+    "en": "Data folder unavailable",
+    "de": "Datenordner nicht verfügbar",
+    "fr": "Dossier des données inaccessible"
+  },
+  "Zadanie niedokończone": {
+    "en": "Task not completed",
+    "de": "Aufgabe nicht abgeschlossen",
+    "fr": "Tâche inachevée"
+  },
+  "Nagrywanie lokalne": {
+    "en": "Local recording",
+    "de": "Lokale Aufnahme",
+    "fr": "Enregistrement local"
+  },
+  "Opcjonalna transkrypcja API": {
+    "en": "Optional API transcription",
+    "de": "Optionale API-Transkription",
+    "fr": "Transcription API facultative"
+  },
+  "Mikrofon: nie wybrano": {
+    "en": "Microphone: not selected",
+    "de": "Mikrofon: nicht gewählt",
+    "fr": "Microphone : non sélectionné"
+  },
+  "Spotkanie: nie wybrano": {
+    "en": "Meeting audio: not selected",
+    "de": "Besprechungston: nicht gewählt",
+    "fr": "Son de réunion : non sélectionné"
+  },
+  "Dźwięk spotkania: nie wybrano": {
+    "en": "Meeting audio: not selected",
+    "de": "Besprechungston: nicht gewählt",
+    "fr": "Son de réunion : non sélectionné"
+  },
+  "Wykryj źródła": {
+    "en": "Detect sources",
+    "de": "Quellen erkennen",
+    "fr": "Détecter les sources"
+  },
+  "Miks mono": {
+    "en": "Mono mix",
+    "de": "Mono-Mix",
+    "fr": "Mixage mono"
+  },
+  "Rozdzielone kanały": {
+    "en": "Separate channels",
+    "de": "Getrennte Kanäle",
+    "fr": "Canaux séparés"
+  },
+  "Mikrofon ×": {
+    "en": "Microphone ×",
+    "de": "Mikrofon ×",
+    "fr": "Microphone ×"
+  },
+  "Spotkanie ×": {
+    "en": "Meeting ×",
+    "de": "Besprechung ×",
+    "fr": "Réunion ×"
+  },
+  "Poziom %p%": {
+    "en": "Level %p%",
+    "de": "Pegel %p%",
+    "fr": "Niveau %p%"
+  },
+  "Katalog…": {
+    "en": "Folder…",
+    "de": "Ordner…",
+    "fr": "Dossier…"
+  },
+  "Katalog nagrań": {
+    "en": "Recording folder",
+    "de": "Aufnahmeordner",
+    "fr": "Dossier des enregistrements"
+  },
+  "Test źródeł (3 s)": {
+    "en": "Test sources (3 s)",
+    "de": "Quellen testen (3 s)",
+    "fr": "Tester les sources (3 s)"
+  },
+  "Nagraj": {
+    "en": "Record",
+    "de": "Aufnehmen",
+    "fr": "Enregistrer"
+  },
+  "Pauza nagrania": {
+    "en": "Pause recording",
+    "de": "Aufnahme pausieren",
+    "fr": "Suspendre l’enregistrement"
+  },
+  "Wznów nagranie": {
+    "en": "Resume recording",
+    "de": "Aufnahme fortsetzen",
+    "fr": "Reprendre l’enregistrement"
+  },
+  "Zatrzymaj i zapisz": {
+    "en": "Stop and save",
+    "de": "Stoppen und speichern",
+    "fr": "Arrêter et enregistrer"
+  },
+  "Nowy segment / źródła": {
+    "en": "New segment / sources",
+    "de": "Neues Segment / Quellen",
+    "fr": "Nouveau segment / sources"
+  },
+  "Klucz OpenAI API — tylko bieżąca sesja": {
+    "en": "OpenAI API key — this session only",
+    "de": "OpenAI-API-Schlüssel — nur diese Sitzung",
+    "fr": "Clé API OpenAI : session actuelle uniquement"
+  },
+  "Wczytaj z magazynu": {
+    "en": "Load stored key",
+    "de": "Gespeicherten Schlüssel laden",
+    "fr": "Charger la clé enregistrée"
+  },
+  "Zapamiętaj klucz": {
+    "en": "Remember key",
+    "de": "Schlüssel speichern",
+    "fr": "Mémoriser la clé"
+  },
+  "Usuń klucz": {
+    "en": "Remove key",
+    "de": "Schlüssel entfernen",
+    "fr": "Supprimer la clé"
+  },
+  "Wybierz zakończone nagranie": {
+    "en": "Select a completed recording",
+    "de": "Abgeschlossene Aufnahme wählen",
+    "fr": "Sélectionner un enregistrement terminé"
+  },
+  "Wybierz plik…": {
+    "en": "Choose file…",
+    "de": "Datei wählen…",
+    "fr": "Choisir un fichier…"
+  },
+  "Transkrybuj…": {
+    "en": "Transcribe…",
+    "de": "Transkribieren…",
+    "fr": "Transcrire…"
+  },
+  "Anuluj": {
+    "en": "Cancel",
+    "de": "Abbrechen",
+    "fr": "Annuler"
+  },
+  "Wynik transkrypcji. Możesz go poprawić i wyeksportować z podsumowaniem.": {
+    "en": "Transcription result. Edit it and export it with the summary.",
+    "de": "Transkriptionsergebnis. Bearbeiten und mit der Zusammenfassung exportieren.",
+    "fr": "Résultat de transcription. Modifiez-le et exportez-le avec le compte rendu."
+  },
+  "Przypisz transkrypcję do wybranego punktu": {
+    "en": "Assign transcript to selected item",
+    "de": "Transkription dem gewählten Punkt zuordnen",
+    "fr": "Associer la transcription au point sélectionné"
+  },
+  "Eksport TXT": {
+    "en": "Export TXT",
+    "de": "TXT exportieren",
+    "fr": "Exporter en TXT"
+  },
+  "OpenAI · {model} · bez automatycznej wysyłki i ponawiania": {
+    "en": "OpenAI · {model} · no automatic uploads or retries",
+    "de": "OpenAI · {model} · keine automatische Übertragung oder Wiederholung",
+    "fr": "OpenAI · {model} · sans envoi ni nouvelle tentative automatique"
+  },
+  "Wykryto {count} źródeł. Wybierz urządzenia i przetestuj poziom przed nagraniem.": {
+    "en": "Found {count} sources. Select devices and test levels before recording.",
+    "de": "{count} Quellen erkannt. Geräte wählen und Pegel vor der Aufnahme testen.",
+    "fr": "{count} sources détectées. Choisissez les appareils et testez le niveau avant d’enregistrer."
+  },
+  "Wejście: {name}": {
+    "en": "Input: {name}",
+    "de": "Eingang: {name}",
+    "fr": "Entrée : {name}"
+  },
+  "Rozpocząć nagranie?": {
+    "en": "Start recording?",
+    "de": "Aufnahme starten?",
+    "fr": "Démarrer l’enregistrement ?"
+  },
+  "Nowy segment": {
+    "en": "New segment",
+    "de": "Neues Segment",
+    "fr": "Nouveau segment"
+  },
+  "Zatrzymywanie — trwa zamykanie pliku. Poczekaj przed wyjściem.": {
+    "en": "Stopping — closing the file. Please wait before quitting.",
+    "de": "Wird gestoppt — Datei wird geschlossen. Vor dem Beenden warten.",
+    "fr": "Arrêt : fermeture du fichier en cours. Attendez avant de quitter."
+  },
+  "Test audio": {
+    "en": "Audio test",
+    "de": "Audiotest",
+    "fr": "Test audio"
+  },
+  "● NAGRYWANIE": {
+    "en": "● RECORDING",
+    "de": "● AUFNAHME",
+    "fr": "● ENREGISTREMENT"
+  },
+  "{status} {time} · otwieranie źródeł…": {
+    "en": "{status} {time} · opening sources…",
+    "de": "{status} {time} · Quellen werden geöffnet…",
+    "fr": "{status} {time} · ouverture des sources…"
+  },
+  "{status} {time} · plik lokalny": {
+    "en": "{status} {time} · local file",
+    "de": "{status} {time} · lokale Datei",
+    "fr": "{status} {time} · fichier local"
+  },
+  "Zapisano lokalnie: {file}": {
+    "en": "Saved locally: {file}",
+    "de": "Lokal gespeichert: {file}",
+    "fr": "Enregistré localement : {file}"
+  },
+  "Zakończone nagranie": {
+    "en": "Completed recording",
+    "de": "Abgeschlossene Aufnahme",
+    "fr": "Enregistrement terminé"
+  },
+  "Potwierdź wysyłkę audio": {
+    "en": "Confirm audio upload",
+    "de": "Audioübertragung bestätigen",
+    "fr": "Confirmer l’envoi audio"
+  },
+  "Przygotowanie i wysyłanie… bez automatycznych powtórzeń": {
+    "en": "Preparing and uploading… no automatic retries",
+    "de": "Vorbereitung und Übertragung… keine automatische Wiederholung",
+    "fr": "Préparation et envoi… sans nouvelle tentative automatique"
+  },
+  "Gotowe · fragmenty bez znaczników API nie są automatycznie przypisywane do punktów.": {
+    "en": "Done · parts without API timestamps are not automatically assigned to agenda items.",
+    "de": "Fertig · Teile ohne API-Zeitmarken werden nicht automatisch Agendapunkten zugeordnet.",
+    "fr": "Terminé : les passages sans repères API ne sont pas automatiquement associés aux points."
+  },
+  "Zadanie niedokończone. Zachowano odebrane fragmenty; nie ponowiono żądania.": {
+    "en": "Task incomplete. Received parts were kept; the request was not retried.",
+    "de": "Aufgabe unvollständig. Empfangene Teile gespeichert; keine Wiederholung der Anfrage.",
+    "fr": "Tâche inachevée. Les parties reçues sont conservées ; la requête n’a pas été répétée."
+  },
+  "Anulowanie… trwa kończenie bieżącego zadania.": {
+    "en": "Cancelling… finishing the current task.",
+    "de": "Abbruch… laufende Aufgabe wird beendet.",
+    "fr": "Annulation : fin de la tâche en cours."
+  },
+  "Ręcznie przypisano do: {title}": {
+    "en": "Manually assigned to: {title}",
+    "de": "Manuell zugeordnet: {title}",
+    "fr": "Associé manuellement à : {title}"
+  },
+  "Automatyczne zrzuty ekranu lub okna": {
+    "en": "Automatic screen or window screenshots",
+    "de": "Automatische Bildschirm- oder Fensterfotos",
+    "fr": "Captures automatiques d’écran ou de fenêtre"
+  },
+  "Wykryj okna": {
+    "en": "Detect windows",
+    "de": "Fenster erkennen",
+    "fr": "Détecter les fenêtres"
+  },
+  "Co (sekundy):": {
+    "en": "Interval (seconds):",
+    "de": "Intervall (Sekunden):",
+    "fr": "Intervalle (secondes) :"
+  },
+  "Limit zrzutów:": {
+    "en": "Screenshot limit:",
+    "de": "Bildlimit:",
+    "fr": "Limite de captures :"
+  },
+  "Katalog zrzutów": {
+    "en": "Screenshot folder",
+    "de": "Bildschirmfoto-Ordner",
+    "fr": "Dossier des captures"
+  },
+  "Rozpocznij zrzuty": {
+    "en": "Start screenshots",
+    "de": "Bildaufnahme starten",
+    "fr": "Démarrer les captures"
+  },
+  "Zatrzymaj": {
+    "en": "Stop",
+    "de": "Stoppen",
+    "fr": "Arrêter"
+  },
+  "Otwórz katalog": {
+    "en": "Open folder",
+    "de": "Ordner öffnen",
+    "fr": "Ouvrir le dossier"
+  },
+  "Rozpocząć automatyczne zrzuty?": {
+    "en": "Start automatic screenshots?",
+    "de": "Automatische Bildschirmfotos starten?",
+    "fr": "Démarrer les captures automatiques ?"
+  },
+  "● Zrzuty aktywne": {
+    "en": "● Screenshots active",
+    "de": "● Bildschirmfotos aktiv",
+    "fr": "● Captures actives"
+  },
+  "Błąd zrzutów": {
+    "en": "Screenshot error",
+    "de": "Bildaufnahmefehler",
+    "fr": "Erreur de capture"
+  },
+  "Ekran {number}: {name}": {
+    "en": "Screen {number}: {name}",
+    "de": "Bildschirm {number}: {name}",
+    "fr": "Écran {number} : {name}"
+  },
+  "Okno: {title}": {
+    "en": "Window: {title}",
+    "de": "Fenster: {title}",
+    "fr": "Fenêtre : {title}"
+  },
+  "Osiągnięto limit: {count} zrzutów. Zapis zatrzymany.": {
+    "en": "Limit reached: {count} screenshots. Capture stopped.",
+    "de": "Limit erreicht: {count} Bilder. Aufnahme gestoppt.",
+    "fr": "Limite atteinte : {count} captures. Arrêt de l’enregistrement."
+  },
+  "Zapisano {count} / {limit} · {file}": {
+    "en": "Saved {count} / {limit} · {file}",
+    "de": "Gespeichert {count} / {limit} · {file}",
+    "fr": "Enregistré {count} / {limit} · {file}"
+  },
+  " · Zrzuty co {seconds} s": {
+    "en": " · screenshots every {seconds} s",
+    "de": " · Bildschirmfotos alle {seconds} s",
+    "fr": " · captures toutes les {seconds} s"
+  },
+  "Źródło: {name}": {
+    "en": "Source: {name}",
+    "de": "Quelle: {name}",
+    "fr": "Source : {name}"
+  },
+  "Wiersz {number}: {error}": {
+    "en": "Line {number}: {error}",
+    "de": "Zeile {number}: {error}",
+    "fr": "Ligne {number} : {error}"
+  },
+  "Wklej tekst, tabelę z Excela/Sheets, CSV lub Markdown. Przykłady: Tytuł — 15 minut; 10:00–10:15 Tytuł; Tytuł (00:15:00). Godziny rozpoczęcia wymagają końcowego czasu lub wiersza HH:MM Koniec.": {
+    "en": "Paste text, an Excel/Sheets table, CSV or Markdown. Examples: Title — 15 minutes; 10:00–10:15 Title; Title (00:15:00). A list of start times needs a final duration or an HH:MM End row.",
+    "de": "Text, Excel-/Sheets-Tabelle, CSV oder Markdown einfügen. Beispiele: Titel — 15 Minuten; 10:00–10:15 Titel; Titel (00:15:00). Bei Startzeiten eine letzte Dauer oder eine Zeile HH:MM Ende angeben.",
+    "fr": "Collez du texte, un tableau Excel/Sheets, du CSV ou du Markdown. Exemples : Titre — 15 minutes ; 10:00–10:15 Titre ; Titre (00:15:00). Les heures de début nécessitent une dernière durée ou une ligne HH:MM Fin."
+  },
+  "Nowy plan zastąpi bieżącą agendę. Stare punkty i ich notatki zostaną zachowane w danych tej sesji. Licznik zostanie zatrzymany; nagranie trwa niezależnie.": {
+    "en": "The new plan will replace the agenda. Old items and notes remain in this session's data. The timer will stop; recording continues independently.",
+    "de": "Der neue Plan ersetzt die Agenda. Bisherige Punkte und Notizen bleiben in den Sitzungsdaten. Der Timer stoppt; die Aufnahme läuft unabhängig weiter.",
+    "fr": "Le nouveau plan remplace l’ordre du jour. Les anciens points et notes restent dans les données de cette session. Le minuteur s’arrête ; l’enregistrement continue indépendamment."
+  },
+  "W trakcie można przestawiać przyszłe punkty. Bieżący i przebyte punkty zachowują kolejność; możesz edytować ich treść lub do nich przejść.": {
+    "en": "During a meeting, only future items can be reordered. Current and past items keep their order; you can edit or revisit them.",
+    "de": "Während der Besprechung lassen sich nur zukünftige Punkte umordnen. Aktuelle und vergangene Punkte behalten ihre Reihenfolge; sie können bearbeitet oder erneut aufgerufen werden.",
+    "fr": "Pendant la réunion, seuls les points à venir peuvent être réorganisés. Les points actuels et passés gardent leur ordre ; vous pouvez les modifier ou y revenir."
+  },
+  "Najpierw zatrzymaj spotkanie (Restart) lub dodaj punkt, który ma go zastąpić.": {
+    "en": "First reset the meeting or add an item to replace this one.",
+    "de": "Zuerst die Besprechung zurücksetzen oder einen Ersatzpunkt hinzufügen.",
+    "fr": "Réinitialisez d’abord la réunion ou ajoutez un point de remplacement."
+  },
+  "Wybierz następcę. Notatki usuniętego punktu pozostaną w pliku sesji.": {
+    "en": "Choose the next item. Notes from the removed item remain in the session file.",
+    "de": "Nachfolgepunkt wählen. Notizen des entfernten Punkts bleiben in der Sitzungsdatei.",
+    "fr": "Choisissez le point suivant. Les notes du point supprimé restent dans le fichier de session."
+  },
+  "Usunąć punkt z agendy? Jego dane pozostaną w pliku bieżącej sesji.": {
+    "en": "Remove this item from the agenda? Its data will remain in the current session file.",
+    "de": "Diesen Punkt aus der Agenda entfernen? Die Daten bleiben in der aktuellen Sitzungsdatei.",
+    "fr": "Supprimer ce point de l’ordre du jour ? Ses données restent dans le fichier de la session actuelle."
+  },
+  "Ta agenda zawiera czasy trwania. Wybierz „Plan od teraz”.": {
+    "en": "This agenda has durations. Choose “Start plan now”.",
+    "de": "Diese Agenda enthält Dauern. „Plan ab jetzt“ wählen.",
+    "fr": "Cet ordre du jour contient des durées. Choisissez « Démarrer maintenant »."
+  },
+  "Zatrzymać odliczanie i przygotować plan do ponownego startu? Notatki zostaną zachowane, nagranie trwa niezależnie.": {
+    "en": "Stop the timer and prepare the plan to start again? Notes will be kept; recording continues independently.",
+    "de": "Timer stoppen und den Plan für einen Neustart vorbereiten? Notizen bleiben erhalten; die Aufnahme läuft unabhängig weiter.",
+    "fr": "Arrêter le minuteur et préparer un nouveau départ ? Les notes sont conservées ; l’enregistrement continue indépendamment."
+  },
+  "Błąd zapisu — zapisz kopię w innym katalogu przez menu Spotkanie.": {
+    "en": "Save failed — save a copy to another folder using the Meeting menu.",
+    "de": "Speichern fehlgeschlagen — über das Menü Besprechung eine Kopie in einem anderen Ordner speichern.",
+    "fr": "Échec de l’enregistrement : sauvegardez une copie dans un autre dossier via le menu Réunion."
+  },
+  "Sprawdź wolne miejsce i prawa zapisu. Dane pozostają w pamięci; zapisz kopię spotkania przed zamknięciem.": {
+    "en": "Check free space and write permissions. Data is still in memory; save a meeting copy before closing.",
+    "de": "Freien Speicher und Schreibrechte prüfen. Daten sind noch im Arbeitsspeicher; vor dem Schließen eine Kopie speichern.",
+    "fr": "Vérifiez l’espace libre et les droits d’écriture. Les données sont encore en mémoire ; enregistrez une copie avant de fermer."
+  },
+  "Poprzednia sesja nie została zamknięta poprawnie. Odzyskać agendę i notatki? Licznik wróci w pauzie; nagrywanie i API nie zostaną uruchomione.": {
+    "en": "The previous session did not close properly. Recover agenda and notes? The timer will be paused; recording and API tasks will not restart.",
+    "de": "Die letzte Sitzung wurde nicht korrekt geschlossen. Agenda und Notizen wiederherstellen? Der Timer bleibt pausiert; Aufnahme und API starten nicht erneut.",
+    "fr": "La session précédente ne s’est pas fermée correctement. Récupérer l’ordre du jour et les notes ? Le minuteur reste en pause ; aucun enregistrement ni appel API ne redémarre."
+  },
+  "Plik sesji jest nieczytelny i nie udało się zachować kopii. Nie zostanie nadpisany; zmień katalog danych przed dalszą pracą.": {
+    "en": "The session file cannot be read or backed up. It will not be overwritten; change the data folder before continuing.",
+    "de": "Die Sitzungsdatei ist nicht lesbar und konnte nicht gesichert werden. Sie wird nicht überschrieben; vor dem Fortfahren den Datenordner ändern.",
+    "fr": "Le fichier de session est illisible et sa copie a échoué. Il ne sera pas écrasé ; changez de dossier de données avant de continuer."
+  },
+  "Nieczytelny plik zachowano jako {file}. Możesz rozpocząć nowe spotkanie.": {
+    "en": "The unreadable file was kept as {file}. You can start a new meeting.",
+    "de": "Die unlesbare Datei wurde als {file} gesichert. Eine neue Besprechung kann gestartet werden.",
+    "fr": "Le fichier illisible a été conservé sous {file}. Vous pouvez commencer une nouvelle réunion."
+  },
+  "Przed otwarciem innego spotkania zatrzymaj zrzuty i poczekaj na zapis obrazu.": {
+    "en": "Stop screenshots and wait for the image to finish saving before opening another meeting.",
+    "de": "Vor dem Öffnen einer anderen Besprechung Bildschirmfotos stoppen und den Bildspeichervorgang abwarten.",
+    "fr": "Arrêtez les captures et attendez la fin de l’enregistrement de l’image avant d’ouvrir une autre réunion."
+  },
+  "Przed otwarciem innego pliku zakończ nagranie lub zadanie API. Edytowanie obecnej agendy i notatek jest nadal dostępne.": {
+    "en": "Stop recording or finish the API task before opening another file. You can still edit this agenda and notes.",
+    "de": "Vor dem Öffnen einer anderen Datei Aufnahme oder API-Aufgabe beenden. Die aktuelle Agenda und Notizen können weiter bearbeitet werden.",
+    "fr": "Terminez l’enregistrement ou la tâche API avant d’ouvrir un autre fichier. Vous pouvez toujours modifier l’ordre du jour et les notes actuels."
+  },
+  "Nie można odczytać spotkania. Obecne dane pozostają bez zmian.": {
+    "en": "The meeting cannot be read. Current data is unchanged.",
+    "de": "Die Besprechung kann nicht gelesen werden. Aktuelle Daten bleiben unverändert.",
+    "fr": "Impossible de lire la réunion. Les données actuelles restent inchangées."
+  },
+  "Obecna agenda zostanie zastąpiona. Najpierw zapisz kopię, jeśli chcesz ją zachować. Nagranie trwa niezależnie.": {
+    "en": "The current agenda will be replaced. Save a copy first if you want to keep it. Recording continues independently.",
+    "de": "Die aktuelle Agenda wird ersetzt. Bei Bedarf zuerst eine Kopie speichern. Die Aufnahme läuft unabhängig weiter.",
+    "fr": "L’ordre du jour actuel sera remplacé. Enregistrez d’abord une copie pour le conserver. L’enregistrement continue indépendamment."
+  },
+  "Nie można zachować kopii obecnej sesji. Otwarcie pliku przerwano.": {
+    "en": "A copy of this session could not be saved. Opening the file was cancelled.",
+    "de": "Die aktuelle Sitzung konnte nicht gesichert werden. Das Öffnen wurde abgebrochen.",
+    "fr": "Impossible de sauvegarder la session actuelle. L’ouverture du fichier a été annulée."
+  },
+  "Nie udało się zapisać kopii.": {
+    "en": "Could not save the copy.",
+    "de": "Kopie konnte nicht gespeichert werden.",
+    "fr": "Impossible d’enregistrer la copie."
+  },
+  "Dołączyć notatki przygotowawcze? Decyzje, zadania, nagrania i transkrypcje nie trafią do szablonu.": {
+    "en": "Include preparation notes? Decisions, tasks, recordings and transcripts will not be included in the template.",
+    "de": "Vorbereitungsnotizen einschließen? Entscheidungen, Aufgaben, Aufnahmen und Transkriptionen werden nicht in die Vorlage übernommen.",
+    "fr": "Inclure les notes préparatoires ? Les décisions, tâches, enregistrements et transcriptions ne seront pas inclus dans le modèle."
+  },
+  "Nie udało się zapisać szablonu.": {
+    "en": "Could not save the template.",
+    "de": "Vorlage konnte nicht gespeichert werden.",
+    "fr": "Impossible d’enregistrer le modèle."
+  },
+  "Nie udało się zapisać podsumowania. Sprawdź katalog i wolne miejsce.": {
+    "en": "Could not save the summary. Check the folder and free space.",
+    "de": "Zusammenfassung konnte nicht gespeichert werden. Ordner und freien Speicher prüfen.",
+    "fr": "Impossible d’enregistrer le compte rendu. Vérifiez le dossier et l’espace libre."
+  },
+  "Najpierw zatrzymaj nagranie i zakończ lub anuluj transkrypcję. Poczekaj na zapis pliku.": {
+    "en": "First stop recording and finish or cancel transcription. Wait for the file to finish saving.",
+    "de": "Zuerst Aufnahme stoppen und Transkription beenden oder abbrechen. Den Dateispeichervorgang abwarten.",
+    "fr": "Arrêtez d’abord l’enregistrement et terminez ou annulez la transcription. Attendez la fin de l’enregistrement du fichier."
+  },
+  "Zatrzymano cykl zrzutów. Poczekaj na zakończenie zapisu i ponownie wybierz Zakończ.": {
+    "en": "Screenshot cycle stopped. Wait for saving to finish, then choose Quit again.",
+    "de": "Bildzyklus gestoppt. Den Speichervorgang abwarten und erneut Beenden wählen.",
+    "fr": "Cycle de captures arrêté. Attendez la fin de l’enregistrement, puis choisissez à nouveau Quitter."
+  },
+  "Możesz schować panel i kontynuować spotkanie w tle lub zakończyć program.": {
+    "en": "Hide the panel to continue in the background, or quit the application.",
+    "de": "Den Bereich ausblenden und im Hintergrund fortfahren oder die Anwendung beenden.",
+    "fr": "Masquez le panneau pour continuer en arrière-plan ou quittez l’application."
+  },
+  "Plik PNG przeniesiono lub usunięto.": {
+    "en": "The PNG file was moved or deleted.",
+    "de": "Die PNG-Datei wurde verschoben oder gelöscht.",
+    "fr": "Le fichier PNG a été déplacé ou supprimé."
+  },
+  "Plik przeniesiono lub usunięto. Kopia JSON zawiera odnośniki, a nie nagrania.": {
+    "en": "The file was moved or deleted. The JSON copy contains links, not audio files.",
+    "de": "Die Datei wurde verschoben oder gelöscht. Die JSON-Kopie enthält Verweise, keine Audiodateien.",
+    "fr": "Le fichier a été déplacé ou supprimé. La copie JSON contient des liens, pas les fichiers audio."
+  },
+  "Sprawdź pasek zadań lub ikonę zegara w zasobniku. Druga kopia nie została uruchomiona.": {
+    "en": "Check the taskbar or clock icon in the tray. A second instance was not started.",
+    "de": "Taskleiste oder Uhrsymbol im Infobereich prüfen. Eine zweite Instanz wurde nicht gestartet.",
+    "fr": "Vérifiez la barre des tâches ou l’horloge dans la zone de notification. Aucune seconde instance n’a été lancée."
+  },
+  "Nie można utworzyć katalogu danych. Ustaw MEETING_TIMER_DATA_DIR na katalog z prawem zapisu.": {
+    "en": "Cannot create the data folder. Set MEETING_TIMER_DATA_DIR to a writable folder.",
+    "de": "Datenordner kann nicht erstellt werden. MEETING_TIMER_DATA_DIR auf einen beschreibbaren Ordner setzen.",
+    "fr": "Impossible de créer le dossier des données. Définissez MEETING_TIMER_DATA_DIR sur un dossier accessible en écriture."
+  },
+  "Audio działa lokalnie. Na macOS dźwięk systemowy wymaga udostępnionego źródła loopback/urządzenia wirtualnego. Pauza licznika nie zatrzymuje nagrania.": {
+    "en": "Audio stays local. On macOS, system audio needs an available loopback or virtual device. Pausing the timer does not pause recording.",
+    "de": "Audio bleibt lokal. Unter macOS benötigt Systemton eine verfügbare Loopback-Quelle oder ein virtuelles Gerät. Die Timerpause pausiert die Aufnahme nicht.",
+    "fr": "L’audio reste local. Sur macOS, le son système nécessite une source de bouclage ou un appareil virtuel. La pause du minuteur ne suspend pas l’enregistrement."
+  },
+  "Najpierw wykryj i wybierz źródło audio.": {
+    "en": "Detect and select an audio source first.",
+    "de": "Zuerst eine Audioquelle erkennen und wählen.",
+    "fr": "Détectez et sélectionnez d’abord une source audio."
+  },
+  "Wybierz dwa różne źródła lub wyłącz jedno wejście.": {
+    "en": "Select two different sources or disable one input.",
+    "de": "Zwei verschiedene Quellen wählen oder einen Eingang deaktivieren.",
+    "fr": "Choisissez deux sources différentes ou désactivez une entrée."
+  },
+  "Nagranie obejmie wybrane źródła audio. Upewnij się, że uczestnicy zostali poinformowani i możesz nagrywać to spotkanie. Plik pozostanie lokalnie.": {
+    "en": "The selected audio sources will be recorded. Make sure participants are informed and you may record this meeting. The file stays local.",
+    "de": "Die gewählten Audioquellen werden aufgenommen. Teilnehmende informieren und sicherstellen, dass die Aufnahme erlaubt ist. Die Datei bleibt lokal.",
+    "fr": "Les sources audio sélectionnées seront enregistrées. Assurez-vous que les participants sont informés et que vous pouvez enregistrer cette réunion. Le fichier reste local."
+  },
+  "Zamknąć obecny plik i rozpocząć nowy z obecnie wybranymi źródłami? Między segmentami wystąpi krótka przerwa.": {
+    "en": "Close this file and start a new one with the currently selected sources? There will be a short gap between segments.",
+    "de": "Aktuelle Datei schließen und eine neue mit den gewählten Quellen beginnen? Zwischen den Segmenten entsteht eine kurze Lücke.",
+    "fr": "Fermer ce fichier et en ouvrir un nouveau avec les sources sélectionnées ? Une courte interruption séparera les segments."
+  },
+  "Test zakończony. Nie zapisano dźwięku. W razie ciszy sprawdź wybrane źródła.": {
+    "en": "Test finished. No audio was saved. If silent, check the selected sources.",
+    "de": "Test beendet. Kein Audio gespeichert. Bei Stille die gewählten Quellen prüfen.",
+    "fr": "Test terminé. Aucun son enregistré. En cas de silence, vérifiez les sources sélectionnées."
+  },
+  "Magazyn poświadczeń jest niedostępny. Użyj klucza tylko w bieżącej sesji; nie zapisujemy go do pliku.": {
+    "en": "Credential storage is unavailable. Use the key for this session only; it will not be saved to a file.",
+    "de": "Anmeldedatenspeicher nicht verfügbar. Schlüssel nur in dieser Sitzung verwenden; keine Speicherung in einer Datei.",
+    "fr": "Le coffre d’identifiants est indisponible. Utilisez la clé pour cette session uniquement ; elle ne sera pas enregistrée dans un fichier."
+  },
+  "Brak bezpiecznego systemowego magazynu. Klucz pozostaje tylko w sesji.": {
+    "en": "No secure system credential store. The key stays in this session only.",
+    "de": "Kein sicherer Systemspeicher verfügbar. Der Schlüssel bleibt nur in der Sitzung.",
+    "fr": "Aucun coffre système sécurisé. La clé reste uniquement dans la session."
+  },
+  "Najpierw zakończ nagranie i poczekaj na zapis pliku.": {
+    "en": "Finish recording and wait for the file to finish saving first.",
+    "de": "Zuerst die Aufnahme beenden und den Speichervorgang abwarten.",
+    "fr": "Terminez d’abord l’enregistrement et attendez la fin de la sauvegarde."
+  },
+  "Wpisz własny klucz OpenAI API.": {
+    "en": "Enter your own OpenAI API key.",
+    "de": "Eigenen OpenAI-API-Schlüssel eingeben.",
+    "fr": "Saisissez votre propre clé API OpenAI."
+  },
+  "Nie udało się zapisać transkrypcji.": {
+    "en": "Could not save the transcript.",
+    "de": "Transkription konnte nicht gespeichert werden.",
+    "fr": "Impossible d’enregistrer la transcription."
+  },
+  "Anulowano. Przesłanych danych i ewentualnych kosztów nie można cofnąć.": {
+    "en": "Cancelled. Uploaded data and any charges cannot be undone.",
+    "de": "Abgebrochen. Übertragene Daten und mögliche Kosten können nicht rückgängig gemacht werden.",
+    "fr": "Annulé. Les données transmises et les frais éventuels ne peuvent pas être annulés."
+  },
+  "Nie udało się wykonać zadania. Sprawdź dostępność funkcji, uprawnienia i zależności opcjonalne.": {
+    "en": "The task failed. Check feature availability, permissions and optional dependencies.",
+    "de": "Aufgabe fehlgeschlagen. Funktionsverfügbarkeit, Berechtigungen und optionale Abhängigkeiten prüfen.",
+    "fr": "La tâche a échoué. Vérifiez la disponibilité de la fonction, les autorisations et les dépendances facultatives."
+  },
+  "Wybierz jedno lub dwa źródła audio.": {
+    "en": "Select one or two audio sources.",
+    "de": "Eine oder zwei Audioquellen wählen.",
+    "fr": "Choisissez une ou deux sources audio."
+  },
+  "Plik nagrania już istnieje.": {
+    "en": "The recording file already exists.",
+    "de": "Die Aufnahmedatei existiert bereits.",
+    "fr": "Le fichier d’enregistrement existe déjà."
+  },
+  "Osiągnięto limit segmentu WAV. Rozpocznij kolejne nagranie.": {
+    "en": "The WAV segment limit was reached. Start a new recording.",
+    "de": "WAV-Segmentlimit erreicht. Eine neue Aufnahme starten.",
+    "fr": "La limite du segment WAV est atteinte. Démarrez un nouvel enregistrement."
+  },
+  "Błąd audio. Sprawdź urządzenia, uprawnienia, wolne miejsce i dostępność systemu dźwięku. Zapisana część pliku pozostaje na dysku.": {
+    "en": "Audio error. Check devices, permissions, free space and sound service. The saved part remains on disk.",
+    "de": "Audiofehler. Geräte, Berechtigungen, Speicherplatz und Audiodienst prüfen. Der gespeicherte Teil bleibt auf dem Datenträger.",
+    "fr": "Erreur audio. Vérifiez les appareils, autorisations, espace libre et service audio. La partie enregistrée reste sur le disque."
+  },
+  "Nie udało się zapisać znaczników. Sprawdź wolne miejsce.": {
+    "en": "Could not save markers. Check free space.",
+    "de": "Markierungen konnten nicht gespeichert werden. Freien Speicher prüfen.",
+    "fr": "Impossible d’enregistrer les repères. Vérifiez l’espace libre."
+  },
+  "Wybierz niepusty plik nagrania.": {
+    "en": "Select a non-empty recording file.",
+    "de": "Eine nicht leere Aufnahmedatei wählen.",
+    "fr": "Choisissez un fichier audio non vide."
+  },
+  "Nieobsługiwany format nagrania.": {
+    "en": "Unsupported recording format.",
+    "de": "Nicht unterstütztes Aufnahmeformat.",
+    "fr": "Format d’enregistrement non pris en charge."
+  },
+  "WAV musi być PCM 16-bit, 16 lub 48 kHz. Użyj nagrania z aplikacji lub przekonwertuj plik.": {
+    "en": "WAV must be 16-bit PCM at 16 or 48 kHz. Use a recording from this app or convert the file.",
+    "de": "WAV muss 16-Bit-PCM mit 16 oder 48 kHz sein. Eine App-Aufnahme verwenden oder die Datei konvertieren.",
+    "fr": "Le WAV doit être en PCM 16 bits à 16 ou 48 kHz. Utilisez un enregistrement de l’application ou convertissez le fichier."
+  },
+  "Nagranie jest puste.": {
+    "en": "The recording is empty.",
+    "de": "Die Aufnahme ist leer.",
+    "fr": "L’enregistrement est vide."
+  },
+  "Nie można odczytać pliku WAV.": {
+    "en": "Cannot read the WAV file.",
+    "de": "WAV-Datei kann nicht gelesen werden.",
+    "fr": "Impossible de lire le fichier WAV."
+  },
+  "Ten plik przekracza 24 MB. Długie nagrania dzielimy automatycznie tylko dla WAV z aplikacji.": {
+    "en": "This file exceeds 24 MB. Automatic splitting is available only for WAV recordings from the app.",
+    "de": "Diese Datei überschreitet 24 MB. Automatisches Aufteilen ist nur für WAV-Aufnahmen aus der App verfügbar.",
+    "fr": "Ce fichier dépasse 24 Mo. Le découpage automatique est disponible uniquement pour les WAV de l’application."
+  },
+  "Wpisz poprawny klucz API.": {
+    "en": "Enter a valid API key.",
+    "de": "Einen gültigen API-Schlüssel eingeben.",
+    "fr": "Saisissez une clé API valide."
+  },
+  "Plik przekracza limit wysyłki 24 MB.": {
+    "en": "The file exceeds the 24 MB upload limit.",
+    "de": "Die Datei überschreitet das Übertragungslimit von 24 MB.",
+    "fr": "Le fichier dépasse la limite d’envoi de 24 Mo."
+  },
+  "Błędny klucz API.": {
+    "en": "Invalid API key.",
+    "de": "Ungültiger API-Schlüssel.",
+    "fr": "Clé API invalide."
+  },
+  "Brak dostępu do usługi.": {
+    "en": "Access to the service denied.",
+    "de": "Kein Zugriff auf den Dienst.",
+    "fr": "Accès au service refusé."
+  },
+  "Plik jest za duży.": {
+    "en": "The file is too large.",
+    "de": "Die Datei ist zu groß.",
+    "fr": "Le fichier est trop volumineux."
+  },
+  "Limit API lub środków na koncie.": {
+    "en": "API rate limit or insufficient account credit.",
+    "de": "API-Limit oder unzureichendes Kontoguthaben.",
+    "fr": "Limite API atteinte ou solde insuffisant."
+  },
+  "Usługa zwróciła błąd. Sprawdź konto API. Nie ponowiono wysyłki.": {
+    "en": "The service returned an error. Check your API account. Upload was not retried.",
+    "de": "Der Dienst meldete einen Fehler. API-Konto prüfen. Keine erneute Übertragung.",
+    "fr": "Le service a renvoyé une erreur. Vérifiez votre compte API. Aucun nouvel envoi."
+  },
+  "Odpowiedź API jest zbyt duża.": {
+    "en": "The API response is too large.",
+    "de": "Die API-Antwort ist zu groß.",
+    "fr": "La réponse API est trop volumineuse."
+  },
+  "Nieprawidłowa odpowiedź API.": {
+    "en": "Invalid API response.",
+    "de": "Ungültige API-Antwort.",
+    "fr": "Réponse API invalide."
+  },
+  "Błąd sieci lub timeout. Nie ponowiono wysyłki; zlecenie mogło zostać naliczone.": {
+    "en": "Network error or timeout. Upload was not retried; the request may have been charged.",
+    "de": "Netzwerkfehler oder Zeitüberschreitung. Keine Wiederholung; die Anfrage könnte berechnet worden sein.",
+    "fr": "Erreur réseau ou délai dépassé. Aucun nouvel envoi ; la requête a pu être facturée."
+  },
+  "Zapis lokalny do PNG, bez wysyłania do API. System może wymagać uprawnienia do przechwytywania ekranu. Zrzuty mogą zawierać poufne informacje.": {
+    "en": "PNG files stay local and are not sent to an API. Screen capture may require system permission. Screenshots may contain confidential information.",
+    "de": "PNG-Dateien bleiben lokal und werden nicht an eine API gesendet. Bildschirmaufnahme kann eine Systemberechtigung erfordern. Bilder können vertrauliche Daten enthalten.",
+    "fr": "Les PNG restent locaux et ne sont pas envoyés à une API. Une autorisation système peut être nécessaire. Les captures peuvent contenir des informations confidentielles."
+  },
+  "Gotowy. Interwał można zmieniać w trakcie. Zmiana źródła wymaga zatrzymania zrzutów.": {
+    "en": "Ready. The interval can change while running. Stop screenshots before changing the source.",
+    "de": "Bereit. Das Intervall lässt sich während des Betriebs ändern. Vor einem Quellenwechsel die Aufnahme stoppen.",
+    "fr": "Prêt. L’intervalle peut être modifié pendant le cycle. Arrêtez les captures avant de changer de source."
+  },
+  "Wybierz ekran lub okno. Na Wayland przechwytywanie może wymagać osobnego portalu i nie być dostępne w tej wersji.": {
+    "en": "Select a screen or window. Wayland capture may need a separate portal and may be unavailable in this version.",
+    "de": "Bildschirm oder Fenster wählen. Unter Wayland kann ein zusätzliches Portal nötig sein; die Funktion ist möglicherweise nicht verfügbar.",
+    "fr": "Choisissez un écran ou une fenêtre. Sous Wayland, un portail séparé peut être nécessaire et la fonction indisponible dans cette version."
+  },
+  "Przechwytywanie wybranego okna wymaga paczki pełnej / dodatku [capture]. Zrzuty całego ekranu nie wymagają tego modułu.": {
+    "en": "Capturing a selected window requires the full package / [capture] extra. Full-screen screenshots do not need this module.",
+    "de": "Die Fensteraufnahme benötigt das vollständige Paket bzw. [capture]. Fotos des ganzen Bildschirms benötigen dieses Modul nicht.",
+    "fr": "La capture d’une fenêtre nécessite le paquet complet ou l’option [capture]. Les captures de l’écran entier n’en ont pas besoin."
+  },
+  "Nie można utworzyć katalogu zrzutów.": {
+    "en": "Cannot create the screenshot folder.",
+    "de": "Bildordner kann nicht erstellt werden.",
+    "fr": "Impossible de créer le dossier des captures."
+  },
+  "Wybrane okno nie jest już dostępne. Odśwież listę i wybierz je ponownie.": {
+    "en": "The selected window is no longer available. Refresh the list and select it again.",
+    "de": "Das gewählte Fenster ist nicht mehr verfügbar. Liste aktualisieren und erneut wählen.",
+    "fr": "La fenêtre sélectionnée n’est plus disponible. Actualisez la liste et sélectionnez-la à nouveau."
+  },
+  "Przechwycenie tego okna nie powiodło się. Sprawdź uprawnienia systemu. Nie przełączono na cały ekran.": {
+    "en": "Capturing this window failed. Check system permissions. The source was not switched to the whole screen.",
+    "de": "Fensteraufnahme fehlgeschlagen. Systemberechtigungen prüfen. Es wurde nicht auf den ganzen Bildschirm gewechselt.",
+    "fr": "La capture de cette fenêtre a échoué. Vérifiez les autorisations. La source n’a pas été remplacée par l’écran entier."
+  },
+  "Przechwytywanie okna jest niedostępne. Użyj paczki z opcją [capture].": {
+    "en": "Window capture is unavailable. Use a package with the [capture] extra.",
+    "de": "Fensteraufnahme nicht verfügbar. Ein Paket mit [capture] verwenden.",
+    "fr": "La capture de fenêtre est indisponible. Utilisez un paquet avec l’option [capture]."
+  },
+  "Zrzuty aktywne. Zamknięcie tego okna nie zatrzymuje cyklu; użyj Zatrzymaj.": {
+    "en": "Screenshots active. Closing this window does not stop the cycle; use Stop.",
+    "de": "Bildaufnahme aktiv. Das Schließen dieses Fensters stoppt den Zyklus nicht; Stoppen verwenden.",
+    "fr": "Captures actives. Fermer cette fenêtre n’arrête pas le cycle ; utilisez Arrêter."
+  },
+  "Osiągnięto limit zrzutów. Zapisane pliki pozostają na dysku.": {
+    "en": "Screenshot limit reached. Saved files remain on disk.",
+    "de": "Bildlimit erreicht. Gespeicherte Dateien bleiben auf dem Datenträger.",
+    "fr": "Limite de captures atteinte. Les fichiers enregistrés restent sur le disque."
+  },
+  "Wybrane okno zamknięto. Zrzuty zatrzymano.": {
+    "en": "The selected window was closed. Screenshots stopped.",
+    "de": "Das gewählte Fenster wurde geschlossen. Bildaufnahme gestoppt.",
+    "fr": "La fenêtre sélectionnée a été fermée. Captures arrêtées."
+  },
+  "Wybrany ekran odłączono. Zrzuty zatrzymano.": {
+    "en": "The selected screen was disconnected. Screenshots stopped.",
+    "de": "Der gewählte Bildschirm wurde getrennt. Bildaufnahme gestoppt.",
+    "fr": "L’écran sélectionné a été déconnecté. Captures arrêtées."
+  },
+  "Otrzymano pusty obraz. System nie udostępnia tego źródła lub brakuje uprawnienia do przechwytywania.": {
+    "en": "An empty image was returned. The system does not expose this source or capture permission is missing.",
+    "de": "Ein leeres Bild wurde geliefert. Die Quelle ist nicht zugänglich oder die Aufnahmeberechtigung fehlt.",
+    "fr": "Une image vide a été renvoyée. La source n’est pas accessible ou l’autorisation de capture manque."
+  },
+  "Nie udało się zapisać zrzutu. Sprawdź wolne miejsce.": {
+    "en": "Could not save the screenshot. Check free space.",
+    "de": "Bildschirmfoto konnte nicht gespeichert werden. Freien Speicher prüfen.",
+    "fr": "Impossible d’enregistrer la capture. Vérifiez l’espace libre."
+  },
+  "Zrzuty zatrzymane. Pliki pozostają w wybranym katalogu.": {
+    "en": "Screenshots stopped. Files remain in the selected folder.",
+    "de": "Bildaufnahme gestoppt. Dateien bleiben im gewählten Ordner.",
+    "fr": "Captures arrêtées. Les fichiers restent dans le dossier choisi."
+  },
+  "System nie udostępnił obrazu okna. Sprawdź uprawnienia i dostępność wybranego okna.": {
+    "en": "The system did not provide a window image. Check permissions and window availability.",
+    "de": "Das System lieferte kein Fensterbild. Berechtigungen und Fensterverfügbarkeit prüfen.",
+    "fr": "Le système n’a pas fourni d’image de la fenêtre. Vérifiez les autorisations et sa disponibilité."
+  },
+  "Agenda przekracza limit 1 MB.": {
+    "en": "The agenda exceeds 1 MB.",
+    "de": "Die Agenda überschreitet 1 MB.",
+    "fr": "L’ordre du jour dépasse 1 Mo."
+  },
+  "Agenda przekracza limit 5000 punktów.": {
+    "en": "The agenda exceeds 5000 items.",
+    "de": "Die Agenda überschreitet 5000 Punkte.",
+    "fr": "L’ordre du jour dépasse 5000 points."
+  },
+  "czas musi być dodatni, w pełnych sekundach, do 7 dni.": {
+    "en": "duration must be positive, in whole seconds, up to 7 days.",
+    "de": "die Dauer muss positiv sein, in ganzen Sekunden, höchstens 7 Tage.",
+    "fr": "la durée doit être positive, en secondes entières, jusqu’à 7 jours."
+  },
+  "nieprawidłowy wiersz tabeli/CSV.": {
+    "en": "invalid table/CSV row.",
+    "de": "ungültige Tabellen-/CSV-Zeile.",
+    "fr": "ligne de tableau/CSV invalide."
+  },
+  "początek i koniec są takie same.": {
+    "en": "start and end times are identical.",
+    "de": "Beginn und Ende sind identisch.",
+    "fr": "les heures de début et de fin sont identiques."
+  },
+  "podaj tytuł punktu.": {
+    "en": "enter an item title.",
+    "de": "einen Punkttitel eingeben.",
+    "fr": "indiquez un titre de point."
+  },
+  "użyj „Tytuł — 15 min”, „10:00–10:15 Tytuł” lub tabeli z czasem.": {
+    "en": "use “Title — 15 min”, “10:00–10:15 Title” or a table with durations.",
+    "de": "„Titel — 15 Min.“, „10:00–10:15 Titel“ oder eine Tabelle mit Zeiten verwenden.",
+    "fr": "utilisez « Titre — 15 min », « 10:00–10:15 Titre » ou un tableau avec des durées."
+  },
+  "podaj poprawny przedział godzinowy lub czas w nawiasie [MM:SS].": {
+    "en": "enter a valid time range or a duration in brackets [MM:SS].",
+    "de": "einen gültigen Zeitraum oder eine Dauer in Klammern [MM:SS] eingeben.",
+    "fr": "indiquez une plage horaire valide ou une durée entre crochets [MM:SS]."
+  },
+  "godziny nie są chronologiczne.": {
+    "en": "times are not in chronological order.",
+    "de": "die Zeiten sind nicht chronologisch.",
+    "fr": "les horaires ne sont pas chronologiques."
+  },
+  "punkt nakłada się na poprzedni lub ma ten sam początek.": {
+    "en": "the item overlaps the previous one or has the same start time.",
+    "de": "der Punkt überschneidet sich mit dem vorherigen oder hat denselben Beginn.",
+    "fr": "le point chevauche le précédent ou commence à la même heure."
+  },
+  "Nie mieszaj przedziałów/godzin rozpoczęcia i samych czasów trwania.": {
+    "en": "Do not mix scheduled times with duration-only items.",
+    "de": "Uhrzeiten nicht mit reinen Dauerangaben mischen.",
+    "fr": "Ne mélangez pas horaires et points définis uniquement par leur durée."
+  },
+  "Wklej co najmniej jeden punkt agendy z czasem.": {
+    "en": "Paste at least one agenda item with a duration or time.",
+    "de": "Mindestens einen Agendapunkt mit Dauer oder Uhrzeit einfügen.",
+    "fr": "Collez au moins un point avec une durée ou un horaire."
+  },
+  "ostatni punkt wymaga czasu, np. „{title} (15 min)”, albo kolejnego wiersza „HH:MM Koniec”.": {
+    "en": "the last item needs a duration, e.g. “{title} (15 min)”, or another row “HH:MM End”.",
+    "de": "der letzte Punkt benötigt eine Dauer, z. B. „{title} (15 Min.)“, oder die Zeile „HH:MM Ende“.",
+    "fr": "le dernier point nécessite une durée, par exemple « {title} (15 min) », ou une ligne « HH:MM Fin »."
+  },
+  "Start o wskazanej godzinie": {
+    "en": "Start at a specific time",
+    "de": "Start zur gewählten Uhrzeit",
+    "fr": "Démarrer à l’heure choisie"
+  },
+  "Data i godzina rozpoczęcia całego planu": {
+    "en": "Start date and time for the entire plan",
+    "de": "Startdatum und -uhrzeit des gesamten Plans",
+    "fr": "Date et heure de début du plan complet"
+  },
+  "Brak zapisanych transkrypcji — wybierz plik poniżej": {
+    "en": "No saved transcripts — choose a file below",
+    "de": "Keine gespeicherten Transkriptionen — unten eine Datei wählen",
+    "fr": "Aucune transcription : choisissez un fichier ci-dessous"
+  },
+  "Dostawca i model transkrypcji": {
+    "en": "Transcription provider and model",
+    "de": "Transkriptionsanbieter und Modell",
+    "fr": "Fournisseur et modèle de transcription"
+  },
+  "Ładowanie urządzeń…": {
+    "en": "Loading devices…",
+    "de": "Geräte werden geladen…",
+    "fr": "Chargement des appareils…"
+  },
+  "Wykrywanie dostępnych urządzeń audio…": {
+    "en": "Detecting available audio devices…",
+    "de": "Verfügbare Audiogeräte werden erkannt…",
+    "fr": "Détection des appareils audio disponibles…"
+  },
+  "Urządzenia niedostępne": {
+    "en": "Devices unavailable",
+    "de": "Geräte nicht verfügbar",
+    "fr": "Appareils indisponibles"
+  },
+  "Nie znaleziono urządzeń. Podłącz mikrofon, sprawdź uprawnienia i odśwież listę.": {
+    "en": "No devices found. Connect a microphone, check permissions and refresh the list.",
+    "de": "Keine Geräte gefunden. Mikrofon anschließen, Berechtigungen prüfen und Liste aktualisieren.",
+    "fr": "Aucun appareil détecté. Branchez un microphone, vérifiez les autorisations et actualisez la liste."
+  },
+  "Warunki użytkowania": {
+    "en": "Terms of use",
+    "de": "Nutzungsbedingungen",
+    "fr": "Conditions d’utilisation"
+  },
+  "Licencja MIT": {
+    "en": "MIT license",
+    "de": "MIT-Lizenz",
+    "fr": "Licence MIT"
+  },
+  "Polityka prywatności (PL)": {
+    "en": "Privacy policy (Polish)",
+    "de": "Datenschutz (Polnisch)",
+    "fr": "Confidentialité (polonais)"
+  },
+  "Postaw mi kawę · Buy me a coffee": {
+    "en": "Support · Buy me a coffee",
+    "de": "Unterstützen · Buy me a coffee",
+    "fr": "Soutenir · Buy me a coffee"
+  },
+  "Zamknij": {
+    "en": "Close",
+    "de": "Schließen",
+    "fr": "Fermer"
+  },
+  "Akceptuję warunki i potwierdzam wymagane zgody uczestników.": {
+    "en": "I accept the terms and confirm the required participant consents.",
+    "de": "Ich akzeptiere die Bedingungen und bestätige die erforderliche Zustimmung der Teilnehmenden.",
+    "fr": "J’accepte les conditions et confirme les consentements requis des participants."
+  },
+  "Nie akceptuję — zakończ": {
+    "en": "Decline and quit",
+    "de": "Ablehnen und beenden",
+    "fr": "Refuser et quitter"
+  },
+  "Akceptuję i uruchamiam": {
+    "en": "Accept and start",
+    "de": "Akzeptieren und starten",
+    "fr": "Accepter et démarrer"
+  },
+  "Nie można zapisać akceptacji warunków. Sprawdź prawa zapisu katalogu danych.": {
+    "en": "Cannot save acceptance. Check data folder write permissions.",
+    "de": "Zustimmung kann nicht gespeichert werden. Schreibrechte im Datenordner prüfen.",
+    "fr": "Impossible d’enregistrer l’acceptation. Vérifiez les droits du dossier des données."
+  },
+  "Nie można odczytać dokumentu pomocy.": {
+    "en": "Cannot read the help document.",
+    "de": "Hilfedokument kann nicht gelesen werden.",
+    "fr": "Impossible de lire le document d’aide."
+  },
+  "Test audio {time}": {
+    "en": "Audio test {time}",
+    "de": "Audiotest {time}",
+    "fr": "Test audio {time}"
+  },
+  "Pauza nagrania {time}": {
+    "en": "Recording paused {time}",
+    "de": "Aufnahme pausiert {time}",
+    "fr": "Enregistrement en pause {time}"
+  },
+  "● NAGRYWANIE {time}": {
+    "en": "● RECORDING {time}",
+    "de": "● AUFNAHME {time}",
+    "fr": "● ENREGISTREMENT {time}"
+  },
+  "Plik danych przekracza limit 20 MiB.": {
+    "en": "The data file exceeds 20 MiB.",
+    "de": "Die Datendatei überschreitet 20 MiB.",
+    "fr": "Le fichier dépasse 20 Mio."
+  },
+  "Nieprawidłowa liczba w pliku danych.": {
+    "en": "Invalid number in the data file.",
+    "de": "Ungültige Zahl in der Datendatei.",
+    "fr": "Nombre invalide dans le fichier."
+  },
+  "Nieprawidłowa stała w pliku danych.": {
+    "en": "Invalid constant in the data file.",
+    "de": "Ungültige Konstante in der Datendatei.",
+    "fr": "Constante invalide dans le fichier."
+  },
+  "Nieprawidłowy punkt agendy.": {
+    "en": "Invalid agenda item.",
+    "de": "Ungültiger Agendapunkt.",
+    "fr": "Point de l’ordre du jour invalide."
+  },
+  "Brak tytułu punktu.": {
+    "en": "Item title missing.",
+    "de": "Titel des Punkts fehlt.",
+    "fr": "Titre du point manquant."
+  },
+  "Nieprawidłowy czas punktu.": {
+    "en": "Invalid item duration.",
+    "de": "Ungültige Punktdauer.",
+    "fr": "Durée du point invalide."
+  },
+  "Nieprawidłowa godzina.": {
+    "en": "Invalid time.",
+    "de": "Ungültige Uhrzeit.",
+    "fr": "Horaire invalide."
+  },
+  "Nieprawidłowe dane punktu.": {
+    "en": "Invalid item data.",
+    "de": "Ungültige Punktdaten.",
+    "fr": "Données du point invalides."
+  },
+  "Nieprawidłowe zadanie.": {
+    "en": "Invalid task.",
+    "de": "Ungültige Aufgabe.",
+    "fr": "Tâche invalide."
+  },
+  "Nieobsługiwana wersja pliku spotkania.": {
+    "en": "Unsupported meeting file version.",
+    "de": "Nicht unterstützte Version der Besprechungsdatei.",
+    "fr": "Version du fichier de réunion non prise en charge."
+  },
+  "Powtórzone identyfikatory punktów.": {
+    "en": "Duplicate item identifiers.",
+    "de": "Doppelte Punktkennungen.",
+    "fr": "Identifiants de points dupliqués."
+  },
+  "Nieprawidłowe załączniki spotkania.": {
+    "en": "Invalid meeting attachments.",
+    "de": "Ungültige Besprechungsanhänge.",
+    "fr": "Pièces jointes de réunion invalides."
+  },
+  "Nieprawidłowe zrzuty ekranu.": {
+    "en": "Invalid screenshots.",
+    "de": "Ungültige Bildschirmfotos.",
+    "fr": "Captures invalides."
+  },
+  "Nieprawidłowe nagranie.": {
+    "en": "Invalid recording.",
+    "de": "Ungültige Aufnahme.",
+    "fr": "Enregistrement invalide."
+  },
+  "Nieprawidłowy znacznik.": {
+    "en": "Invalid marker.",
+    "de": "Ungültige Markierung.",
+    "fr": "Repère invalide."
+  },
+  "Nieprawidłowy czas znacznika.": {
+    "en": "Invalid marker time.",
+    "de": "Ungültige Markierungszeit.",
+    "fr": "Temps du repère invalide."
+  },
+  "Nieprawidłowa transkrypcja.": {
+    "en": "Invalid transcript.",
+    "de": "Ungültige Transkription.",
+    "fr": "Transcription invalide."
+  },
+  "Nieprawidłowy plik zrzutu.": {
+    "en": "Invalid screenshot file.",
+    "de": "Ungültige Bilddatei.",
+    "fr": "Fichier de capture invalide."
+  },
+  "Nieprawidłowa pozycja licznika.": {
+    "en": "Invalid timer position.",
+    "de": "Ungültige Timerposition.",
+    "fr": "Position du minuteur invalide."
+  },
+  "Nieprawidłowy plan końca.": {
+    "en": "Invalid planned end time.",
+    "de": "Ungültige geplante Endzeit.",
+    "fr": "Heure de fin prévue invalide."
+  },
+  "Wprowadzenie — 5 min\nOmówienie wyników — 15 min\nDecyzje i następne kroki — 10 min": {
+    "en": "Introduction — 5 min\nResults review — 15 min\nDecisions and next steps — 10 min",
+    "de": "Einführung — 5 min\nErgebnisse besprechen — 15 min\nEntscheidungen und nächste Schritte — 10 min",
+    "fr": "Introduction — 5 min\nBilan des résultats — 15 min\nDécisions et prochaines étapes — 10 min"
+  },
+  "Wersja źródłowa: zainstaluj opcję [audio] do .venv. Na Linux potrzebna jest biblioteka libpulse i działający serwer PulseAudio/PipeWire.": {
+    "en": "Source version: install the [audio] extra into .venv. Linux needs libpulse and a running PulseAudio/PipeWire service.",
+    "de": "Quellversion: [audio] in .venv installieren. Linux benötigt libpulse und einen laufenden PulseAudio-/PipeWire-Dienst.",
+    "fr": "Version source : installez l’option [audio] dans .venv. Linux nécessite libpulse et un service PulseAudio/PipeWire actif."
+  },
+  "Ctrl+Enter: start/pauza. Wybór punktu w agendzie służy do podglądu notatek; przejście licznika jest osobną akcją.": {
+    "en": "Ctrl+Enter: start/pause. Selecting an agenda item previews its notes; moving the timer is a separate action.",
+    "de": "Strg+Enter: Start/Pause. Die Auswahl eines Punkts zeigt dessen Notizen; der Timerwechsel ist eine eigene Aktion.",
+    "fr": "Ctrl+Entrée : démarrer/pause. Sélectionner un point affiche ses notes ; changer le minuteur est une action distincte."
+  },
+  "Pauza i ręczne przejście przesuwają pozostały harmonogram również w trybie godzinowym. Restart pozwala ponownie zsynchronizować start z godzinami.": {
+    "en": "Pausing and manual navigation shift the remaining schedule, including timed mode. Reset to synchronise with the planned start again.",
+    "de": "Pause und manuelles Wechseln verschieben den restlichen Plan auch im Uhrzeitmodus. Zur erneuten Synchronisierung zurücksetzen.",
+    "fr": "Pause et navigation manuelle décalent le programme restant, même avec des horaires. Réinitialisez pour resynchroniser le départ."
+  },
+  "Pauza licznika nie zatrzymuje nagrania. Dane są lokalne. Transkrypcja wysyła wybrane audio do OpenAI wyłącznie po zatwierdzeniu. Koszt obciąża Twoje konto API.": {
+    "en": "Pausing the timer does not stop recording. Data stays local. Transcription sends selected audio to OpenAI only after confirmation. Your API account is billed.",
+    "de": "Eine Timerpause stoppt die Aufnahme nicht. Daten bleiben lokal. Transkription sendet gewähltes Audio erst nach Bestätigung an OpenAI. Kosten trägt Ihr API-Konto.",
+    "fr": "La pause du minuteur n’arrête pas l’enregistrement. Les données restent locales. La transcription envoie l’audio choisi à OpenAI après confirmation. Votre compte API est facturé."
+  },
+  "Pliki README.md, PRIVACY.md i LICENSE są dołączone do programu. Licencja projektu: MIT.": {
+    "en": "README.md, PRIVACY.md and LICENSE are included. Project license: MIT.",
+    "de": "README.md, PRIVACY.md und LICENSE liegen bei. Projektlizenz: MIT.",
+    "fr": "README.md, PRIVACY.md et LICENSE sont fournis. Licence du projet : MIT."
+  },
+  "Dostawca: OpenAI · model: {model}\nPlik: {file}\nRozmiar: {size} MB · żądania: {count}\n\nDo api.openai.com zostanie wysłane wyłącznie audio, klucz i parametry techniczne. Nagrania WAV dzielimy na fragmenty do 5 minut. Usługa może naliczyć opłaty na Twoim koncie API. Notatki i agenda pozostaną lokalnie. Anulowanie nie cofnie przesłanych danych ani kosztów.\n\nWysłać nagranie?": {
+    "en": "Provider: OpenAI · model: {model}\nFile: {file}\nSize: {size} MB · requests: {count}\n\nOnly audio, the key and technical parameters will be sent to api.openai.com. WAV is split into parts up to 5 minutes. Charges may apply to your API account. Notes and agenda stay local. Cancelling cannot undo uploaded data or charges.\n\nUpload the recording?",
+    "de": "Anbieter: OpenAI · Modell: {model}\nDatei: {file}\nGröße: {size} MB · Anfragen: {count}\n\nNur Audio, Schlüssel und technische Parameter werden an api.openai.com gesendet. WAV wird in Teile bis 5 Minuten aufgeteilt. Ihr API-Konto kann belastet werden. Notizen und Agenda bleiben lokal. Ein Abbruch macht Daten oder Kosten nicht rückgängig.\n\nAufnahme hochladen?",
+    "fr": "Fournisseur : OpenAI · modèle : {model}\nFichier : {file}\nTaille : {size} Mo · requêtes : {count}\n\nSeuls l’audio, la clé et les paramètres techniques seront envoyés à api.openai.com. Les WAV sont découpés en parties de 5 minutes maximum. Des frais peuvent être imputés à votre compte API. Notes et ordre du jour restent locaux. L’annulation n’efface pas les données envoyées ni les frais.\n\nEnvoyer l’enregistrement?"
+  },
+  "Źródło: {source}\nCo {seconds} s, do {limit} plików PNG.\n\nZrzuty mogą zawierać prywatne dane. Będą zapisywane w wybranym katalogu; aplikacja nie wyśle ich do API.": {
+    "en": "Source: {source}\nEvery {seconds} s, up to {limit} PNG files.\n\nScreenshots may contain private data. They will be saved in the selected folder, never uploaded to an API.",
+    "de": "Quelle: {source}\nAlle {seconds} s, bis zu {limit} PNG-Dateien.\n\nBilder können private Daten enthalten. Sie werden im gewählten Ordner gespeichert und nicht an eine API gesendet.",
+    "fr": "Source : {source}\nToutes les {seconds} s, jusqu’à {limit} fichiers PNG.\n\nLes captures peuvent contenir des données privées. Elles restent dans le dossier choisi et ne sont jamais envoyées à une API."
+  },
+  "Transkrypcja": {
+    "en": "Transcript",
+    "de": "Transkription",
+    "fr": "Transcription"
+  },
+  "nie przypisano": {
+    "en": "unassigned",
+    "de": "nicht zugeordnet",
+    "fr": "non attribué"
+  },
+  "termin": {
+    "en": "due",
+    "de": "Termin",
+    "fr": "échéance"
+  },
+  "brak": {
+    "en": "none",
+    "de": "keiner",
+    "fr": "aucun"
+  }
+}
