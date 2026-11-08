@@ -63,3 +63,39 @@ pełna paczka Linux zachowuje teraz oryginalne biblioteki i przeszła ponowny te
 - Godzinna sesja z nagrywaniem oraz długie notatki i brak miejsca na dysku.
 - Paczki na czystych systemach bez Pythona/Qt i kompletność zależności natywnych.
 - Weryfikacja not/licencji konkretnego artefaktu przed publiczną dystrybucją.
+
+
+## Wersja 14 — paczki i Pomoc (2026-11-08)
+
+[Przebieg CI](https://github.com/nocnystroz/MeetingAgendaTimer/actions/runs/42442836434)
+dla commita `c808456` zakończył się sukcesem na trzech systemach. Każdy wykonał
+85 testów, Ruff, natywne budowanie i diagnostykę zamrożonej aplikacji z katalogu
+tymczasowego. Diagnostyka potwierdziła instrukcję ze zrzutami, zapis skrótów,
+PDF, brak żądań sieciowych i numer wersji 14.
+
+- Windows x64: ZIP z folderem i EXE w głównym katalogu, sprawdzony zasób ikony PE.
+  Rozpakowane full: 166,5 MiB.
+- macOS ARM64: ZIP z folderem, .app i README.txt; sprawdzony plik ikony w Info.plist.
+  Archiwum powstało przez ditto, zachowując strukturę aplikacji.
+  Rozpakowane full: 122,0 MiB (sama .app; zewnętrzny README jest dodatkowy).
+- Linux x64 (Ubuntu 22.04): tar.gz, full 258,6 MiB.
+- Lokalny core Linux: 149,9 MiB i udana diagnostyka frozen po usunięciu duplikatów
+  obrazów pomocy. Nie wykonano ponownego pomiaru RAM/CPU/startu.
+
+Testy skrótów obejmują oba okna, lokalny zapis/odczyt, konflikty bez częściowego
+zapisu, wyłączanie i edycję domyślnych bez zatwierdzenia. Testy pomocy sprawdzają
+7 rozdziałów i dwa lokalne obrazy w każdym z czterech języków oraz blokadę
+zdalnych obrazów i obrazów spoza katalogu instrukcji.
+
+Strony projektu PL/EN odpowiadają HTTP 200 i są połączone z hubami Narzędzia/Tools.
+W przeglądarce sprawdzono zgodne językowo obrazy oraz brak poziomego przepełnienia
+przy szerokości 390 px; sprawdzono też widok desktopowy. Publikacja używa osobnego
+szablonu projektu z istniejącą nawigacją i stopką, bez zmiany wspólnego szablonu
+stron ofertowych. Nie stanowi to testu faktycznych mikrofonów ani uprawnień systemu.
+
+Paczki: [wydanie testowe 14](https://github.com/nocnystroz/MeetingAgendaTimer/releases/tag/v14).
+W pobranych archiwach potwierdzono commit c808456, numer 14, brak zmian
+roboczych i licencje zależności; ZIP-y przeszły kontrolę CRC. W ZIP macOS
+zachowane są prawa wykonywania i 140 dowiązań symbolicznych. Do wydania
+dołączono SHA256SUMS; strona projektu ma bezpośrednie przyciski pobierania
+Windows ZIP, macOS ARM64 ZIP i Linux tar.gz.

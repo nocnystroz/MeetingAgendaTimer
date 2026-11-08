@@ -228,8 +228,6 @@ ma wersję utrwaloną przy budowaniu, także bez dostępu do Git.
 
 ### Języki i pierwsze uruchomienie
 
-W prawym górnym rogu wybierzesz Polski, English, Deutsch lub Français.
-
 **Pomoc → Instrukcja obsługi** otwiera lokalny poradnik ze zrzutami i spisem
 treści w wybranym języku. **Pomoc → Skróty klawiaturowe…** pozwala zmienić,
 wyłączyć lub przywrócić skróty; wykrywa konflikty i zapamiętuje ustawienia
@@ -240,6 +238,7 @@ oraz [stronę projektu](https://ion301.com/pl/narzedzia/meeting-agenda-timer/).
 Linki zewnętrzne otwierają się dopiero po kliknięciu; aplikacja nie wysyła
 automatycznie zgłoszeń ani danych spotkania.
 
+W prawym górnym rogu wybierzesz Polski, English, Deutsch lub Français.
 Zmiana działa podczas spotkania i nie tłumaczy ani nie zmienia Twojej agendy,
 notatek i transkrypcji. Wybór jest zapamiętywany lokalnie. Eksport używa wybranego
 języka nagłówków, zachowując oryginalne treści. README jest po polsku i angielsku; pozostała dokumentacja jest głównie po polsku.

@@ -269,5 +269,23 @@ Nowe instrukcje trafią do kolejnych paczek; istniejące wydanie v7 ich nie zawi
 - [x] Utworzyć stronę projektu w sekcji Narzędzia ion301.com zgodnie z lokalnymi
       instrukcjami /home/michal/geminicli_files/ion301-content-editing/;
       dodać link w menu Pomoc i dokumentacji.
-- [ ] Zweryfikować pomoc, skróty, ikony i układ archiwów; zbudować paczki
+- [x] Zweryfikować pomoc, skróty, ikony i układ archiwów; zbudować paczki
       na właściwych systemach i publikować wyłącznie potwierdzone wyniki.
+
+Weryfikacja etapu 15: wersja 14 (`c808456`), 85 testów na każdym systemie,
+Ruff i diagnostyka frozen (pomoc, skróty, PDF, brak żądań sieciowych) przeszły
+na Windows x64, macOS ARM64 i Ubuntu 22.04 x64.
+[CI](https://github.com/nocnystroz/MeetingAgendaTimer/actions/runs/42442836434).
+Sprawdzono układ ZIP i obecność natywnych ikon. Lokalny Linux core: 149,9 MiB
+po rozpakowaniu; diagnostyka poza źródłami również przeszła.
+Strony PL/EN opublikowane pod /pl/narzedzia/meeting-agenda-timer/
+i /en/tools/meeting-agenda-timer/; sprawdzone obrazy, linki z hubów i układ
+na desktopie oraz przy szerokości 390 px. Testy sprzętu/uprawnień pozostają
+oddzielnymi otwartymi zadaniami.
+
+Paczki: [wydanie testowe 14](https://github.com/nocnystroz/MeetingAgendaTimer/releases/tag/v14).
+W pobranych archiwach potwierdzono commit c808456, numer 14, brak zmian
+roboczych i licencje zależności; ZIP-y przeszły kontrolę CRC. W ZIP macOS
+zachowane są prawa wykonywania i 140 dowiązań symbolicznych. Do wydania
+dołączono SHA256SUMS; strona projektu ma bezpośrednie przyciski pobierania
+Windows ZIP, macOS ARM64 ZIP i Linux tar.gz.
