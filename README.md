@@ -231,8 +231,15 @@ ma wersję utrwaloną przy budowaniu, także bez dostępu do Git.
 **Pomoc → Instrukcja obsługi** otwiera lokalny poradnik ze zrzutami i spisem
 treści w wybranym języku. **Pomoc → Skróty klawiaturowe…** pozwala zmienić,
 wyłączyć lub przywrócić skróty; wykrywa konflikty i zapamiętuje ustawienia
-w `shortcuts.json` w katalogu danych. Skróty działają w panelu i liczniku,
-gdy aktywne jest okno aplikacji. Menu pokazuje aktualne przypisania.
+w `shortcuts.json` w katalogu danych. Sterowanie spotkaniem działa globalnie,
+także przy aktywnej prezentacji i po schowaniu programu. Domyślnie
+**Ctrl+Alt+Shift** + **B/N/P/U/I/O**: poprzedni/następny punkt, start/pauza,
++1 min, +5 min i własna liczba minut (ustawiana w konfiguracji). Na macOS Ctrl
+oznacza Cmd. Można wyłączyć globalne działanie checkboxem. Pozostałe skróty
+są lokalne. Menu pokazuje aktualne przypisania, a panel status rejestracji.
+Windows, macOS i Linux X11 mają natywne backendy; obsługa portalu Wayland
+pozostaje do wdrożenia. Zajęty skrót lub brak obsługi jest widoczny w konfiguracji.
+[Instrukcja skrótów](docs/GLOBAL_SHORTCUTS.md).
 Pomoc zawiera jedną politykę prywatności, zgłoszenia błędów/opinii na GitHubie
 oraz [stronę projektu](https://ion301.com/pl/narzedzia/meeting-agenda-timer/).
 Linki zewnętrzne otwierają się dopiero po kliknięciu; aplikacja nie wysyła
@@ -496,8 +503,15 @@ Portable packages save the version at build time and show it without Git.
 **Help → User guide** opens an offline guide with screenshots and chapter
 navigation in the selected language. **Help → Keyboard shortcuts…** edits,
 disables or restores bindings, detects conflicts and saves preferences in
-`shortcuts.json` in the data folder. Shortcuts work in the presenter and timer
-while an app window is active. Menus show current bindings.
+`shortcuts.json` in the data folder. Meeting controls work globally, including
+while presenting or with the app hidden. Defaults: **Ctrl+Alt+Shift** plus
+**B/N/P/U/I/O** for previous/next, start/pause, +1 minute, +5 minutes and custom
+minutes (adjustable in settings). On macOS Ctrl means Cmd. A checkbox disables
+global behavior. Other bindings are window shortcuts. Menus show the bindings;
+the presenter displays registration status. Native backends support Windows,
+macOS and Linux X11; Wayland portal support is still to be implemented.
+Occupied keys and unsupported backends are shown in the settings.
+[Shortcut details](docs/GLOBAL_SHORTCUTS.md).
 Help includes one privacy policy, GitHub bug/feedback reporting and the
 [project page](https://ion301.com/en/tools/meeting-agenda-timer/).
 External links open only after a click; the app does not submit reports or

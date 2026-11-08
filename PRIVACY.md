@@ -144,3 +144,7 @@ i nie wymagają internetu. Strona projektu i zgłoszenia GitHub otwierają się
 wyłącznie po kliknięciu. Aplikacja nie dołącza automatycznie danych sesji,
 logów ani kluczy do zgłoszenia; treść użytkownik wpisuje sam w przeglądarce.
 Zewnętrzne witryny stosują własne zasady prywatności.
+
+Skróty globalne rejestrują wyłącznie wskazane kombinacje sterowania w systemie.
+Aplikacja nie przechwytuje całej klawiatury ani nie zapisuje wciśnięć klawiszy.
+Rejestracje są lokalne, wyłączalne i zwalniane przy zakończeniu programu.

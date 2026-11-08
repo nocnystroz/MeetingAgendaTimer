@@ -50,7 +50,20 @@ Pour les captures, choisissez écran ou fenêtre (full), intervalle et limite, p
 
 ## 7. Raccourcis et aide
 
-**Aide → Raccourcis clavier…** modifie/désactive les raccourcis, détecte les conflits et restaure les valeurs par défaut. Les réglages sont locaux et fonctionnent dans les deux fenêtres, sans raccourcis globaux. Par défaut : Ctrl+Entrée démarre/met en pause, Ctrl+L affiche le minuteur, F1 ouvre ce guide. Les menus indiquent les raccourcis actuels.
+**Aide → Raccourcis clavier…** modifie/désactive les raccourcis, détecte les conflits et restaure les valeurs par défaut. Les commandes de réunion sont globales par défaut : elles fonctionnent pendant une présentation ou lorsque l’application est masquée. Les autres raccourcis concernent ses fenêtres.
+
+Commandes par défaut : **Ctrl+Alt+Shift** avec une lettre :
+
+| Lettre | Action |
+| --- | --- |
+| B | Point précédent |
+| N | Point suivant |
+| P | Démarrer / pause / reprendre |
+| U | +1 minute |
+| I | +5 minutes |
+| O | Minutes personnalisées (5 par défaut, modifiables dans les réglages) |
+
+Sur macOS, Ctrl signifie Command (Cmd). Décochez les commandes globales pour limiter les raccourcis aux fenêtres de l’application. Les raccourcis sont libérés à la fermeture et suspendus pendant leur modification. Vérifiez leur état avant de présenter : une combinaison déjà utilisée peut être bloquée par le système. Windows, macOS et Linux X11 sont pris en charge. Le portail de raccourcis globaux Wayland reste à implémenter ; les raccourcis locaux y restent disponibles. F1 ouvre le guide ; les menus affichent les combinaisons actuelles.
 
 L’aide contient une politique de confidentialité, les conditions, MIT, la page du projet, les signalements et le soutien. Les retours ouvrent GitHub dans le navigateur : indiquez système, version et étapes, sans clé API ni contenu privé. Aucun signalement n’est envoyé automatiquement.
 

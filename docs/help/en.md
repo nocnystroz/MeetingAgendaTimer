@@ -53,7 +53,20 @@ Transcription is optional: select a completed file, enter your own OpenAI key an
 
 ## 7. Shortcuts and help
 
-**Help → Keyboard shortcuts…** edits/disables bindings, detects conflicts and restores defaults. Changes work in both windows and are stored locally. Shortcuts apply within the app, not globally. Defaults: Ctrl+Enter starts/pauses, Ctrl+L shows the timer, F1 opens this guide. Menus show current bindings.
+**Help → Keyboard shortcuts…** edits/disables bindings, detects conflicts and restores defaults. Meeting controls are global by default: they also work while a presentation is active or the app is hidden. Other shortcuts apply within the app windows.
+
+Default meeting controls use **Ctrl+Alt+Shift** plus a letter:
+
+| Letter | Action |
+| --- | --- |
+| B | Previous item |
+| N | Next item |
+| P | Start / pause / resume |
+| U | +1 minute |
+| I | +5 minutes |
+| O | Custom minutes (default 5, adjustable in shortcut settings) |
+
+On macOS, Ctrl means Command (Cmd). Disable the global-controls checkbox to limit shortcuts to the app windows. Registrations are released when the app exits and temporarily suspended while editing shortcuts. Before presenting, check the status in the presenter or shortcut settings: the OS may block an occupied combination. Windows, macOS and Linux X11 are supported; Wayland global-shortcut portal support is still to be implemented. Window shortcuts remain available when global registration is unavailable. F1 opens this guide; menus show current bindings.
 
 Help includes one privacy policy, terms, MIT, the project page, issue reporting and support. Feedback opens GitHub in your browser: include OS, version and reproduction steps, without API keys or private meeting content. Nothing is submitted automatically.
 

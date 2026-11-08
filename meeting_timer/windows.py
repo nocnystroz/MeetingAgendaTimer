@@ -411,6 +411,9 @@ class MainWindow(QMainWindow):
         self.plan_label = label("Wklej agendę, aby zacząć.", "muted")
         self.plan_label.setWordWrap(True)
         control_layout.addWidget(self.plan_label)
+        self.hotkey_summary = label("", "muted")
+        self.hotkey_summary.setWordWrap(True)
+        control_layout.addWidget(self.hotkey_summary)
         layout.addWidget(controls)
         bottom = QHBoxLayout()
         self.audio_toggle = button("Nagrywanie i transkrypcja ▸", self.toggle_audio, "microphone")
@@ -438,6 +441,7 @@ class MainWindow(QMainWindow):
         self.statusBar().addPermanentWidget(version_label)
 
     def build_menu(self):
+        from .global_hotkeys import GLOBAL_DEFAULTS, GlobalHotkeys
         from .shortcuts import ShortcutSettings
         self.shortcuts = ShortcutSettings(self.directory / "shortcuts.json")
 
@@ -447,7 +451,7 @@ class MainWindow(QMainWindow):
             menu.addAction(action)
             self.addAction(action)
             self.counter.addAction(action)
-            self.shortcuts.register(name, action, shortcut)
+            self.shortcuts.register(name, action, GLOBAL_DEFAULTS.get(name, shortcut))
             return action
 
         menu = self.menuBar().addMenu("Spotkanie")
@@ -469,6 +473,7 @@ class MainWindow(QMainWindow):
             ("next", "Następny punkt", lambda: self.step(1), "Ctrl+Alt+Right"),
             ("add_minute", "+1 min", lambda: self.add_time(60), "Ctrl+Alt+1"),
             ("add_five", "+5 min", lambda: self.add_time(300), "Ctrl+Alt+5"),
+            ("add_custom", "Dodaj ustawioną liczbę minut", lambda: self.add_time(self.shortcuts.extra_minutes * 60), ""),
             ("counter", "Pokaż licznik", self.show_counter, "Ctrl+L"),
             ("presenter", "Pokaż panel", self.present, ""),
             ("pin", "Zawsze na wierzchu", self.counter.pin.toggle, "Ctrl+Shift+T"),
@@ -487,6 +492,26 @@ class MainWindow(QMainWindow):
             add_action(self.help_menu, name, title, callback, shortcut)
         if not self.shortcuts.load():
             self.statusBar().showMessage("Nie można odczytać skrótów — użyto domyślnych.")
+        self.shortcuts.global_hotkeys = GlobalHotkeys(self.shortcuts.actions, self,
+                                                      on_activate=self.global_control)
+        self.shortcuts.global_hotkeys.status_changed.connect(self.update_hotkey_status)
+        self.shortcuts.global_hotkeys.configure(self.shortcuts.values(), self.shortcuts.global_enabled)
+
+    def update_hotkey_status(self):
+        manager = self.shortcuts.global_hotkeys
+        self.hotkey_summary.setText("Skróty globalne wymagają konfiguracji (Pomoc → Skróty…)."
+                                    if manager.errors else manager.status())
+        self.hotkey_summary.setToolTip(manager.status())
+
+    def global_control(self, name):
+        if not self.meeting.items:
+            return
+        if name == "play":
+            if not self.engine.started and self.mode.currentIndex() == 1 and self.meeting.items[0].scheduled is None:
+                return
+            self.play_pause(reveal_counter=False)
+        else:
+            self.shortcuts.actions[name].trigger()
 
     def build_tray(self):
         self.tray = QSystemTrayIcon(icon("clock"), self)
@@ -771,7 +796,7 @@ class MainWindow(QMainWindow):
             self.scheduled_start.setVisible(self.mode.currentIndex() == 2)
         self.schedule_save()
 
-    def play_pause(self):
+    def play_pause(self, *, reveal_counter=True):
         if not self.meeting.items:
             self.paste_agenda()
             return
@@ -789,7 +814,8 @@ class MainWindow(QMainWindow):
             self.mode.setEnabled(False)
             self.date.setEnabled(False)
             self.scheduled_start.setEnabled(False)
-            self.show_counter()
+            if reveal_counter:
+                self.show_counter()
         else:
             self.engine.toggle_pause()
         self.schedule_save()
@@ -1048,6 +1074,7 @@ class MainWindow(QMainWindow):
 
     def change_language(self, _index):
         set_language(self.language_combo.currentData())
+        self.update_hotkey_status()
         self.tick()
         self.schedule_save()
 
@@ -1125,6 +1152,7 @@ class MainWindow(QMainWindow):
         if not self.save_session(clean=True):
             return
         self.quitting = True
+        self.shortcuts.global_hotkeys.close()
         self.tray.hide()
         QApplication.instance().quit()
 

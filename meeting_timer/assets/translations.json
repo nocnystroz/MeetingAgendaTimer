@@ -1868,5 +1868,90 @@
     "en": "Shortcut conflict: {first} / {second}",
     "de": "Tastenkürzelkonflikt: {first} / {second}",
     "fr": "Conflit de raccourcis : {first} / {second}"
+  },
+  "Nieobsługiwany skrót globalny.": {
+    "en": "Unsupported global shortcut.",
+    "de": "Nicht unterstütztes globales Tastenkürzel.",
+    "fr": "Raccourci global non pris en charge."
+  },
+  "F12 jest zarezerwowany przez Windows.": {
+    "en": "F12 is reserved by Windows.",
+    "de": "F12 ist unter Windows reserviert.",
+    "fr": "F12 est réservé par Windows."
+  },
+  "Skrót zajęty lub zablokowany przez system.": {
+    "en": "Shortcut is in use or blocked by the system.",
+    "de": "Tastenkürzel ist belegt oder vom System gesperrt.",
+    "fr": "Raccourci utilisé ou bloqué par le système."
+  },
+  "Nie można uruchomić skrótów globalnych.": {
+    "en": "Could not enable global shortcuts.",
+    "de": "Globale Tastenkürzel konnten nicht aktiviert werden.",
+    "fr": "Impossible d’activer les raccourcis globaux."
+  },
+  "Brak dostępu do sesji X11.": {
+    "en": "Cannot access the X11 session.",
+    "de": "Kein Zugriff auf die X11-Sitzung.",
+    "fr": "Accès impossible à la session X11."
+  },
+  "Skróty globalne niedostępne w trybie diagnostycznym.": {
+    "en": "Global shortcuts are unavailable in diagnostic mode.",
+    "de": "Globale Tastenkürzel sind im Diagnosemodus nicht verfügbar.",
+    "fr": "Raccourcis globaux indisponibles en mode diagnostic."
+  },
+  "Wayland: skróty globalne wymagają obsługi portalu pulpitu. Dostępne są skróty lokalne.": {
+    "en": "Wayland: global shortcuts require desktop portal support. Window shortcuts remain available.",
+    "de": "Wayland: Globale Tastenkürzel benötigen Desktop-Portal-Unterstützung. Lokale Kürzel bleiben verfügbar.",
+    "fr": "Wayland : les raccourcis globaux nécessitent un portail de bureau. Les raccourcis locaux restent disponibles."
+  },
+  "Skróty globalne": {
+    "en": "Global shortcuts",
+    "de": "Globale Tastenkürzel",
+    "fr": "Raccourcis globaux"
+  },
+  "Skróty globalne aktywne: {count}": {
+    "en": "Global shortcuts active: {count}",
+    "de": "Aktive globale Tastenkürzel: {count}",
+    "fr": "Raccourcis globaux actifs : {count}"
+  },
+  "Skróty globalne wyłączone.": {
+    "en": "Global shortcuts disabled.",
+    "de": "Globale Tastenkürzel deaktiviert.",
+    "fr": "Raccourcis globaux désactivés."
+  },
+  "Liczba minut musi być od 1 do 120.": {
+    "en": "Minutes must be between 1 and 120.",
+    "de": "Die Minutenzahl muss zwischen 1 und 120 liegen.",
+    "fr": "Le nombre de minutes doit être compris entre 1 et 120."
+  },
+  "Skróty sterowania spotkaniem mogą działać także w prezentacji. Kliknij pole i naciśnij kombinację; wyczyść, aby wyłączyć.": {
+    "en": "Meeting controls can work while presenting. Click a field and press a combination; clear it to disable.",
+    "de": "Die Besprechungssteuerung funktioniert auch während einer Präsentation. Feld anklicken und Kombination drücken; zum Deaktivieren leeren.",
+    "fr": "Les commandes peuvent fonctionner pendant une présentation. Cliquez sur un champ et appuyez sur la combinaison ; videz-le pour désactiver."
+  },
+  "Globalne sterowanie spotkaniem (także poza oknem aplikacji)": {
+    "en": "Global meeting controls (also outside the app window)",
+    "de": "Globale Besprechungssteuerung (auch außerhalb des App-Fensters)",
+    "fr": "Commandes globales de réunion (hors de la fenêtre de l’application)"
+  },
+  "Liczba minut dla skrótu własnego:": {
+    "en": "Minutes for the custom shortcut:",
+    "de": "Minuten für das benutzerdefinierte Kürzel:",
+    "fr": "Minutes pour le raccourci personnalisé :"
+  },
+  "globalny": {
+    "en": "global",
+    "de": "global",
+    "fr": "global"
+  },
+  "Dodaj ustawioną liczbę minut": {
+    "en": "Add custom minutes",
+    "de": "Eingestellte Minuten hinzufügen",
+    "fr": "Ajouter les minutes configurées"
+  },
+  "Skróty globalne wymagają konfiguracji (Pomoc → Skróty…).": {
+    "en": "Global shortcuts need attention (Help → Keyboard shortcuts…).",
+    "de": "Globale Tastenkürzel benötigen Einrichtung (Hilfe → Tastenkürzel…).",
+    "fr": "Raccourcis globaux à configurer (Aide → Raccourcis clavier…)."
   }
 }

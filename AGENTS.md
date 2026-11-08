@@ -255,3 +255,18 @@ być publiczne; użytkownik zezwolił na publikację i opis repozytorium.
   i przywracaniem domyślnych; zapis w shortcuts.json, działanie obu okien.
 - Strony projektu: /pl/narzedzia/meeting-agenda-timer/ i /en/tools/meeting-agenda-timer/.
   Zgłoszenia otwierać w przeglądarce bez automatycznej wysyłki danych.
+
+
+## Globalne sterowanie podczas prezentacji
+
+- Użytkownik wymaga skrótów działających przy aktywnym innym programie,
+  gdy licznik pozostaje uruchomiony (także schowany): poprzedni/następny punkt,
+  pauza/wznowienie, +1/+5 oraz konfigurowalna liczba minut.
+- Domyślne kombinacje Ctrl+Alt+Shift+B/N/P/U/I/O; na macOS Qt Ctrl to Cmd.
+  Unikać Ctrl+Alt+Fn (możliwe konflikty z konsolami Linux) i Windows F12.
+- Rejestracja konkretnych kombinacji w natywnym API, bez nasłuchu wszystkich
+  klawiszy. Nie przejmować fokusu prezentacji. Zwalniać skróty przy wyjściu
+  i na czas edycji ustawień; pokazywać zajęte kombinacje i brak backendu.
+- Windows RegisterHotKey, macOS Carbon, Linux X11 XGrabKey. Wayland wymaga
+  osobnego wdrożenia portalu GlobalShortcuts; nie deklarować, że backend X11
+  zapewnia globalne działanie w natywnych aplikacjach Wayland.

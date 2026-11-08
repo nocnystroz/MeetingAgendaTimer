@@ -50,7 +50,20 @@ Für Screenshots Quelle (Fenster nur in full), Intervall und Limit wählen und a
 
 ## 7. Tastenkürzel und Hilfe
 
-**Hilfe → Tastenkürzel…** ändert/deaktiviert Kürzel, erkennt Konflikte und stellt Standardwerte wieder her. Die Einstellungen gelten lokal für beide Fenster, nicht systemweit. Standard: Ctrl+Enter startet/pausiert, Ctrl+L öffnet den Timer, F1 diese Anleitung. Menüs zeigen die aktuellen Kürzel.
+**Hilfe → Tastenkürzel…** ändert/deaktiviert Kürzel, erkennt Konflikte und stellt Standardwerte wieder her. Die Besprechungssteuerung gilt standardmäßig global: auch bei aktiver Präsentation oder ausgeblendeter App. Andere Kürzel gelten in den App-Fenstern.
+
+Standardsteuerung: **Ctrl+Alt+Shift** plus Buchstabe:
+
+| Buchstabe | Aktion |
+| --- | --- |
+| B | Vorheriger Punkt |
+| N | Nächster Punkt |
+| P | Start / Pause / Fortsetzen |
+| U | +1 Minute |
+| I | +5 Minuten |
+| O | Eigene Minutenzahl (Standard 5, in den Kürzeleinstellungen änderbar) |
+
+Unter macOS bedeutet Ctrl Command (Cmd). Deaktivieren Sie die globale Steuerung, um Kürzel auf App-Fenster zu beschränken. Beim Beenden werden die Kürzel freigegeben, während der Bearbeitung vorübergehend ausgesetzt. Prüfen Sie vor der Präsentation den Status: belegte Kombinationen können vom System gesperrt werden. Windows, macOS und Linux X11 werden unterstützt. Die Wayland-Portal-Unterstützung steht noch aus; dort bleiben lokale Kürzel verfügbar. F1 öffnet die Anleitung; Menüs zeigen aktuelle Zuweisungen.
 
 Die Hilfe enthält eine Datenschutzerklärung, Bedingungen, MIT, Projektseite, Fehlermeldung und Unterstützung. Rückmeldungen öffnen GitHub im Browser: Betriebssystem, Version und Schritte angeben, keine API-Schlüssel oder vertraulichen Inhalte. Nichts wird automatisch gesendet.
 

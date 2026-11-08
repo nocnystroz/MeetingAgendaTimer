@@ -300,9 +300,17 @@ Windows ZIP, macOS ARM64 ZIP i Linux tar.gz.
       agendy spotkania. Wyraźne oznaczenie beta na stronie, GitHubie i w README.
 - [x] Link do projektu w górnym menu Narzędzia/Tools w PL/EN oraz poprawione
       opisy kart na hubach, tytuły i opisy metadanych strony.
-- [ ] Globalne skróty sterowania działające, gdy aplikacja jest uruchomiona,
+- [x] Globalne skróty sterowania działające, gdy aplikacja jest uruchomiona,
       również przy aktywnym oknie prezentacji: poprzedni/następny punkt,
       pauza/wznowienie, +1/+5 minut. Konfigurowalne, mniej kolizyjne domyślne
       kombinacje, widoczne konflikty i ograniczenia systemowe.
 - [ ] Zwolnić rejestracje skrótów przy wyjściu; zaktualizować instrukcje PL/EN/DE/FR
       i sprawdzić działanie przy aktywnym innym oknie, bez przejmowania fokusu.
+
+Backendy Windows/macOS/X11 wdrożone bez nowych zależności i bez przechwytywania
+całej klawiatury. Domyślne Ctrl+Alt+Shift+B/N/P/U/I/O. Własne minuty: 1–120.
+Lokalnie: Ruff oraz 90 testów (2 platformowe pominięte na Linux).
+Test na pulpicie X11 z aktywnym osobnym procesem xmessage potwierdził sześć
+akcji, zachowanie fokusu, rzeczywisty konflikt i zwolnienie rejestracji.
+Wayland: osobny backend portalu GlobalShortcuts pozostaje do wdrożenia;
+aplikacja pokazuje to ograniczenie, zamiast deklarować globalne działanie.

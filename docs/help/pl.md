@@ -53,7 +53,20 @@ Transkrypcja jest opcjonalna: wybierz zakończony plik, podaj własny klucz Open
 
 ## 7. Skróty i pomoc
 
-**Pomoc → Skróty klawiaturowe…** pozwala zmienić lub wyłączyć skrót, wykrywa konflikty i przywraca domyślne. Zmiany działają w obu oknach i zapisują się lokalnie. To skróty aplikacji, nie globalne skróty systemu. Domyślnie Ctrl+Enter: start/pauza, Ctrl+L: licznik, F1: instrukcja; aktualne przypisania zobaczysz w menu.
+**Pomoc → Skróty klawiaturowe…** pozwala zmienić lub wyłączyć skrót, wykrywa konflikty i przywraca domyślne. Sterowanie spotkaniem jest domyślnie globalne: działa także przy aktywnej prezentacji lub po schowaniu aplikacji. Pozostałe skróty dotyczą okien aplikacji.
+
+Domyślne skróty sterowania używają **Ctrl+Alt+Shift** oraz litery:
+
+| Litera | Działanie |
+| --- | --- |
+| B | Poprzedni punkt |
+| N | Następny punkt |
+| P | Start / pauza / wznowienie |
+| U | +1 minuta |
+| I | +5 minut |
+| O | Własna liczba minut (domyślnie 5, ustawiana w konfiguracji skrótów) |
+
+Na macOS Ctrl oznacza klawisz Command (Cmd). Możesz wyłączyć globalne sterowanie checkboxem; wtedy skróty działają tylko w oknach aplikacji. Skróty zwalniają się po zakończeniu programu. Podczas edycji skrótów rejestracja jest tymczasowo wyłączona. Przed prezentacją sprawdź status w panelu lub w konfiguracji skrótów: system może blokować zajętą kombinację. Dostępne są Windows, macOS i Linux X11; na Waylandzie obsługa portalu skrótów globalnych jest jeszcze do wdrożenia. Przy braku obsługi pozostają skróty lokalne. F1 otwiera instrukcję; aktualne przypisania widać w menu.
 
 Menu Pomoc zawiera jedną politykę prywatności, warunki, MIT, stronę projektu, zgłoszenia błędów i wsparcie. Zgłoszenie otwiera GitHub w przeglądarce: opisz system, wersję i kroki odtworzenia, bez kluczy API i prywatnej treści spotkania. Nic nie jest wysyłane automatycznie.
 
