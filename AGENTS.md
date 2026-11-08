@@ -209,7 +209,7 @@ być publiczne; użytkownik zezwolił na publikację i opis repozytorium.
   uczestników i wymagane uprawnienia. Akceptacja lokalna, wersjonowana treścią.
 - W Pomocy: MIT, polityka prywatności i https://buymeacoffee.com/m.slawinski
   (adres zweryfikowany w README projektu referencyjnego).
-- Repozytorium publiczne: https://github.com/nocnystroz/meeting-agenda-timer.
+- Repozytorium publiczne: https://github.com/nocnystroz/MeetingAgendaTimer.
   Publikacja i budowanie Windows/macOS przez GitHub Actions są autoryzowane.
 
 ## Dokumentacja PL / EN
@@ -220,8 +220,11 @@ być publiczne; użytkownik zezwolił na publikację i opis repozytorium.
   sekcje w tym samym etapie pracy. Krótki angielski wstęp nie zastępuje tłumaczenia.
 - Opis GitHub About jest dwujęzyczny (PL / EN), mieści się w limicie 350 znaków
   i odpowiada treści zapisanej w `docs/github-description.txt`.
-- Repozytorium nazywa się `meeting-agenda-timer`; nazwy aplikacji i jej katalogu
+- Repozytorium nazywa się `MeetingAgendaTimer`; nazwy aplikacji i jej katalogu
   danych pozostają bez zmian. GitHub Topics odpowiadają `docs/github-topics.txt`.
 - Opis i README odróżniają zaimplementowane funkcje od testów rzeczywistego
   sprzętu oraz testów z atrapami. Nie rozszerzać deklaracji wsparcia platform
   lub dostępności paczek ponad potwierdzone wyniki.
+
+- Zrzuty w polskiej części README pokazują polski interfejs, a w angielskiej
+  angielski interfejs oraz angielską przykładową agendę i notatki.

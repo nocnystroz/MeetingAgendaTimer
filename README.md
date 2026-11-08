@@ -27,8 +27,8 @@ Gotową paczkę dla swojego systemu należy rozpakować i uruchomić:
 Paczka zawiera interpreter i biblioteki. Nie wymaga instalowania Pythona,
 pip ani venv. Nie przenoś samego pliku wykonywalnego bez towarzyszących bibliotek.
 Lokalne wyniki budowania znajdują się w `dist/` i nie są commitowane.
-Kod: https://github.com/nocnystroz/meeting-agenda-timer
-Paczki do pobrania: [wydania testowe](https://github.com/nocnystroz/meeting-agenda-timer/releases).
+Kod: https://github.com/nocnystroz/MeetingAgendaTimer
+Paczki do pobrania: [wydania testowe](https://github.com/nocnystroz/MeetingAgendaTimer/releases).
 Artefakty udanych przebiegów Actions obejmują Windows x64, macOS Apple Silicon
 (ARM64) i Linux x86_64. Obecna macierz CI buduje wariant full; wariant core
 można zbudować skryptem poniżej na docelowym systemie. Intel Mac i Windows ARM
@@ -268,8 +268,8 @@ Unpack the package for your system and launch:
 Packages include the interpreter and libraries; Python, pip and venv are not
 required. Keep the accompanying libraries with the executable. Local build
 outputs are in `dist/` and are not committed. Source code:
-https://github.com/nocnystroz/meeting-agenda-timer. Downloads: [test
-releases](https://github.com/nocnystroz/meeting-agenda-timer/releases), or
+https://github.com/nocnystroz/MeetingAgendaTimer. Downloads: [test
+releases](https://github.com/nocnystroz/MeetingAgendaTimer/releases), or
 Actions → a successful build → Artifacts. Targets: Windows x64, macOS Apple
 Silicon (ARM64), Linux x86_64. There is no separate Intel Mac or Windows ARM
 artifact in the current matrix. CI currently builds the full variant; core can be
@@ -473,7 +473,7 @@ transcript. The choice is saved locally. Exports use headings in the selected
 language while preserving original content. This README is available in Polish and English; the other project documents
 are mainly in Polish. First-launch terms are available in four languages.
 
-On first launch, accept the [English terms of use](https://github.com/nocnystroz/meeting-agenda-timer/blob/main/meeting_timer/assets/terms.en.md), including the
+On first launch, accept the [English terms of use](https://github.com/nocnystroz/MeetingAgendaTimer/blob/main/meeting_timer/assets/terms.en.md), including the
 statement that you have participant consent and required permissions for
 recording and screenshots. The meeting panel will not open without acceptance.
 Updated terms require acceptance again. Help includes the terms, MIT license,
@@ -483,8 +483,8 @@ privacy policy and support link.
 
 ### Preview
 
-![Presenter panel](docs/screenshots/panel.png)
+![Presenter panel](docs/screenshots/panel-en.png)
 
 Compact timer:
 
-![Compact timer](docs/screenshots/licznik.png)
+![Compact timer](docs/screenshots/timer-en.png)

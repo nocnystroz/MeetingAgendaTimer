@@ -42,7 +42,7 @@ a kompaktowy licznik miał rzeczywiste wymiary 260 × 138 px.
 
 ## CI trzech systemów
 
-[Przebieg dla wersji 6](https://github.com/nocnystroz/meeting-agenda-timer/actions/runs/42414000793)
+[Przebieg dla wersji 6](https://github.com/nocnystroz/MeetingAgendaTimer/actions/runs/42414000793)
 zakończył się sukcesem dla wszystkich trzech zadań:
 
 - Windows x64: testy, ZIP bez instalatora i uruchomienie spakowanego GUI.
