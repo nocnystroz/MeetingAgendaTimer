@@ -66,13 +66,34 @@ foreach ($payload as $code => $data) {
     if ($publish) {
         $hub = get_post($data['parent']);
         if (strpos($hub->post_content, '/meeting-agenda-timer/') === false) {
-            $label = $code === 'pl' ? 'Licznik agendy spotkania, lokalne notatki i okno do udostępniania. Windows, macOS i Linux.' : 'Meeting agenda countdown, local notes and a shareable timer. Windows, macOS and Linux.';
+            $label = $code === 'pl' ? 'Beta: odliczanie czasu pozostałego do końca punktów agendy spotkania. Notatki, decyzje i zadania. Windows, macOS i Linux.' : 'Beta: count down the time remaining for each meeting agenda item. Notes, decisions and tasks. Windows, macOS and Linux.';
             $cta = $code === 'pl' ? 'Poznaj i pobierz →' : 'Explore and download →';
             $card = '<div class="bg-white border border-gray-100 rounded-2xl p-8 flex flex-col h-full shadow-sm"><div class="w-14 h-14 bg-brand-light rounded-xl flex items-center justify-center text-3xl mb-6">⏱</div><h3 class="text-xl font-bold text-brand-dark mb-3">Meeting Agenda Timer</h3><p class="text-gray-500 text-sm mb-6 flex-1">' . esc_html($label) . '</p><a href="' . esc_url(get_permalink($id)) . '" class="inline-flex items-center text-brand-accent font-bold text-sm">' . esc_html($cta) . '</a></div>';
             $position = strrpos($hub->post_content, '</div>');
             if ($position === false) { WP_CLI::error('Unexpected hub markup; page saved, hub unchanged.'); }
             wp_update_post(wp_slash(['ID'=>$hub->ID, 'post_content'=>substr_replace($hub->post_content, $card . "\n", $position, 0)]));
         }
+        if (!empty($data['hub_description'])) {
+            $current_hub = get_post($data['parent']);
+            $pattern = '~(<h3[^>]*>Meeting Agenda Timer</h3><p[^>]*>).*?(</p>)~s';
+            $hub_html = preg_replace_callback($pattern, fn($m) => $m[1] . esc_html($data['hub_description']) . $m[2], $current_hub->post_content, 1);
+            wp_update_post(wp_slash(['ID'=>$current_hub->ID, 'post_content'=>$hub_html]));
+        }
+        $nav_slug = $code === 'pl' ? 'nav-pl' : 'nav-en';
+        $nav_menu = wp_get_nav_menu_object($nav_slug);
+        if (!$nav_menu) { WP_CLI::error('Missing top navigation menu.'); }
+        $nav_parent = 0;
+        $nav_existing = 0;
+        foreach (wp_get_nav_menu_items($nav_menu->term_id) ?: [] as $item) {
+            if (in_array('group-tools', (array)$item->classes, true)) { $nav_parent = (int)$item->menu_item_parent; }
+            if ((int)$item->object_id === $id || strpos($item->url, '/meeting-agenda-timer/') !== false) { $nav_existing = $item->ID; }
+        }
+        if (!$nav_parent) { WP_CLI::error('Missing Tools group in top navigation.'); }
+        wp_update_nav_menu_item($nav_menu->term_id, $nav_existing, [
+            'menu-item-title'=>'Meeting Agenda Timer · beta', 'menu-item-object-id'=>$id,
+            'menu-item-object'=>'page', 'menu-item-type'=>'post_type',
+            'menu-item-parent-id'=>$nav_parent, 'menu-item-classes'=>'group-tools',
+            'menu-item-description'=>$data['nav_description'] ?? '', 'menu-item-status'=>'publish']);
         $menu_id = $code === 'pl' ? 142 : 143;
         $items = wp_get_nav_menu_items($menu_id) ?: [];
         $menu_parent = 0;

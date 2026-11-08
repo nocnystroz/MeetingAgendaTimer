@@ -6,11 +6,11 @@
 
 ## Polski
 
-Lokalna aplikacja desktopowa do prowadzenia spotkań według agendy. Osobny
-licznik pokazuje bieżący punkt i pozostały czas, a panel prowadzącego pozwala
-zapisywać notatki, decyzje i zadania.
+Lokalne narzędzie desktopowe do odliczania czasu pozostałego do końca
+poszczególnych punktów agendy spotkania. Osobny licznik pokazuje tytuł punktu
+i pozostały czas, a panel prowadzącego pozwala zapisywać notatki, decyzje i zadania.
 
-**Prototyp do testów — wersja aplikacji to numer commita (liczba commitów w historii HEAD).** Testy, budowanie oraz uruchomienie paczek przeszły w CI na Windows, macOS
+**Wersja beta — wersja aplikacji to numer commita (liczba commitów w historii HEAD).** Testy, budowanie oraz uruchomienie paczek przeszły w CI na Windows, macOS
 i Linux. Dodatkowo sprawdzono pulpit Linux X11. Mikrofony, uprawnienia
 i przechwytywanie obrazu na fizycznych komputerach Windows/macOS wymagają
 dalszych testów. Szczegóły: [ROADMAP.md](ROADMAP.md)
@@ -264,11 +264,11 @@ Widok kompaktowy:
 
 ## English
 
-Portable desktop app for running meetings from an agenda. A separate timer
-shows the current item and remaining time; the presenter panel holds notes,
-decisions and tasks.
+Portable desktop tool for counting down the time remaining for each meeting
+agenda item. A separate timer shows the item title and remaining time; the
+presenter panel holds notes, decisions and tasks.
 
-**Prototype for testing — the app version is the commit count (the number of
+**Beta version — the app version is the commit count (the number of
 commits in HEAD history).** CI tests, builds and launches packages on Windows,
 macOS and Linux. Linux X11 desktop behavior was also checked. Microphones,
 permissions and image capture on physical Windows/macOS computers still need

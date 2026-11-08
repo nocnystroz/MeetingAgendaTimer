@@ -1,6 +1,6 @@
 # Strona projektu na ion301.com
 
-- Treść: `pl.html` i `en.html`; znaczniki `{{PANEL_IMAGE}}` i `{{TIMER_IMAGE}}`
+- Metadane i opisy: `pages.json`. Treść: `pl.html` i `en.html`; znaczniki `{{PANEL_IMAGE}}` i `{{TIMER_IMAGE}}`
   zastępuje skrypt adresami lokalnych mediów WordPress.
 - Opublikowane strony: PL ID 4760 pod hubem 2475, EN ID 4762 pod hubem 2478.
 - `deploy.php` uruchamia się przez `wp eval-file`, na serwerze ion301.com,
@@ -15,3 +15,7 @@
   zachowując nawigację i stopkę, bez sekcji ofertowych. Wspólny szablon nie jest zmieniany.
 - Przy nowym wydaniu aktualizuj bezpośrednie adresy paczek w obu plikach HTML.
   Najpierw opublikuj i sprawdź pliki wydania, następnie aktualizuj stronę.
+
+- Publikacja dodaje projekt do grupy Narzędzia/Tools w `nav-pl` / `nav-en`,
+  wspólnej dla górnego menu i mobilnej nawigacji. Nie zmienia przypisań
+  starszych menu 123/122 ani struktury adresów.

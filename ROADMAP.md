@@ -293,3 +293,16 @@ Windows ZIP, macOS ARM64 ZIP i Linux tar.gz.
 - [x] Poprawić About na GitHubie: narzędzie do prowadzenia spotkań według
       agendy; odliczanie dotyczy czasu punktów, zamiast określenia „licznik spotkań”.
       Zachować pełny opis PL/EN zgodny z docs/github-description.txt.
+
+## 16. Doprecyzowanie opisu i skróty globalne
+
+- [ ] Opis PL/EN: odliczanie czasu pozostałego do końca poszczególnych punktów
+      agendy spotkania. Wyraźne oznaczenie beta na stronie, GitHubie i w README.
+- [ ] Link do projektu w górnym menu Narzędzia/Tools w PL/EN oraz poprawione
+      opisy kart na hubach, tytuły i opisy metadanych strony.
+- [ ] Globalne skróty sterowania działające, gdy aplikacja jest uruchomiona,
+      również przy aktywnym oknie prezentacji: poprzedni/następny punkt,
+      pauza/wznowienie, +1/+5 minut. Konfigurowalne, mniej kolizyjne domyślne
+      kombinacje, widoczne konflikty i ograniczenia systemowe.
+- [ ] Zwolnić rejestracje skrótów przy wyjściu; zaktualizować instrukcje PL/EN/DE/FR
+      i sprawdzić działanie przy aktywnym innym oknie, bez przejmowania fokusu.
