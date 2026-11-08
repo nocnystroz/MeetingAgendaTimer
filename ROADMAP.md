@@ -296,9 +296,9 @@ Windows ZIP, macOS ARM64 ZIP i Linux tar.gz.
 
 ## 16. Doprecyzowanie opisu i skróty globalne
 
-- [ ] Opis PL/EN: odliczanie czasu pozostałego do końca poszczególnych punktów
+- [x] Opis PL/EN: odliczanie czasu pozostałego do końca poszczególnych punktów
       agendy spotkania. Wyraźne oznaczenie beta na stronie, GitHubie i w README.
-- [ ] Link do projektu w górnym menu Narzędzia/Tools w PL/EN oraz poprawione
+- [x] Link do projektu w górnym menu Narzędzia/Tools w PL/EN oraz poprawione
       opisy kart na hubach, tytuły i opisy metadanych strony.
 - [ ] Globalne skróty sterowania działające, gdy aplikacja jest uruchomiona,
       również przy aktywnym oknie prezentacji: poprzedni/następny punkt,
