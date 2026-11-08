@@ -220,17 +220,25 @@ Lekkość potwierdzają pomiary, nie samo użycie natywnych kontrolek.
 - [x] Pomoc: warunki, MIT, prywatność i zweryfikowany link Buy me a coffee.
 - [x] Potwierdzić ukończenie budowania Windows i macOS w Actions, podać artefakty.
 
-Gotowe artefakty i wyniki: https://github.com/nocnystroz/licznik-spotkaniowy/actions/runs/42414000793.
+Gotowe artefakty i wyniki: https://github.com/nocnystroz/meeting-agenda-timer/actions/runs/42414000793.
 Pomiar wersji 6: core 149,6 MiB na dysku, 91,8 MiB RAM, start 0,34 s;
 full 269,4 MiB na dysku, 99,7 MiB RAM, start 0,42 s (Linux, krótki pomiar).
 
 ## 14. Dwujęzyczny opis projektu — PL / EN
 
-- [ ] Przygotować opis repozytorium GitHub (About) po polsku i angielsku,
+- [x] Przygotować opis repozytorium GitHub (About) po polsku i angielsku,
       z uwzględnieniem limitu długości tego pola.
-- [ ] Przygotować pełną treść `README.md` w dwóch wersjach językowych:
+- [x] Przygotować pełną treść `README.md` w dwóch wersjach językowych:
       polskiej i angielskiej, z czytelnymi odnośnikami do obu sekcji.
-- [ ] Zachować równoważny zakres obu wersji: funkcje, pobieranie, uruchamianie,
+- [x] Zachować równoważny zakres obu wersji: funkcje, pobieranie, uruchamianie,
       formaty agendy, prywatność, warunki, licencja, ograniczenia i wsparcie.
-- [ ] Aktualizować obie wersje razem przy kolejnych zmianach dokumentacji;
+- [x] Zapisać w `AGENTS.md` zasadę wspólnej aktualizacji PL/EN;
       krótki angielski wstęp nie zastępuje pełnej angielskiej wersji README.
+- [x] Zmienić nazwę repozytorium na `meeting-agenda-timer`, zaktualizować origin
+      oraz adresy GitHub w dokumentacji. Nazwa aplikacji pozostaje bez zmian.
+- [x] Rozszerzyć GitHub Topics do 20 tematów związanych z funkcjami i platformami;
+      zapisać listę w `docs/github-topics.txt`, a opis About w `docs/github-description.txt`.
+
+Weryfikacja dokumentacji: 10 odpowiadających sobie rozdziałów PL/EN,
+6 przykładów agendy sprawdzonych parserem, zgodne polecenia, poprawne linki lokalne.
+About ma 338 znaków, a zdalne metadane odpowiadają zapisanym plikom.

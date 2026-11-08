@@ -1,6 +1,10 @@
-# Licznik spotkaniowy
+# Meeting Agenda Timer / Licznik spotkaniowy
 
-Portable desktop meeting timer with notes, local audio, screenshots and optional API transcription. UI: PL / EN / DE / FR.
+[Polski](#polski) · [English](#english)
+
+<a id="polski"></a>
+
+## Polski
 
 Lokalna aplikacja desktopowa do prowadzenia spotkań według agendy. Osobny
 licznik pokazuje bieżący punkt i pozostały czas, a panel prowadzącego pozwala
@@ -12,7 +16,7 @@ i przechwytywanie obrazu na fizycznych komputerach Windows/macOS wymagają
 dalszych testów. Szczegóły: [ROADMAP.md](ROADMAP.md)
 i [docs/VALIDATION.md](docs/VALIDATION.md).
 
-## Uruchomienie bez instalatora
+### Uruchomienie bez instalatora
 
 Gotową paczkę dla swojego systemu należy rozpakować i uruchomić:
 
@@ -23,10 +27,11 @@ Gotową paczkę dla swojego systemu należy rozpakować i uruchomić:
 Paczka zawiera interpreter i biblioteki. Nie wymaga instalowania Pythona,
 pip ani venv. Nie przenoś samego pliku wykonywalnego bez towarzyszących bibliotek.
 Lokalne wyniki budowania znajdują się w `dist/` i nie są commitowane.
-Kod: https://github.com/nocnystroz/licznik-spotkaniowy
-Paczki do pobrania: [wydania testowe](https://github.com/nocnystroz/licznik-spotkaniowy/releases).
-Dodatkowo: Actions → udane budowanie → Artifacts. Dostępne cele:
-Windows x64, macOS Apple Silicon (ARM64), Linux x86_64. Intel Mac i Windows ARM
+Kod: https://github.com/nocnystroz/meeting-agenda-timer
+Paczki do pobrania: [wydania testowe](https://github.com/nocnystroz/meeting-agenda-timer/releases).
+Artefakty udanych przebiegów Actions obejmują Windows x64, macOS Apple Silicon
+(ARM64) i Linux x86_64. Obecna macierz CI buduje wariant full; wariant core
+można zbudować skryptem poniżej na docelowym systemie. Intel Mac i Windows ARM
 nie mają osobnego artefaktu w obecnej macierzy.
 
 Wariant **core** zawiera licznik, notatki, eksport, transkrypcję plików
@@ -39,7 +44,7 @@ Nie zmieniaj globalnej polityki bezpieczeństwa systemu. Obecne paczki lokalne
 nie mają podpisu wydawcy ani notaryzacji Apple. Wsparcie Linux zależy także
 od systemowych bibliotek pulpitu i serwera dźwięku; sprawdź walidację.
 
-## Uruchomienie ze źródeł
+### Uruchomienie ze źródeł
 
 Wymagany Python 3.11+ i [uv](https://docs.astral.sh/uv/). Środowisko projektu to `.venv`.
 
@@ -59,7 +64,7 @@ Na Linux audio wymaga działającego PulseAudio lub PipeWire z kompatybilności�
 PulseAudio i biblioteki `libpulse`. Dźwięk systemowy na macOS wymaga dostępnego
 źródła loopback/urządzenia wirtualnego; aplikacja nie instaluje sterowników.
 
-## Agenda i sterowanie
+### Agenda i sterowanie
 
 Wybierz **Wklej**, wprowadź plan, sprawdź podgląd i zastosuj:
 
@@ -119,7 +124,7 @@ nazwy, czasy i treści oraz przestawiać przyszłe punkty. Usunięte punkty pozo
 w danych bieżącej sesji. Ponowne wklejenie agendy zatrzymuje licznik,
 zachowuje stare notatki w danych sesji i nie zatrzymuje osobnego nagrania.
 
-## Licznik i notatki
+### Licznik i notatki
 
 **Pokaż licznik** otwiera osobne okno z przełącznikami **Zawsze na wierzchu**
 i **Kompaktowy**. Widok kompaktowy ma około 260 × 138 px, pokazuje krótki tytuł,
@@ -138,7 +143,7 @@ Po awarii program proponuje odzyskanie w pauzie, bez uruchamiania nagrywania/API
 Niezapisane ostatnie zmiany mogą wymagać odtworzenia. Panel do udostępniania
 nie wyświetla notatek ani klucza; sam tytuł punktu nadal może być poufny.
 
-## Nagrywanie i transkrypcja
+### Nagrywanie i transkrypcja
 
 Rozwiń **Nagrywanie i transkrypcja**, poczekaj na automatyczne wykrycie źródeł, wybierz mikrofon i/lub
 źródło spotkania oraz przetestuj poziomy. Wybierz miks mono lub rozdzielone
@@ -163,7 +168,7 @@ Wynik można poprawić, ręcznie przypisać do punktu i wyeksportować. Gdy API
 nie zwraca dokładnych znaczników, program nie przypisuje zdań automatycznie.
 Dokumentacja integracji: [OpenAI — file transcription](https://developers.openai.com/api/docs/guides/speech-to-text).
 
-## Automatyczne zrzuty
+### Automatyczne zrzuty
 
 **Zrzuty…** pozwala wybrać ekran albo wykryte okno, interwał 1–86400 sekund,
 limit plików i katalog. PNG zapisuje się na początku, a potem co wskazany czas.
@@ -179,7 +184,7 @@ o uprawnienie do nagrywania ekranu. Chroniona treść może być niedostępna.
 
 Zrzuty nie są nagraniem wideo i nigdy nie trafiają do transkrypcji API.
 
-## Dane, testy i budowanie
+### Dane, testy i budowanie
 
 Katalog danych: Linux `$XDG_DATA_HOME/licznik-spotkaniowy` lub
 `~/.local/share/licznik-spotkaniowy`; Windows `%LOCALAPPDATA%/licznik-spotkaniowy`;
@@ -205,7 +210,7 @@ Historia spotkań, integracje MS/Google i nagrywanie wideo pozostają odłożone
 Inspiracja funkcjonalna audio: lokalny projekt `audio-rozkminka`; nie kopiowano kodu.
 
 
-## Identyfikacja wersji
+### Identyfikacja wersji
 
 Tytuły okien i prawy koniec paska stanu pokazują numer commita, np. 5.
 Numer to wynik git rev-list --count HEAD. Pełny hash jest w podpowiedzi wersji. Wersja źródłowa
@@ -213,13 +218,13 @@ odczytuje go z Git; `*` oznacza niezacommitowane zmiany. Paczka przenośna
 ma wersję utrwaloną przy budowaniu, także bez dostępu do Git.
 
 
-## Języki i pierwsze uruchomienie
+### Języki i pierwsze uruchomienie
 
 W prawym górnym rogu wybierzesz Polski, English, Deutsch lub Français.
 Zmiana działa podczas spotkania i nie tłumaczy ani nie zmienia Twojej agendy,
 notatek i transkrypcji. Wybór jest zapamiętywany lokalnie. Eksport używa wybranego
-języka nagłówków, zachowując oryginalne treści. Dokumentacja projektu jest po polsku,
-warunki pierwszego uruchomienia są dostępne w czterech językach.
+języka nagłówków, zachowując oryginalne treści. README jest po polsku i angielsku; pozostała dokumentacja jest głównie po polsku.
+Warunki pierwszego uruchomienia są dostępne w czterech językach.
 
 Pierwsze uruchomienie wymaga zaakceptowania [warunków użytkowania](TERMS.md),
 w tym oświadczenia o zgodach uczestników przy nagrywaniu i zrzutach.
@@ -229,10 +234,257 @@ pytanie. Pomoc zawiera warunki, MIT, politykę prywatności i link wsparcia.
 [☕ Postaw mi kawę / Buy me a coffee](https://buymeacoffee.com/m.slawinski)
 
 
-## Podgląd
+### Podgląd
 
 ![Panel prowadzącego](docs/screenshots/panel.png)
 
 Widok kompaktowy:
 
 ![Kompaktowy licznik](docs/screenshots/licznik.png)
+
+<a id="english"></a>
+
+## English
+
+Portable desktop app for running meetings from an agenda. A separate timer
+shows the current item and remaining time; the presenter panel holds notes,
+decisions and tasks.
+
+**Prototype for testing — the app version is the commit count (the number of
+commits in HEAD history).** CI tests, builds and launches packages on Windows,
+macOS and Linux. Linux X11 desktop behavior was also checked. Microphones,
+permissions and image capture on physical Windows/macOS computers still need
+testing. Details: [ROADMAP.md](ROADMAP.md) and
+[docs/VALIDATION.md](docs/VALIDATION.md).
+
+### Run without an installer
+
+Unpack the package for your system and launch:
+
+- Windows: `Licznik-Spotkaniowy.exe`.
+- macOS: `Licznik-Spotkaniowy.app`.
+- Linux: `Licznik-Spotkaniowy` executable in the unpacked directory.
+
+Packages include the interpreter and libraries; Python, pip and venv are not
+required. Keep the accompanying libraries with the executable. Local build
+outputs are in `dist/` and are not committed. Source code:
+https://github.com/nocnystroz/meeting-agenda-timer. Downloads: [test
+releases](https://github.com/nocnystroz/meeting-agenda-timer/releases), or
+Actions → a successful build → Artifacts. Targets: Windows x64, macOS Apple
+Silicon (ARM64), Linux x86_64. There is no separate Intel Mac or Windows ARM
+artifact in the current matrix. CI currently builds the full variant; core can be
+built locally on the target system using the script below.
+
+The **core** package includes the timer, notes, export, compressed-file
+transcription and full-screen screenshots. **Full** adds recording, WAV
+preparation for transcription, credential storage and selected-window capture.
+Installing an optional module does not run it in the background.
+
+Unsigned packages may show SmartScreen or Gatekeeper warnings. Do not change
+the system-wide execution policy. Current local packages are not publisher
+signed and are not Apple-notarized. Linux support also depends on desktop and
+audio-server libraries; see validation notes.
+
+### Run from source
+
+Python 3.11+ and [uv](https://docs.astral.sh/uv/) are required. The project
+environment is `.venv`.
+
+```bash
+uv sync --frozen --extra dev --extra audio --extra keyring --extra capture
+uv run python -m meeting_timer
+```
+
+You can also use `./uruchom.sh` on Linux/macOS or `./uruchom.ps1` in Windows
+PowerShell after creating the environment. These scripts do not install
+libraries or change execution policy. If PowerShell blocks scripts, run
+`.venv\Scripts\python.exe -m meeting_timer` directly.
+
+Without uv: run `python -m venv .venv`, then use that environment's Python to
+run `-m pip install -e ".[audio,keyring,capture,dev]"`. Linux audio needs a
+working PulseAudio or PipeWire server with PulseAudio compatibility and
+`libpulse`. System audio on macOS requires an available loopback source or
+virtual device; the app does not install drivers.
+
+### Agenda and controls
+
+Choose **Paste**, enter an agenda, review the interpretation preview and
+apply it. For example:
+
+```text
+Introduction — 5 min
+Review results — 15 min
+Decisions and next steps — 10 min
+```
+
+Clock ranges are also supported:
+
+```text
+10:00–10:05 Introduction
+10:05–10:20 Review results
+10:20–10:30 Decisions and next steps
+```
+
+You can paste spreadsheet tables (tabs), comma- or semicolon-separated CSV,
+and Markdown tables. Headers such as `Topic` and `Duration (min)` allow a
+duration as a bare number. Other accepted forms include `15 minutes — Results`,
+`Results 1h30min`, `Results (00:15:00)` and `Results [15:00]` (MM:SS).
+
+A list of start times derives each item's duration from the next start:
+
+```text
+10:00 Results
+10:15 Decisions
+10:25 End
+```
+
+The final item needs a duration, or a final `HH:MM End` row. Unrecognized rows
+are reported with their line numbers, not silently skipped. Standard headings
+and Markdown table separators are recognized. Duration units include `h`,
+`hours`, `min`, `m`, `sec` and `s`, including fractional minutes such as
+`1.5 min`. Do not mix durations and clock ranges in one agenda.
+
+- **Start at a specific time**: set the date and time for the whole plan; the
+  timer waits until then. This also works with duration-only agendas. A past
+  start time accounts for elapsed time.
+- **Start plan now**: the clock starts when you press Start.
+- **Follow agenda times**: choose the first item's date; a late start skips
+  elapsed items, and gaps and waiting are shown on the timer.
+- Pause stops the plan. Resume and manual item changes shift the remaining
+  schedule in clock-time mode too. Restart allows another start.
+- **+1 / +5 min** extends the current item and projected finish. The original
+  plan remains the baseline for displayed delay/ahead time.
+- With automatic transitions off, the timer stays on the item and counts
+  overtime. Turning transitions back on synchronizes to the current position
+  in the modified plan.
+- **Ctrl+Enter**: start/pause; **Ctrl+N**: agenda; **Ctrl+S**: save JSON copy;
+  **Ctrl+O**: open; **Ctrl+E**: export; **Ctrl+Q**: quit.
+
+Selecting an item previews and edits it. The timer changes only with **Go to
+selected item**, Previous or Next. During a meeting you can rename items, edit
+times and text, and reorder future items. Deleted items remain in current
+session data. Pasting a new agenda stops the timer, retains old notes in session
+data and does not stop a separate recording.
+
+### Timer and notes
+
+**Show timer** opens a separate window with **Always on top** and **Compact**
+switches. Compact view is about 260 × 138 px, with a short title, time and
+pause, pin, panel and full-view controls. Changing view or theme does not reset
+the timer. The standard minimize button minimizes to the taskbar; **Hide** sends
+the app to the system tray. If no tray is available, the window is minimized so
+the app remains accessible. Closing the timer restores the presenter panel.
+
+Notes, decisions and tasks are attached to stable agenda-item IDs. The
+**Meeting** menu provides a saved copy, local templates and Markdown/PDF export
+with content selection. JSON stores references to audio and PNG files, not the
+files themselves. Keep or restore their locations when moving files.
+
+Edits are saved after 700 ms; a running timer position is saved every 5 seconds.
+After a crash, the app offers recovery in a paused state without starting
+recording or an API request. The latest unsaved changes may need to be restored.
+The shareable view does not show notes or keys, though an item title may still
+be confidential.
+
+### Recording and transcription
+
+Expand **Recording and transcription**, wait for sources to be detected, choose
+a microphone and/or meeting source, and check levels. Select a mono mix or
+separate channels and an output folder. **Record** requires confirmation; audio
+is saved locally as 16-bit / 48 kHz PCM WAV. Pausing audio omits that interval
+from the recording. Pausing the timer does not pause recording. Changing
+sources requires an explicit new segment.
+
+Agenda markers store their position in the recording; find them in the
+**Recordings** tab and `.markers.json` file. Each segment is limited to about
+3.8 GB; starting another segment is an explicit action. On device or disk
+errors, the app keeps data that was successfully written; it cannot guarantee
+recovery of the last block after power loss.
+
+Transcription uses OpenAI (`gpt-transcribe`) and requires your own API key.
+Entering a key does not send anything. Select a completed file and confirm the
+provider, data scope and possible costs before sending. App-created WAV files
+are locally split into chunks of up to 5 minutes and converted to mono 16 kHz;
+other supported files must be no larger than 24 MB. Requests are not retried
+automatically. On cancellation or error, received parts are retained; incurred
+costs cannot be reversed. You can edit the result, assign it to an agenda item
+manually and export it. If the API does not provide exact timestamps, sentences
+are not assigned automatically. See [OpenAI file transcription
+documentation](https://developers.openai.com/api/docs/guides/speech-to-text).
+
+### Automatic screenshots
+
+**Screenshots…** lets you choose a screen or detected window, an interval of
+1–86400 seconds, a file limit and a folder. A PNG is saved immediately and
+then at the chosen interval. You can change the interval while capture runs.
+The default limit is 200; reaching it stops capture without deleting existing
+images. Screenshots are associated with the agenda item.
+
+Closing the settings window does not stop capture; use **Stop**. Its status
+remains visible in the panel and tray. Missing permissions or image data stops
+the cycle; a selected window is never silently replaced with the whole desktop.
+Selected-window capture requires the capture extra. Wayland capture and
+minimized-window behavior depend on the backend/system and need more testing.
+macOS may request screen-recording permission. Protected content may not be
+available. Screenshots are not video and are never sent to the transcription
+API.
+
+### Data, tests and builds
+
+Data folders: Linux `$XDG_DATA_HOME/licznik-spotkaniowy` or
+`~/.local/share/licznik-spotkaniowy`; Windows
+`%LOCALAPPDATA%/licznik-spotkaniowy`; macOS
+`~/Library/Application Support/licznik-spotkaniowy`. Set
+`MEETING_TIMER_DATA_DIR` to choose another location. Recordings and screenshots
+default to `recordings` and `screenshots` subfolders. Open the folder from the
+menu.
+
+```bash
+uv run pytest -q
+uv run ruff check meeting_timer tests scripts run.py
+uv run python scripts/build_portable.py --core
+uv run python scripts/build_portable.py
+```
+
+Build on the target system and architecture. The full variant needs the
+`audio`, `keyring` and `capture` extras. `.github/workflows/check.yml` runs tests
+and builds on all three systems; it does not automatically publish releases.
+
+[Privacy policy](PRIVACY.md) (Polish) · [MIT license](LICENSE) ·
+[Third-party licenses](THIRD_PARTY.md) · [Project assumptions](AGENTS.md)
+(Polish) · [UX notes](docs/UX.md) (Polish).
+
+Meeting history, Microsoft/Google integrations and video recording are deferred.
+Audio feature inspiration came from the local `audio-rozkminka` project; its
+code was not copied.
+
+### Version identification
+
+Window titles and the right end of the status bar show the commit count, for
+example `5`, from `git rev-list --count HEAD`. A tooltip shows the full hash.
+Source runs read the version from Git; `*` means there are uncommitted changes.
+Portable packages save the version at build time and show it without Git.
+
+### Languages and first launch
+
+Choose Polski, English, Deutsch or Français in the upper-right corner. Switching
+works during a meeting and does not translate or change your agenda, notes or
+transcript. The choice is saved locally. Exports use headings in the selected
+language while preserving original content. This README is available in Polish and English; the other project documents
+are mainly in Polish. First-launch terms are available in four languages.
+
+On first launch, accept the [English terms of use](https://github.com/nocnystroz/meeting-agenda-timer/blob/main/meeting_timer/assets/terms.en.md), including the
+statement that you have participant consent and required permissions for
+recording and screenshots. The meeting panel will not open without acceptance.
+Updated terms require acceptance again. Help includes the terms, MIT license,
+privacy policy and support link.
+
+[☕ Buy me a coffee](https://buymeacoffee.com/m.slawinski)
+
+### Preview
+
+![Presenter panel](docs/screenshots/panel.png)
+
+Compact timer:
+
+![Compact timer](docs/screenshots/licznik.png)
