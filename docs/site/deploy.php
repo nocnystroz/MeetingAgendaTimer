@@ -90,7 +90,7 @@ foreach ($payload as $code => $data) {
         }
         if (!$nav_parent) { WP_CLI::error('Missing Tools group in top navigation.'); }
         wp_update_nav_menu_item($nav_menu->term_id, $nav_existing, [
-            'menu-item-title'=>'Meeting Agenda Timer · beta', 'menu-item-object-id'=>$id,
+            'menu-item-title'=>'Meeting Agenda Timer', 'menu-item-object-id'=>$id,
             'menu-item-object'=>'page', 'menu-item-type'=>'post_type',
             'menu-item-parent-id'=>$nav_parent, 'menu-item-classes'=>'group-tools',
             'menu-item-description'=>$data['nav_description'] ?? '', 'menu-item-status'=>'publish']);

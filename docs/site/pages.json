@@ -1,16 +1,16 @@
 {
   "pl": {
     "parent": 2475,
-    "title": "Meeting Agenda Timer — czas do końca punktów agendy · beta",
+    "title": "Meeting Agenda Timer — czas do końca punktów agendy",
     "excerpt": "Wersja beta narzędzia do odliczania czasu pozostałego do końca poszczególnych punktów agendy spotkania. Notatki, decyzje i zadania. Windows, macOS i Linux.",
     "hub_description": "Beta: odliczanie czasu pozostałego do końca punktów agendy spotkania. Notatki, decyzje i zadania. Windows, macOS i Linux.",
-    "nav_description": "Czas do końca punktów agendy · beta"
+    "nav_description": "Czas do końca punktów agendy"
   },
   "en": {
     "parent": 2478,
-    "title": "Meeting Agenda Timer — countdown for each agenda item · beta",
+    "title": "Meeting Agenda Timer — countdown for each agenda item",
     "excerpt": "Beta tool for counting down the time remaining for each meeting agenda item. Notes, decisions and tasks. Windows, macOS and Linux.",
     "hub_description": "Beta: count down the time remaining for each meeting agenda item. Notes, decisions and tasks. Windows, macOS and Linux.",
-    "nav_description": "Time remaining for each agenda item · beta"
+    "nav_description": "Time remaining for each agenda item"
   }
 }

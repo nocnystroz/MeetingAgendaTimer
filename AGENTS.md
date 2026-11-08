@@ -270,3 +270,6 @@ być publiczne; użytkownik zezwolił na publikację i opis repozytorium.
 - Windows RegisterHotKey, macOS Carbon, Linux X11 XGrabKey. Wayland wymaga
   osobnego wdrożenia portalu GlobalShortcuts; nie deklarować, że backend X11
   zapewnia globalne działanie w natywnych aplikacjach Wayland.
+
+- Oznaczenie beta umieszczać w treści opisu, nie w tytule strony ani nazwie
+  pozycji menu. Zachować to samo rozróżnienie w wersjach PL/EN.

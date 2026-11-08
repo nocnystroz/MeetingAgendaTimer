@@ -314,3 +314,5 @@ Test na pulpicie X11 z aktywnym osobnym procesem xmessage potwierdził sześć
 akcji, zachowanie fokusu, rzeczywisty konflikt i zwolnienie rejestracji.
 Wayland: osobny backend portalu GlobalShortcuts pozostaje do wdrożenia;
 aplikacja pokazuje to ograniczenie, zamiast deklarować globalne działanie.
+
+- [x] Beta tylko w treści: usunięte z tytułów i górnego menu PL/EN.

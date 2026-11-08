@@ -44,3 +44,7 @@ they do not replace a physical-keyboard test with PowerPoint/Keynote on real dev
 - [Qt native event filters](https://doc.qt.io/qtforpython-6/PySide6/QtCore/QAbstractNativeEventFilter.html)
 - [X11 XGrabKey](https://www.x.org/releases/current/doc/man/man3/XGrabKey.3.xhtml)
 - [GlobalShortcuts portal](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.GlobalShortcuts.html)
+
+Repeat the X11 integration test from sources with an isolated synthetic meeting:
+`QT_QPA_PLATFORM=xcb .venv/bin/python scripts/verify_global_shortcuts_x11.py`.
+Requires an X11 desktop, xdotool and xmessage; none is an application dependency.
