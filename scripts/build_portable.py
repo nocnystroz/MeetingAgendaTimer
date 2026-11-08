@@ -94,7 +94,8 @@ def main():
                "--specpath", str(build), "--collect-data", "meeting_timer",
                "--add-data", f"{ROOT / 'meeting_timer/assets'}:meeting_timer/assets"]
     command += ["--add-data", f"{version_file}:meeting_timer"]
-    command += ["--add-data", f"{ROOT / 'docs'}:docs"]
+    # Help reads the documentation copied next to the launcher / into Resources below.
+    # Do not also embed a second copy of the screenshots in _internal.
     launcher_icon = ROOT / "meeting_timer/assets" / {
         "win32": "app.ico", "darwin": "app.icns"}.get(sys.platform, "app.png")
     command += ["--icon", str(launcher_icon)]
@@ -131,6 +132,11 @@ def main():
     subprocess.run(command + [str(ROOT / "run.py")], cwd=ROOT, check=True)
     bundle = output / (name + ".app" if sys.platform == "darwin" else name)
     trim_linux_plugins(bundle)
+    # Native launcher icons are embedded by PyInstaller. Runtime widgets use app.svg.
+    for assets in bundle.rglob("assets"):
+        if assets.is_dir() and assets.parent.name == "meeting_timer":
+            for filename in ("app.ico", "app.icns", "app.png"):
+                (assets / filename).unlink(missing_ok=True)
     if sys.platform == "darwin":
         plist_path = bundle / "Contents/Info.plist"
         with plist_path.open("rb") as stream:
