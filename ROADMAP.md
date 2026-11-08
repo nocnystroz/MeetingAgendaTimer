@@ -304,7 +304,7 @@ Windows ZIP, macOS ARM64 ZIP i Linux tar.gz.
       również przy aktywnym oknie prezentacji: poprzedni/następny punkt,
       pauza/wznowienie, +1/+5 minut. Konfigurowalne, mniej kolizyjne domyślne
       kombinacje, widoczne konflikty i ograniczenia systemowe.
-- [ ] Zwolnić rejestracje skrótów przy wyjściu; zaktualizować instrukcje PL/EN/DE/FR
+- [x] Zwolnić rejestracje skrótów przy wyjściu; zaktualizować instrukcje PL/EN/DE/FR
       i sprawdzić działanie przy aktywnym innym oknie, bez przejmowania fokusu.
 
 Backendy Windows/macOS/X11 wdrożone bez nowych zależności i bez przechwytywania
@@ -316,3 +316,17 @@ Wayland: osobny backend portalu GlobalShortcuts pozostaje do wdrożenia;
 aplikacja pokazuje to ograniczenie, zamiast deklarować globalne działanie.
 
 - [x] Beta tylko w treści: usunięte z tytułów i górnego menu PL/EN.
+
+Weryfikacja wersji 19 (7f4d20e): Windows/macOS 91 testów + 1 pominięty,
+Linux 90 + 2 pominięte; Ruff, natywne API, budowanie i frozen smoke przeszły.
+CI: https://github.com/nocnystroz/MeetingAgendaTimer/actions/runs/42509444648.
+Dodatkowo lokalna paczka core (wersja 20, ten sam kod aplikacji + dokumentacja)
+przeszła realny test globalnego startu, poprzedniego/następnego punktu,
++1 i własnego +3 min przy aktywnym osobnym programie, z zachowaniem fokusu.
+Rozmiar core: 150,006 MiB, o ok. 6,5 KiB powyżej początkowego celu 150 MiB.
+Wayland i fizyczne klawisze w PowerPoint/Keynote na Windows/macOS pozostają
+osobnymi testami/pracami — testy natywne CI używały syntetycznych komunikatów.
+
+Opublikowane paczki: [wersja 19](https://github.com/nocnystroz/MeetingAgendaTimer/releases/tag/v19),
+sprawdzone sumy SHA-256 wszystkich 4 plików wydania. Przyciski PL/EN prowadzą
+do wersji 19, a tytuły i górne menu nie zawierają oznaczenia beta.

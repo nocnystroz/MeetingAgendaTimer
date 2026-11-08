@@ -99,3 +99,37 @@ roboczych i licencje zależności; ZIP-y przeszły kontrolę CRC. W ZIP macOS
 zachowane są prawa wykonywania i 140 dowiązań symbolicznych. Do wydania
 dołączono SHA256SUMS; strona projektu ma bezpośrednie przyciski pobierania
 Windows ZIP, macOS ARM64 ZIP i Linux tar.gz.
+
+
+## Wersja 19 — globalne sterowanie (2026-11-08)
+
+CI [42509444648](https://github.com/nocnystroz/MeetingAgendaTimer/actions/runs/42509444648),
+commit 7f4d20e: Windows/macOS 91 passed + 1 skipped; Linux 90 passed + 2 skipped.
+Na każdym systemie przeszły Ruff, budowanie full i frozen smoke (wersja 19).
+Pominięcia dotyczą testu API innego systemu, nie błędów. Windows sprawdził
+RegisterHotKey, konflikt, zakaz F12, WM_HOTKEY w pętli Qt i zwolnienie rejestracji.
+macOS sprawdził Carbon, mapowanie bieżącego układu klawiatury, syntetyczne
+zdarzenia press/release, tłumienie powtórzeń i ponowną rejestrację.
+
+Pulpit X11: osobny proces xmessage pozostawał aktywny podczas sześciu akcji,
+łącznie z własnym +3 min; fokus pozostał bez zmian. Druga sesja X11 wykryła
+rzeczywisty konflikt, a po zamknięciu backendu skrót dał się ponownie zająć.
+Powtarzalny skrypt: scripts/verify_global_shortcuts_x11.py.
+
+Osobno uruchomiono gotową paczkę core poza źródłami i venv (wersja 20,
+zmiany po 19 dotyczą dokumentacji). Z izolowaną syntetyczną sesją i zgodą
+potwierdzono globalny start, następny/poprzedni punkt, +1 i własne +3 min,
+z zachowaniem fokusu osobnego programu. Nie nagrywano audio ani obrazów.
+Core ma 157293080 B = 150,006 MiB: ok. 6,5 KiB powyżej celu 150 MiB.
+Nie wykonywano ponownego pomiaru RAM/CPU/startu. CI full: Windows 166,6 MiB,
+macOS 122,0 MiB, Linux 258,6 MiB (różne platformy i środowiska).
+
+W archiwach potwierdzono czysty commit 7f4d20e, wersję 19, układ ZIP,
+licencje zależności i CRC; wydanie zawiera SHA256SUMS.
+Obsługa portalu Wayland nie jest wdrożona i jest jawnie oznaczona w UI.
+Fizyczne klawisze PowerPoint/Keynote na Windows/macOS pozostają do sprawdzenia.
+Oznaczenie beta na stronie występuje w treści, bez tytułów i nazw menu PL/EN.
+
+Opublikowane paczki: [wersja 19](https://github.com/nocnystroz/MeetingAgendaTimer/releases/tag/v19),
+sprawdzone sumy SHA-256 wszystkich 4 plików wydania. Przyciski PL/EN prowadzą
+do wersji 19, a tytuły i górne menu nie zawierają oznaczenia beta.
