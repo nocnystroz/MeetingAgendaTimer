@@ -228,3 +228,18 @@ być publiczne; użytkownik zezwolił na publikację i opis repozytorium.
 
 - Zrzuty w polskiej części README pokazują polski interfejs, a w angielskiej
   angielski interfejs oraz angielską przykładową agendę i notatki.
+
+## Instrukcje w paczkach przenośnych
+
+- Każda paczka Windows, macOS i Linux zawiera własne krótkie `README.txt`
+  w językach PL/EN, dostępne bez internetu i dobrane automatycznie przy budowaniu.
+- Instrukcja leży obok pliku wykonywalnego, a na macOS obok `.app`, tak aby
+  można ją było przeczytać przed uruchomieniem. Pełne README projektu pozostaje
+  dołączone jako dokumentacja szczegółowa.
+- Opisać rozpakowanie całego archiwum, właściwy plik do uruchomienia,
+  wymagania danego systemu, uprawnienia mikrofonu i przechwytywania obrazu,
+  lokalizację danych oraz link do pełnej dokumentacji i wydań.
+- Uwzględnić brak podpisu/notaryzacji, jeśli dotyczy danej paczki, bez zalecania
+  globalnego wyłączania zabezpieczeń systemu; nie wymagać instalowania Pythona.
+- Instrukcje rozróżniają warianty core/full oraz potwierdzone architektury
+  i ograniczenia. Zmieniając sposób pakowania, aktualizować obie wersje językowe.

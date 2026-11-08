@@ -1,0 +1,22 @@
+LICZNIK SPOTKANIOWY / MEETING AGENDA TIMER — WINDOWS
+Wariant / Variant: {variant}
+Paczki z CI / CI packages: Windows x64; brak paczki ARM / no ARM build.
+
+PL
+1. Rozpakuj całe archiwum ZIP do zwykłego folderu.
+2. Uruchom Licznik-Spotkaniowy.exe. Pozostaw obok niego wszystkie pliki i foldery paczki.
+3. Python nie jest wymagany. Wariant core nie zawiera nagrywania, magazynu kluczy ani przechwytywania wybranego okna; full zawiera te funkcje opcjonalne.
+4. Windows może wyświetlić ostrzeżenie SmartScreen dla niepodpisanej aplikacji. Paczka nie ma podpisu wydawcy. Kieruj się własną oceną i dokumentacją Microsoft; nie wyłączaj globalnie zabezpieczeń systemu.
+5. Sprawdź dostęp aplikacji klasycznych do mikrofonu w ustawieniach prywatności Windows. Przechwytywanie obrazu zależy również od dostępności źródła i ograniczeń systemu. Odmowa uprawnień lub brak urządzenia wyłącza daną funkcję; licznik i notatki działają osobno.
+6. Dane są lokalne: %LOCALAPPDATA%\licznik-spotkaniowy
+
+EN
+1. Extract the entire ZIP archive to a regular folder.
+2. Run Licznik-Spotkaniowy.exe. Keep all package files and folders beside it.
+3. Python is not required. The core variant does not include recording, credential storage, or selected-window capture; full includes these optional features.
+4. Windows may show a SmartScreen warning for an unsigned app. This package has no publisher signature. Use your own judgment and Microsoft documentation; do not disable system-wide security.
+5. Check desktop-app microphone access in Windows privacy settings. Image capture also depends on source availability and system restrictions. Denied permissions or a missing device disable that feature; the timer and notes work separately.
+6. Data stays local: %LOCALAPPDATA%\licznik-spotkaniowy
+
+Pełna dokumentacja / Full documentation: https://github.com/nocnystroz/MeetingAgendaTimer
+Wydania / Releases: https://github.com/nocnystroz/MeetingAgendaTimer/releases

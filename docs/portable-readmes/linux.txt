@@ -1,0 +1,21 @@
+LICZNIK SPOTKANIOWY / MEETING AGENDA TIMER — LINUX
+Wariant / Variant: {variant}
+
+PL
+1. Rozpakuj całe archiwum do folderu.
+2. W rozpakowanym katalogu uruchom ./Licznik-Spotkaniowy (z terminala). Jeśli brakuje prawa wykonywania: chmod u+x Licznik-Spotkaniowy. Zachowaj obok niego wszystkie pliki i foldery paczki.
+3. Python nie jest wymagany. Wariant core nie zawiera nagrywania, magazynu kluczy ani przechwytywania wybranego okna; full zawiera te funkcje opcjonalne.
+4. Paczkę budowano i sprawdzono w CI na Linux x86_64 (Ubuntu 22.04). Inne dystrybucje, architektury i środowiska graficzne mogą wymagać bibliotek systemowych pulpitu; zgodność nie jest potwierdzona. Audio full wymaga PulseAudio lub zgodnego PipeWire i libpulse.
+5. Zezwól środowisku graficznemu na dostęp do mikrofonu lub obrazu, jeśli używasz tych funkcji. Na Waylandzie przechwytywanie może zależeć od portalu pulpitu. Brak dostępu nie blokuje licznika i notatek.
+6. Dane są lokalne: $XDG_DATA_HOME/licznik-spotkaniowy albo ~/.local/share/licznik-spotkaniowy
+
+EN
+1. Extract the entire archive to a folder.
+2. Run ./Licznik-Spotkaniowy in a terminal from the extracted directory. If execution permission is missing: chmod u+x Licznik-Spotkaniowy. Keep all package files and folders beside it.
+3. Python is not required. The core variant does not include recording, credential storage, or selected-window capture; full includes these optional features.
+4. The package was built and checked in CI on Linux x86_64 (Ubuntu 22.04). Other distributions, architectures, and desktop environments may need system desktop libraries; compatibility is unconfirmed. Full-variant audio needs PulseAudio or compatible PipeWire and libpulse.
+5. Allow desktop access to the microphone or image capture if you use those features. On Wayland, capture may depend on the desktop portal. Missing access does not prevent using the timer and notes.
+6. Data stays local: $XDG_DATA_HOME/licznik-spotkaniowy or ~/.local/share/licznik-spotkaniowy
+
+Pełna dokumentacja / Full documentation: https://github.com/nocnystroz/MeetingAgendaTimer
+Wydania / Releases: https://github.com/nocnystroz/MeetingAgendaTimer/releases

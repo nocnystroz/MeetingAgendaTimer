@@ -194,6 +194,8 @@ Lekkość potwierdzają pomiary, nie samo użycie natywnych kontrolek.
 - [x] Polski, angielski, niemiecki i francuski, wybór i zapamiętanie języka.
 - [x] Publiczne repozytorium GitHub z opisem, aktualnym kodem i uruchomionym CI.
 - [x] Uruchomić CI i zbudować pozostałe paczki na właściwych systemach.
+- [x] Dołączać krótkie instrukcje `README.txt` PL/EN dopasowane do systemu
+      i wariantu; na macOS obok `.app`, przed uruchomieniem.
 
 ## Aktualny stan i ograniczenia weryfikacji
 
@@ -245,3 +247,8 @@ About ma 338 znaków, a zdalne metadane odpowiadają zapisanym plikom.
 
 - [x] Nazwa repozytorium bez myślników: `MeetingAgendaTimer`; aktualne linki i origin.
 - [x] Osobne zrzuty angielskiego interfejsu, agendy i notatek w sekcji EN README.
+
+Weryfikacja instrukcji paczek: 77 testów i Ruff przeszły; sprawdzono renderowanie
+3 systemów × 2 wariantów oraz położenie README w archiwach z atrapami bundli
+(w tym obok macOS .app). Ten test nie budował natywnych plików ani Windows ZIP.
+Nowe instrukcje trafią do kolejnych paczek; istniejące wydanie v7 ich nie zawiera.

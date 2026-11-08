@@ -1,0 +1,22 @@
+LICZNIK SPOTKANIOWY / MEETING AGENDA TIMER — macOS
+Wariant / Variant: {variant}
+Paczki z CI / CI packages: Apple Silicon (ARM64); brak paczki Intel / no Intel build.
+
+PL
+1. Rozpakuj całe archiwum. README.txt znajduje się obok Licznik-Spotkaniowy.app.
+2. Otwórz Licznik-Spotkaniowy.app. Możesz przenieść cały pakiet .app, ale nie wyjmuj z niego pliku wykonywalnego.
+3. Python nie jest wymagany. Wariant core nie zawiera nagrywania, magazynu kluczy ani przechwytywania wybranego okna; full zawiera te funkcje opcjonalne.
+4. Aplikacja nie jest podpisana przez wydawcę ani notaryzowana przez Apple. macOS może pokazać ostrzeżenie Gatekeeper. Nie wyłączaj globalnie zabezpieczeń; sprawdź dokumentację Apple lub administratora urządzenia.
+5. Przy użyciu nagrywania lub zrzutów macOS poprosi o odpowiednie uprawnienia mikrofonu lub nagrywania ekranu. Zmiany uprawnień mogą wymagać ponownego uruchomienia aplikacji. Odmowa nie blokuje licznika i notatek.
+6. Dane są lokalne: ~/Library/Application Support/licznik-spotkaniowy
+
+EN
+1. Extract the entire archive. README.txt is next to Licznik-Spotkaniowy.app.
+2. Open Licznik-Spotkaniowy.app. You can move the entire .app bundle; do not extract its executable.
+3. Python is not required. The core variant does not include recording, credential storage, or selected-window capture; full includes these optional features.
+4. The app is not publisher-signed or Apple-notarized. macOS may show a Gatekeeper warning. Do not disable security system-wide; consult Apple documentation or your device administrator.
+5. Recording and screenshots require the relevant microphone or screen-recording permissions. Changing permissions may require restarting the app. Denial does not prevent using the timer and notes.
+6. Data stays local: ~/Library/Application Support/licznik-spotkaniowy
+
+Pełna dokumentacja / Full documentation: https://github.com/nocnystroz/MeetingAgendaTimer
+Wydania / Releases: https://github.com/nocnystroz/MeetingAgendaTimer/releases

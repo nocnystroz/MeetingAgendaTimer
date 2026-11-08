@@ -29,6 +29,8 @@ pip ani venv. Nie przenoś samego pliku wykonywalnego bez towarzyszących biblio
 Lokalne wyniki budowania znajdują się w `dist/` i nie są commitowane.
 Kod: https://github.com/nocnystroz/MeetingAgendaTimer
 Paczki do pobrania: [wydania testowe](https://github.com/nocnystroz/MeetingAgendaTimer/releases).
+Nowe paczki budowane z tego kodu zawierają krótkie instrukcje `README.txt` po polsku i angielsku
+dopasowane do systemu i wariantu; na macOS plik leży obok aplikacji.
 Artefakty udanych przebiegów Actions obejmują Windows x64, macOS Apple Silicon
 (ARM64) i Linux x86_64. Obecna macierz CI buduje wariant full; wariant core
 można zbudować skryptem poniżej na docelowym systemie. Intel Mac i Windows ARM
@@ -270,7 +272,9 @@ required. Keep the accompanying libraries with the executable. Local build
 outputs are in `dist/` and are not committed. Source code:
 https://github.com/nocnystroz/MeetingAgendaTimer. Downloads: [test
 releases](https://github.com/nocnystroz/MeetingAgendaTimer/releases), or
-Actions → a successful build → Artifacts. Targets: Windows x64, macOS Apple
+Actions → a successful build → Artifacts. New packages built from this code include a short
+Polish/English `README.txt` tailored to the OS and variant; on macOS it sits
+beside the app. Targets: Windows x64, macOS Apple
 Silicon (ARM64), Linux x86_64. There is no separate Intel Mac or Windows ARM
 artifact in the current matrix. CI currently builds the full variant; core can be
 built locally on the target system using the script below.

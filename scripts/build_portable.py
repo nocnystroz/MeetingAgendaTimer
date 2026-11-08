@@ -137,6 +137,14 @@ def main():
         with plist_path.open("wb") as stream:
             plistlib.dump(plist, stream)
     docs = bundle / "Contents/Resources" if sys.platform == "darwin" else bundle
+    portable_readme = ROOT / "docs" / "portable-readmes" / {
+        "win32": "windows.txt", "darwin": "macos.txt"}.get(sys.platform, "linux.txt")
+    readme_text = portable_readme.read_text(encoding="utf-8").replace(
+        "{variant}", "core" if args.core else "full")
+    (docs / "README.txt").write_text(readme_text, encoding="utf-8")
+    if sys.platform == "darwin":
+        # Keep quick-start instructions visible beside the app before it is opened.
+        (output / "README.txt").write_text(readme_text, encoding="utf-8")
     # Only our Polish interface and optional Polish Qt standard dialog strings are needed.
     for translations in bundle.rglob("translations"):
         if translations.is_dir() and "PySide6" in str(translations):
@@ -158,6 +166,8 @@ def main():
         archive = str(archive_base) + ".tar.gz"
         with tarfile.open(archive, "w:gz", compresslevel=3) as stream:
             stream.add(bundle, arcname=bundle.name)
+            if sys.platform == "darwin":
+                stream.add(output / "README.txt", arcname="README.txt")
     size = sum(p.stat().st_size for p in bundle.rglob("*") if p.is_file() and not p.is_symlink())
     print(f"Paczka: {archive}\nRozpakowana: {size / 1024**2:.1f} MiB")
 

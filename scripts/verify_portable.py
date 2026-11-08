@@ -17,10 +17,19 @@ def main():
     bundle = root / "dist" / ("core" if args.core else "full") / "Licznik-Spotkaniowy"
     if sys.platform == "darwin":
         executable = bundle.with_suffix(".app") / "Contents/MacOS/Licznik-Spotkaniowy"
+        portable_readme = bundle.parent / "README.txt"
     elif sys.platform == "win32":
         executable = bundle / "Licznik-Spotkaniowy.exe"
+        portable_readme = bundle / "README.txt"
     else:
         executable = bundle / "Licznik-Spotkaniowy"
+        portable_readme = bundle / "README.txt"
+    instructions = portable_readme.read_text(encoding="utf-8")
+    expected_variant = "core" if args.core else "full"
+    assert f"Wariant / Variant: {expected_variant}" in instructions
+    assert "PL\n" in instructions and "EN\n" in instructions
+    assert "github.com/nocnystroz/MeetingAgendaTimer/releases" in instructions
+    assert executable.is_file()
     with tempfile.TemporaryDirectory(prefix="licznik-frozen-check-") as temporary:
         report = Path(temporary) / "result.json"
         env = dict(os.environ, MEETING_TIMER_DATA_DIR=temporary, MEETING_TIMER_SMOKE_OUTPUT=str(report),
