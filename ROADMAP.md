@@ -289,3 +289,7 @@ roboczych i licencje zależności; ZIP-y przeszły kontrolę CRC. W ZIP macOS
 zachowane są prawa wykonywania i 140 dowiązań symbolicznych. Do wydania
 dołączono SHA256SUMS; strona projektu ma bezpośrednie przyciski pobierania
 Windows ZIP, macOS ARM64 ZIP i Linux tar.gz.
+
+- [x] Poprawić About na GitHubie: narzędzie do prowadzenia spotkań według
+      agendy; odliczanie dotyczy czasu punktów, zamiast określenia „licznik spotkań”.
+      Zachować pełny opis PL/EN zgodny z docs/github-description.txt.
