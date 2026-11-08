@@ -3,9 +3,12 @@
 import argparse
 import json
 import os
+import platform
+import plistlib
 import subprocess
 import sys
 import tempfile
+import zipfile
 from pathlib import Path
 
 
@@ -30,6 +33,27 @@ def main():
     assert "PL\n" in instructions and "EN\n" in instructions
     assert "github.com/nocnystroz/MeetingAgendaTimer/releases" in instructions
     assert executable.is_file()
+    if sys.platform in ("win32", "darwin"):
+        archive = root / "dist" / (
+            f"licznik-{platform.system().lower()}-{platform.machine().lower()}-{expected_variant}.zip")
+        with zipfile.ZipFile(archive) as stream:
+            names = stream.namelist()
+            assert "Licznik-Spotkaniowy/README.txt" in names
+            launcher = ("Licznik-Spotkaniowy/Licznik-Spotkaniowy.app/Contents/MacOS/Licznik-Spotkaniowy"
+                        if sys.platform == "darwin" else "Licznik-Spotkaniowy/Licznik-Spotkaniowy.exe")
+            assert launcher in names
+            assert all(name.startswith(("Licznik-Spotkaniowy/", "__MACOSX/")) for name in names)
+        if sys.platform == "darwin":
+            resources = bundle.with_suffix(".app") / "Contents/Resources"
+            with (bundle.with_suffix(".app") / "Contents/Info.plist").open("rb") as stream:
+                plist = plistlib.load(stream)
+            assert (resources / plist["CFBundleIconFile"]).is_file()
+        else:
+            import pefile
+            pe = pefile.PE(str(executable))
+            assert any(entry.id == pefile.RESOURCE_TYPE["RT_GROUP_ICON"]
+                       for entry in pe.DIRECTORY_ENTRY_RESOURCE.entries)
+            pe.close()
     with tempfile.TemporaryDirectory(prefix="licznik-frozen-check-") as temporary:
         report = Path(temporary) / "result.json"
         env = dict(os.environ, MEETING_TIMER_DATA_DIR=temporary, MEETING_TIMER_SMOKE_OUTPUT=str(report),

@@ -252,3 +252,22 @@ Weryfikacja instrukcji paczek: 77 testów i Ruff przeszły; sprawdzono renderowa
 3 systemów × 2 wariantów oraz położenie README w archiwach z atrapami bundli
 (w tym obok macOS .app). Ten test nie budował natywnych plików ani Windows ZIP.
 Nowe instrukcje trafią do kolejnych paczek; istniejące wydanie v7 ich nie zawiera.
+
+## 15. Proste paczki, pomoc i strona projektu
+
+- [x] Windows: ZIP z jednym folderem; w jego głównym katalogu gotowy EXE
+      z ikoną aplikacji, README.txt i potrzebne biblioteki w podkatalogu.
+- [x] macOS: analogicznie prosta paczka z jednym folderem, aplikacją .app
+      z ikoną i README.txt obok; zachować uprawnienia i strukturę pakietu.
+- [x] Menu Pomoc: estetyczna instrukcja obsługi offline z obrazami,
+      w języku interfejsu (PL/EN/DE/FR), czytelne linki i nawigacja.
+- [x] Menu Pomoc: „Zgłoś błąd / Przekaż opinię” prowadzące do zgłoszeń GitHub.
+- [x] Scalić dublujące się „Obsługa i prywatność” i „Polityka prywatności”:
+      osobna instrukcja oraz jedna pozycja polityki prywatności.
+- [x] Konfiguracja skrótów klawiaturowych: edycja, wykrywanie konfliktów,
+      przywrócenie domyślnych, lokalne zapamiętywanie i działanie obu okien.
+- [x] Utworzyć stronę projektu w sekcji Narzędzia ion301.com zgodnie z lokalnymi
+      instrukcjami /home/michal/geminicli_files/ion301-content-editing/;
+      dodać link w menu Pomoc i dokumentacji.
+- [ ] Zweryfikować pomoc, skróty, ikony i układ archiwów; zbudować paczki
+      na właściwych systemach i publikować wyłącznie potwierdzone wyniki.

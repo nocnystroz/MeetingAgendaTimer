@@ -243,3 +243,15 @@ być publiczne; użytkownik zezwolił na publikację i opis repozytorium.
   globalnego wyłączania zabezpieczeń systemu; nie wymagać instalowania Pythona.
 - Instrukcje rozróżniają warianty core/full oraz potwierdzone architektury
   i ograniczenia. Zmieniając sposób pakowania, aktualizować obie wersje językowe.
+
+## Uproszczenie paczek i Pomocy
+
+- Windows: ZIP z jednym folderem, w nim EXE z ikoną aplikacji w głównym katalogu.
+  macOS: ZIP z jednym folderem zawierającym .app z ikoną i README.txt obok.
+- Pomoc offline ze zrzutami i nawigacją w języku interfejsu (PL/EN/DE/FR).
+  Menu zawiera jedną politykę prywatności, warunki, licencję, zgłoszenia GitHub,
+  wsparcie oraz stronę projektu w sekcji Narzędzia ion301.com.
+- Skróty klawiaturowe konfigurowalne, z wykrywaniem konfliktów, wyłączaniem
+  i przywracaniem domyślnych; zapis w shortcuts.json, działanie obu okien.
+- Strony projektu: /pl/narzedzia/meeting-agenda-timer/ i /en/tools/meeting-agenda-timer/.
+  Zgłoszenia otwierać w przeglądarce bez automatycznej wysyłki danych.

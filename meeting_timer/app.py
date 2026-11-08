@@ -25,7 +25,7 @@ def main():
     set_language("pl", app)
     app.setOrganizationName("Licznik spotkaniowy")
     app.setQuitOnLastWindowClosed(False)
-    app.setWindowIcon(icon("clock"))
+    app.setWindowIcon(icon("app"))
     if "--smoke-test" in sys.argv or "--smoke-test-full" in sys.argv:
         from .smoke import run
         return run(app, full="--smoke-test-full" in sys.argv)

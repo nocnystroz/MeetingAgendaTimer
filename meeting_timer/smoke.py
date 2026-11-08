@@ -7,7 +7,7 @@ from pathlib import Path
 
 from PySide6.QtGui import QPdfWriter
 
-from .documents import document_text, terms_text
+from .documents import HelpDialog, document_text, terms_text
 from .exporting import markdown, pdf_document
 from .parser import parse_agenda
 from .theme import icon
@@ -39,6 +39,13 @@ def run(app, full=False):
         assert "Conditions" in terms_text("fr")
         window.language_combo.setCurrentIndex(1)
         assert window.theme.itemText(0) == "System theme"
+        help_dialog = HelpDialog(window)
+        assert help_dialog.contents.count() == 7
+        assert "7. Shortcuts and help" in help_dialog.browser.toPlainText()
+        assert not icon("app").isNull()
+        help_dialog.close()
+        window.shortcuts.apply({"play": "Ctrl+Shift+P"}, save=True)
+        assert window.shortcuts.load()
         window.language_combo.setCurrentIndex(0)
         window.show_screenshots()
         window.screenshots_dialog.hide()
@@ -53,7 +60,8 @@ def run(app, full=False):
         window.close()
         window.counter.close()
         app.processEvents()
-        report = {"ok": True, "full": full, "gui": True, "pdf": True, "network_requests": 0, "version": version()}
+        report = {"ok": True, "full": full, "gui": True, "pdf": True, "help": True,
+                  "shortcuts": True, "network_requests": 0, "version": version()}
         if output := os.environ.get("MEETING_TIMER_SMOKE_OUTPUT"):
             Path(output).write_text(json.dumps(report, indent=2), encoding="utf-8")
         elif sys_stdout_available():

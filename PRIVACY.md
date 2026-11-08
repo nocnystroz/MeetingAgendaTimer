@@ -137,3 +137,10 @@ akceptacji autorowi. Po zmianie warunków aplikacja poprosi o nią ponownie.
 Pomoc zawiera dobrowolny link Buy me a coffee, otwierany dopiero po kliknięciu
 w przeglądarce. Ta zewnętrzna witryna stosuje własne zasady prywatności.
 Nie wpływa to na działanie licznika i nie uruchamia telemetrii w aplikacji.
+
+Skróty klawiaturowe zapisują się lokalnie w `shortcuts.json`, niezależnie od
+danych spotkania. Instrukcja obsługi i jej zrzuty są dołączone do aplikacji
+i nie wymagają internetu. Strona projektu i zgłoszenia GitHub otwierają się
+wyłącznie po kliknięciu. Aplikacja nie dołącza automatycznie danych sesji,
+logów ani kluczy do zgłoszenia; treść użytkownik wpisuje sam w przeglądarce.
+Zewnętrzne witryny stosują własne zasady prywatności.

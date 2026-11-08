@@ -1773,5 +1773,100 @@
     "en": "none",
     "de": "keiner",
     "fr": "aucun"
+  },
+  "Instrukcja obsługi": {
+    "en": "User guide",
+    "de": "Bedienungsanleitung",
+    "fr": "Mode d’emploi"
+  },
+  "Skróty klawiaturowe": {
+    "en": "Keyboard shortcuts",
+    "de": "Tastenkürzel",
+    "fr": "Raccourcis clavier"
+  },
+  "Skróty klawiaturowe…": {
+    "en": "Keyboard shortcuts…",
+    "de": "Tastenkürzel…",
+    "fr": "Raccourcis clavier…"
+  },
+  "Zgłoś błąd / Przekaż opinię": {
+    "en": "Report a bug / Send feedback",
+    "de": "Fehler melden / Feedback senden",
+    "fr": "Signaler un bug / Donner un avis"
+  },
+  "Strona projektu": {
+    "en": "Project website",
+    "de": "Projektseite",
+    "fr": "Page du projet"
+  },
+  "Sterowanie": {
+    "en": "Controls",
+    "de": "Steuerung",
+    "fr": "Commandes"
+  },
+  "Poprzedni punkt": {
+    "en": "Previous item",
+    "de": "Vorheriger Punkt",
+    "fr": "Point précédent"
+  },
+  "Następny punkt": {
+    "en": "Next item",
+    "de": "Nächster Punkt",
+    "fr": "Point suivant"
+  },
+  "Widok kompaktowy": {
+    "en": "Compact view",
+    "de": "Kompaktansicht",
+    "fr": "Vue compacte"
+  },
+  "Przywróć domyślne": {
+    "en": "Restore defaults",
+    "de": "Standardwerte wiederherstellen",
+    "fr": "Rétablir les valeurs par défaut"
+  },
+  "Czynność": {
+    "en": "Action",
+    "de": "Aktion",
+    "fr": "Action"
+  },
+  "Skrót": {
+    "en": "Shortcut",
+    "de": "Tastenkürzel",
+    "fr": "Raccourci"
+  },
+  "Zapisano lokalnie": {
+    "en": "Saved locally",
+    "de": "Lokal gespeichert",
+    "fr": "Enregistré localement"
+  },
+  "Nie można odczytać skrótów — użyto domyślnych.": {
+    "en": "Could not read shortcuts — defaults restored.",
+    "de": "Tastenkürzel konnten nicht gelesen werden — Standardwerte verwendet.",
+    "fr": "Impossible de lire les raccourcis — valeurs par défaut utilisées."
+  },
+  "Nie można zapisać skrótów klawiaturowych.": {
+    "en": "Could not save keyboard shortcuts.",
+    "de": "Tastenkürzel konnten nicht gespeichert werden.",
+    "fr": "Impossible d’enregistrer les raccourcis clavier."
+  },
+  "Kliknij skrót i naciśnij kombinację. Wyczyść pole, aby go wyłączyć. Skróty działają w obu oknach aplikacji.": {
+    "en": "Click a shortcut and press a key combination. Clear the field to disable it. Shortcuts work in both app windows.",
+    "de": "Klicken Sie auf ein Kürzel und drücken Sie die Kombination. Zum Deaktivieren das Feld leeren. Kürzel gelten in beiden App-Fenstern.",
+    "fr": "Cliquez sur un raccourci et appuyez sur la combinaison. Videz le champ pour le désactiver. Les raccourcis fonctionnent dans les deux fenêtres."
+  },
+  "Nieprawidłowy skrót: {name}": {
+    "en": "Invalid shortcut: {name}",
+    "de": "Ungültiges Tastenkürzel: {name}",
+    "fr": "Raccourci non valide : {name}"
+  },
+  "Skrót wymaga Ctrl, Alt, Cmd lub klawisza funkcyjnego: {name}": {
+    "en": "A shortcut needs Ctrl, Alt, Cmd or a function key: {name}",
+    "de": "Ein Kürzel benötigt Ctrl, Alt, Cmd oder eine Funktionstaste: {name}",
+    "fr": "Un raccourci exige Ctrl, Alt, Cmd ou une touche de fonction : {name}"
+  },
+  "Konflikt skrótów: {first} / {second}": {
+    "en": "Shortcut conflict: {first} / {second}",
+    "de": "Tastenkürzelkonflikt: {first} / {second}",
+    "fr": "Conflit de raccourcis : {first} / {second}"
   }
 }

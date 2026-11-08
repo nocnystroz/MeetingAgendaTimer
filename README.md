@@ -24,6 +24,12 @@ Gotową paczkę dla swojego systemu należy rozpakować i uruchomić:
 - macOS: `Licznik-Spotkaniowy.app`.
 - Linux: plik wykonywalny `Licznik-Spotkaniowy` w rozpakowanym katalogu.
 
+Nowe paczki Windows i macOS są plikami ZIP z jednym folderem
+`Licznik-Spotkaniowy`. W jego głównym katalogu znajdują się odpowiednio
+`Licznik-Spotkaniowy.exe` z ikoną programu albo `Licznik-Spotkaniowy.app`
+oraz `README.txt`. Pobieraj plik aplikacji z Releases; archiwa „Source code”
+zawierają kod, a nie gotowy program. Linux pozostaje w formacie `.tar.gz`.
+
 Paczka zawiera interpreter i biblioteki. Nie wymaga instalowania Pythona,
 pip ani venv. Nie przenoś samego pliku wykonywalnego bez towarzyszących bibliotek.
 Lokalne wyniki budowania znajdują się w `dist/` i nie są commitowane.
@@ -223,6 +229,17 @@ ma wersję utrwaloną przy budowaniu, także bez dostępu do Git.
 ### Języki i pierwsze uruchomienie
 
 W prawym górnym rogu wybierzesz Polski, English, Deutsch lub Français.
+
+**Pomoc → Instrukcja obsługi** otwiera lokalny poradnik ze zrzutami i spisem
+treści w wybranym języku. **Pomoc → Skróty klawiaturowe…** pozwala zmienić,
+wyłączyć lub przywrócić skróty; wykrywa konflikty i zapamiętuje ustawienia
+w `shortcuts.json` w katalogu danych. Skróty działają w panelu i liczniku,
+gdy aktywne jest okno aplikacji. Menu pokazuje aktualne przypisania.
+Pomoc zawiera jedną politykę prywatności, zgłoszenia błędów/opinii na GitHubie
+oraz [stronę projektu](https://ion301.com/pl/narzedzia/meeting-agenda-timer/).
+Linki zewnętrzne otwierają się dopiero po kliknięciu; aplikacja nie wysyła
+automatycznie zgłoszeń ani danych spotkania.
+
 Zmiana działa podczas spotkania i nie tłumaczy ani nie zmienia Twojej agendy,
 notatek i transkrypcji. Wybór jest zapamiętywany lokalnie. Eksport używa wybranego
 języka nagłówków, zachowując oryginalne treści. README jest po polsku i angielsku; pozostała dokumentacja jest głównie po polsku.
@@ -266,6 +283,12 @@ Unpack the package for your system and launch:
 - Windows: `Licznik-Spotkaniowy.exe`.
 - macOS: `Licznik-Spotkaniowy.app`.
 - Linux: `Licznik-Spotkaniowy` executable in the unpacked directory.
+
+New Windows and macOS packages are ZIP files containing one
+`Licznik-Spotkaniowy` folder. Its top level contains either
+`Licznik-Spotkaniowy.exe` with the app icon or `Licznik-Spotkaniowy.app`, plus
+`README.txt`. Download the app asset from Releases; “Source code” archives
+contain source files rather than a ready-to-run program. Linux uses `.tar.gz`.
 
 Packages include the interpreter and libraries; Python, pip and venv are not
 required. Keep the accompanying libraries with the executable. Local build
@@ -470,6 +493,16 @@ Source runs read the version from Git; `*` means there are uncommitted changes.
 Portable packages save the version at build time and show it without Git.
 
 ### Languages and first launch
+
+**Help → User guide** opens an offline guide with screenshots and chapter
+navigation in the selected language. **Help → Keyboard shortcuts…** edits,
+disables or restores bindings, detects conflicts and saves preferences in
+`shortcuts.json` in the data folder. Shortcuts work in the presenter and timer
+while an app window is active. Menus show current bindings.
+Help includes one privacy policy, GitHub bug/feedback reporting and the
+[project page](https://ion301.com/en/tools/meeting-agenda-timer/).
+External links open only after a click; the app does not submit reports or
+meeting data automatically.
 
 Choose Polski, English, Deutsch or Français in the upper-right corner. Switching
 works during a meeting and does not translate or change your agenda, notes or

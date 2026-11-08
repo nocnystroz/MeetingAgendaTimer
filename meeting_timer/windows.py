@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 from PySide6.QtCore import QDate, QDateTime, QSignalBlocker, Qt, QTimer
-from PySide6.QtGui import QAction, QFontDatabase, QKeySequence, QPdfWriter, QShortcut
+from PySide6.QtGui import QAction, QFontDatabase, QPdfWriter
 from PySide6.QtWidgets import (
     QApplication,
     QCheckBox,
@@ -80,7 +80,7 @@ class CounterWindow(QWidget):
         self.owner = owner
         self.setObjectName("counter")
         self.setWindowTitle(f"Licznik · {version()}")
-        self.setWindowIcon(icon("clock"))
+        self.setWindowIcon(icon("app"))
         self.resize(550, 370)
         self.setMinimumWidth(240)
         layout = QVBoxLayout(self)
@@ -222,7 +222,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setStatusBar(StatusBar(self))
         self.setWindowTitle(f"Licznik spotkaniowy · {version()} · Panel prowadzącego")
-        self.setWindowIcon(icon("clock"))
+        self.setWindowIcon(icon("app"))
         self.resize(1120, 760)
         self.meeting = Meeting()
         self.engine = TimerEngine(self.meeting.items)
@@ -438,33 +438,55 @@ class MainWindow(QMainWindow):
         self.statusBar().addPermanentWidget(version_label)
 
     def build_menu(self):
-        menu = self.menuBar().addMenu("Spotkanie")
-        for title, callback, shortcut in [
-            ("Wklej agendę…", self.paste_agenda, "Ctrl+N"),
-            ("Otwórz plik spotkania…", self.open_meeting, "Ctrl+O"),
-            ("Zapisz kopię spotkania…", self.save_copy, "Ctrl+S"),
-            ("Zapisz szablon…", self.save_template, None),
-            ("Wczytaj szablon…", self.open_meeting, None),
-            ("Eksport podsumowania…", self.export, "Ctrl+E"),
-            ("Restart odliczania…", self.restart, None),
-            ("Otwórz katalog danych", self.open_data_directory, None),
-            ("Zakończ", self.quit, "Ctrl+Q")]:
+        from .shortcuts import ShortcutSettings
+        self.shortcuts = ShortcutSettings(self.directory / "shortcuts.json")
+
+        def add_action(menu, name, title, callback, shortcut=""):
             action = QAction(title, self)
-            if shortcut:
-                action.setShortcut(QKeySequence(shortcut))
             action.triggered.connect(callback)
             menu.addAction(action)
-        help_menu = self.menuBar().addMenu("Pomoc")
-        action = help_menu.addAction("Obsługa i prywatność")
-        action.triggered.connect(self.show_help)
-        for title, callback in [("Warunki użytkowania", self.show_terms),
-                                ("Licencja MIT", lambda: self.show_document("LICENSE", "Licencja MIT", True)),
-                                ("Polityka prywatności (PL)", lambda: self.show_document("PRIVACY.md", "Polityka prywatności (PL)")),
-                                ("Postaw mi kawę · Buy me a coffee", self.open_support)]:
-            action = help_menu.addAction(title)
-            action.triggered.connect(callback)
-        shortcut = QShortcut(QKeySequence("Ctrl+Return"), self)
-        shortcut.activated.connect(self.play_pause)
+            self.addAction(action)
+            self.counter.addAction(action)
+            self.shortcuts.register(name, action, shortcut)
+            return action
+
+        menu = self.menuBar().addMenu("Spotkanie")
+        for name, title, callback, shortcut in [
+            ("paste", "Wklej agendę…", self.paste_agenda, "Ctrl+N"),
+            ("open", "Otwórz plik spotkania…", self.open_meeting, "Ctrl+O"),
+            ("save", "Zapisz kopię spotkania…", self.save_copy, "Ctrl+S"),
+            ("save_template", "Zapisz szablon…", self.save_template, ""),
+            ("load_template", "Wczytaj szablon…", self.open_meeting, ""),
+            ("export", "Eksport podsumowania…", self.export, "Ctrl+E"),
+            ("restart", "Restart odliczania…", self.restart, ""),
+            ("data", "Otwórz katalog danych", self.open_data_directory, ""),
+            ("quit", "Zakończ", self.quit, "Ctrl+Q")]:
+            add_action(menu, name, title, callback, shortcut)
+        controls = self.menuBar().addMenu("Sterowanie")
+        for name, title, callback, shortcut in [
+            ("play", "Start / pauza / wznów", self.play_pause, "Ctrl+Return"),
+            ("previous", "Poprzedni punkt", lambda: self.step(-1), "Ctrl+Alt+Left"),
+            ("next", "Następny punkt", lambda: self.step(1), "Ctrl+Alt+Right"),
+            ("add_minute", "+1 min", lambda: self.add_time(60), "Ctrl+Alt+1"),
+            ("add_five", "+5 min", lambda: self.add_time(300), "Ctrl+Alt+5"),
+            ("counter", "Pokaż licznik", self.show_counter, "Ctrl+L"),
+            ("presenter", "Pokaż panel", self.present, ""),
+            ("pin", "Zawsze na wierzchu", self.counter.pin.toggle, "Ctrl+Shift+T"),
+            ("compact", "Widok kompaktowy", self.counter.compact.toggle, "Ctrl+Shift+M")]:
+            add_action(controls, name, title, callback, shortcut)
+        self.help_menu = self.menuBar().addMenu("Pomoc")
+        for name, title, callback, shortcut in [
+            ("help", "Instrukcja obsługi", self.show_help, "F1"),
+            ("shortcuts", "Skróty klawiaturowe…", self.configure_shortcuts, ""),
+            ("feedback", "Zgłoś błąd / Przekaż opinię", self.open_feedback, ""),
+            ("project", "Strona projektu", self.open_project, ""),
+            ("terms", "Warunki użytkowania", self.show_terms, ""),
+            ("license", "Licencja MIT", lambda: self.show_document("LICENSE", "Licencja MIT", True), ""),
+            ("privacy", "Polityka prywatności (PL)", lambda: self.show_document("PRIVACY.md", "Polityka prywatności (PL)"), ""),
+            ("support", "Postaw mi kawę · Buy me a coffee", self.open_support, "")]:
+            add_action(self.help_menu, name, title, callback, shortcut)
+        if not self.shortcuts.load():
+            self.statusBar().showMessage("Nie można odczytać skrótów — użyto domyślnych.")
 
     def build_tray(self):
         self.tray = QSystemTrayIcon(icon("clock"), self)
@@ -854,7 +876,7 @@ class MainWindow(QMainWindow):
             })
             self.last_saved = time.monotonic()
             self.error_shown = False
-            self.statusBar().showMessage("Zapisano lokalnie · Ctrl+Enter: start / pauza")
+            self.statusBar().showMessage("Zapisano lokalnie")
             return True
         except (OSError, ValueError):
             self.statusBar().showMessage("Błąd zapisu — zapisz kopię w innym katalogu przez menu Spotkanie.")
@@ -1040,11 +1062,28 @@ class MainWindow(QMainWindow):
         QDesktopServices.openUrl(QUrl.fromLocalFile(str(self.directory)))
 
     def show_help(self):
-        self.message("Obsługa i prywatność",
-                     "Ctrl+Enter: start/pauza. Wybór punktu w agendzie służy do podglądu notatek; przejście licznika jest osobną akcją.\n\n"
-                     "Pauza i ręczne przejście przesuwają pozostały harmonogram również w trybie godzinowym. Restart pozwala ponownie zsynchronizować start z godzinami.\n\n"
-                     "Pauza licznika nie zatrzymuje nagrania. Dane są lokalne. Transkrypcja wysyła wybrane audio do OpenAI wyłącznie po zatwierdzeniu. Koszt obciąża Twoje konto API.\n\n"
-                     "Pliki README.md, PRIVACY.md i LICENSE są dołączone do programu. Licencja projektu: MIT.")
+        from .documents import HelpDialog
+        try:
+            HelpDialog(self).exec()
+        except OSError:
+            self.message("Błąd pliku", "Nie można odczytać dokumentu pomocy.")
+
+    def configure_shortcuts(self):
+        from .shortcuts import ShortcutsDialog
+        ShortcutsDialog(self.shortcuts, self).exec()
+
+    def open_feedback(self):
+        from .documents import FEEDBACK_URL
+        self.open_link(FEEDBACK_URL)
+
+    def open_project(self):
+        from .documents import PROJECT_URL, PROJECT_URL_EN
+        self.open_link(PROJECT_URL if language() == "pl" else PROJECT_URL_EN)
+
+    def open_link(self, url):
+        from PySide6.QtCore import QUrl
+        from PySide6.QtGui import QDesktopServices
+        QDesktopServices.openUrl(QUrl(url))
 
     def show_terms(self):
         from .documents import DocumentDialog, terms_text

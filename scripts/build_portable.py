@@ -94,6 +94,10 @@ def main():
                "--specpath", str(build), "--collect-data", "meeting_timer",
                "--add-data", f"{ROOT / 'meeting_timer/assets'}:meeting_timer/assets"]
     command += ["--add-data", f"{version_file}:meeting_timer"]
+    command += ["--add-data", f"{ROOT / 'docs'}:docs"]
+    launcher_icon = ROOT / "meeting_timer/assets" / {
+        "win32": "app.ico", "darwin": "app.icns"}.get(sys.platform, "app.png")
+    command += ["--icon", str(launcher_icon)]
     # Older binutils can corrupt the alignment of NumPy/OpenBLAS shared libraries.
     # The core bundle has no NumPy; keep full-build native binaries intact.
     if args.core and sys.platform.startswith("linux") and shutil.which("strip"):
@@ -162,12 +166,21 @@ def main():
     archive_base = ROOT / "dist" / f"licznik-{platform.system().lower()}-{platform.machine().lower()}-{variant}"
     if os.name == "nt":
         archive = shutil.make_archive(str(archive_base), "zip", root_dir=output, base_dir=bundle.name)
+    elif sys.platform == "darwin":
+        # Finder-compatible ZIP preserves framework symlinks, executable bits and signing.
+        staging = build / "package" / name
+        if staging.exists():
+            shutil.rmtree(staging)
+        staging.mkdir(parents=True)
+        shutil.copytree(bundle, staging / bundle.name, symlinks=True)
+        shutil.copy2(output / "README.txt", staging / "README.txt")
+        archive = str(archive_base) + ".zip"
+        subprocess.run(["ditto", "-c", "-k", "--sequesterRsrc", "--keepParent",
+                        str(staging), archive], check=True)
     else:
         archive = str(archive_base) + ".tar.gz"
         with tarfile.open(archive, "w:gz", compresslevel=3) as stream:
             stream.add(bundle, arcname=bundle.name)
-            if sys.platform == "darwin":
-                stream.add(output / "README.txt", arcname="README.txt")
     size = sum(p.stat().st_size for p in bundle.rglob("*") if p.is_file() and not p.is_symlink())
     print(f"Paczka: {archive}\nRozpakowana: {size / 1024**2:.1f} MiB")
 
